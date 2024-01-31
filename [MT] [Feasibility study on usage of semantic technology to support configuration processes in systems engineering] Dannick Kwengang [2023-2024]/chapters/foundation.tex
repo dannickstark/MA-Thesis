@@ -1,0 +1,356 @@
+\section{Foundation\label{sec:foundation}}
+In this chapter, the basic concepts fundamental to understanding the subject of the thesis will be explained. This will allow a better understanding of the following chapters and the proposed solutions. Firstly, the foundations of systems engineering will be presented. Then the notions of CAD, CAE, and “Expert System” will be explained. This will be followed by an introduction to semantic technologies. This will be followed by an analysis of the use of semantic technologies in the field of systems engineering. 
+
+\input{chapters/foundation/sysen}
+
+\subsection{Computer Aided Engineering and Simulation}
+CAE, also known as digital engineering or computer-aided engineering, brings together all the digital and software resources usually used by engineers to design, simulate and validate new products and industrial processes using sophisticated algorithms. CAE tools enable the physical properties of a product to be tested and simulated, so that it can be optimized on the basis of the results of a numerical analysis.
+
+    \subsubsection{Simulation-driven design}
+    Typically, CEA involves pre-processing, solving and post-processing stages. During the pre-processing phase, engineers model the system, the physical properties of the design, and the operational environment in the form of applied constraints or loads. In order to correctly configure the resulting simulations, it is crucial that this modelling incorporates all parts of the environment to which the product will be exposed (including forces, temperatures, etc.).  The quality of the simulation is largely determined by the accuracy of the conditions to which the product will be exposed. The model is then solved using simulations before the results are presented for review during post-processing. \\
+
+    Whereas physical prototyping takes days or even weeks, simulations take just a few hours at most. Although physical prototyping is unavoidable, simulations can help reduce the number of prototypes needed before production.\\
+    
+    Figure \ref{fig:v-model-sim} shows the different types of simulations and tests throughout the “V” model presented above. Initial design and simulation of CAD geometry under appropriate conditions is the CEA's standard workflow. Based on the results of the simulation, the design is improved. This process may need to be repeated until the product requirements are met and virtually confirmed. If there are differences in behavior between the digital prototype and expectations, the CAD model or input data can be adjusted. This process speeds up product development because there is no need to create physical prototypes in the early stages of development.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.6]{images/Foundation-V-Model-Sim.drawio.png}
+        \caption{\label{fig:v-model-sim} V-Model with simulations }
+    \end{figure}
+
+
+    \subsubsection{Advantages}
+    One of the main advantages of this approach is that it only takes a few hours, whereas it takes several days or even weeks to build and test physical prototypes. Of course, there will always be a need to build a physical prototype at some point, but CAD greatly reduces the number of prototypes required. The use of CAD and the resulting reduction in the need for physical prototypes means that product development costs and time can be reduced, while guaranteeing better product quality.\\
+
+    The benefits of CAE include
+    \begin{itemize}
+        \item Saving money: Compared to building several real prototypes, using computer simulations to evaluate designs is less expensive.
+        \item Time savings: using CAE design tools means that designs can be created faster and more efficiently.
+        \item Simple design editing: With CAE, editing a design is quick and easy. This allows you to correct errors and make changes to your design, enabling problems to be solved quickly and further savings to be made.
+        \item Fewer errors: Compared with manual design, CAD can reduce the likelihood of errors.
+        \item Less work: since CAE software automates a large part of the operation, designing various models requires less work.
+        \item Less duplication of work: As the computer code is reusable, it is not necessary to perform the same activities several times. In addition, separate code segments can be duplicated and used during the design process.
+        \item Easy to share: CAE design files can be easily saved and exchanged.
+        \item Greater accuracy: CAD software is more accurate than manual design, allowing you to work more precisely and achieve better results.
+        \item Better decision-making: Performance impacts can guide design choices, and these impacts can be assessed early in the development phase, when it is cheaper and simpler to make changes to the design.
+    \end{itemize}
+
+    \subsubsection{Inconvenient}
+    While CAD has many advantages, others argue that it is difficult to control the design of increasingly complicated components, as the correct results only appear later in the product design cycle. To overcome this difficulty, CAE's software suppliers are constantly creating new tools and streamlining existing procedures. In addition, CAD can have the following disadvantages:
+
+    \begin{itemize}
+        \item Hardware Failure: A computer breakdown might result in job loss.
+        \item Security: Work might be subject to hackers or viruses.
+        \item Employee Competencies: Learning how to utilize the CAE program may require some training.
+        \item System Expense: Purchasing new systems can be expensive.
+        \item Updates: Recurrent system updates may be required.
+    \end{itemize}
+
+\subsection{Expert System}
+An expert system in artificial intelligence is a computer programme that simulates the decision-making process of a human expert[]. It possesses knowledge in a given domain, extracted from the knowledge of experts in that domain.  Rather than using traditional procedural code, expert systems are designed to deal with complex questions posed by the user by reasoning from bodies of knowledge. The 1970s saw the development of the first expert systems, which came into widespread use in the 1980s[]. They were one of the first applications of artificial intelligence (AI) software to achieve real success[]. \\
+
+Figure \ref{fig:es-archi} shows the architecture of an expert system. An expert system consists of two subsystems: the knowledge base and the inference engine. Rules and information are represented in the knowledge base. To deduce new facts, the inference engine applies the rules to the known facts. In addition, inference engines can be capable of debugging and explanation.\\
+
+A non-expert user uses this software to gather information, while people who are experts in a given field enter data into the knowledge base. It is widely used in a number of fields, including coding, games, accounting and medical diagnostics. They can guide users and explain how they arrived at a specific recommendation or conclusion.\\
+
+The process of creating an expert system is called 'knowledge engineering', and the people who carry it out are known as knowledge engineers. The main responsibility of the knowledge engineer is to ensure that the computer has all the knowledge it needs to solve a problem. To express the necessary information in the form of a symbolic model in the computer's memory, the knowledge engineer must choose one or more forms (the ontology will be chosen for the purposes of this thesis).\\
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.6]{images/Foundation-Architecture_Expert_System.drawio.png}
+    \caption{\label{fig:es-archi} Architecture of an Expert System }
+\end{figure}
+
+Components of an expert system : 
+\begin{itemize}
+    \item Knowledge base: Facts and rules are represented here. It is made up of intrinsic facts relevant to the domain, methods, rules for solving problems and knowledge specific to the domain.
+    \item Inference engine: this retrieves relevant information from the knowledge base, analyses it and determines a solution that addresses the user's problem. To deduce new facts, the inference engine extracts rules from its knowledge base and applies them to known facts. In addition, debugging and explanation functions can be added to inference engines.
+    \item Learning and knowledge acquisition module: The aim of this part is to enable the expert system to collect and store knowledge from various sources on an ongoing basis.
+    \item User interface: Using this module, a non-expert user can communicate with the expert system and work out a solution.
+    \item The explanation module helps the expert system to provide the user with a detailed explanation of how it arrived at a certain result.
+\end{itemize}
+
+
+\subsection{Semantic Technologies\label{sec:semtec}}
+Semantic technology is a set of approaches, tools, and strategies that offer sophisticated mechanisms for enhancing data in a domain with explicit meanings, making it understandable to computers. By creating data models known as ontologies, semantic web technologies represent an area of interest with a high degree of abstraction.\\ 
+
+In 2001, Tim Berners-Lee coined the term “Semantic Web” to describe the use of semantic technologies in data connectivity [ ]. The World Wide Web Consortium (W3C), founded by Berners-Lee, disseminates and supports a number of technical guidelines for the Semantic Web. “Semantic web technologies allow people to create data shops on the web, build vocabularies and write rules to process data”.\\
+
+Improving the way computers understand data makes it easier to share data and enables it to be processed automatically. As Figure \ref{fig:sem-web-stack} shows, the Web Ontology Language (OWL), SPARQL and Resource Description Framework (RDF) are the main standards on which semantic technology is developing. In contrast, in conventional information technology, meanings are hard-coded into application code and data at the design stage. \\
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.6]{images/foundation-sem-web-tech-stack.png}
+    \caption{\label{fig:sem-web-stack} Semantic Web Technologies Stack }
+\end{figure}
+
+
+    \subsubsection{URI and IRI}
+        \paragraph{URI}
+        A URI is a short string of characters that clearly identifies an abstract or physical resource on the Semantic Web. The use of URIs makes resources available through a number of naming systems and access mechanisms. A URI can be used for location, identification, or both. There are two types of URI: URLs (Uniform Resource Locators) and URNs. A URL is a subset of a URI that indicates the location of a resource and how to retrieve it. A URN, on the other hand, is used to identify an online resource without specifying how it will be retrieved.\\
+
+        Semantic Web resource identifiers can be divided into a base URI and a local name. In serialization, the base URI is often shortened by a prefix defined at the beginning. Figure \ref{fig:uri-example} shows an example of a URI and its decomposition with a prefix.\\
+
+        \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.6]{images/Foundation-URI Decomposition.drawio.png}
+            \caption{\label{fig:uri-example} Example of URI and decomposition with prefix}
+        \end{figure}
+
+        
+        \paragraph{IRI}
+        The Internationalised Resource Identifier (IRI) is an extension of the URI that adapts to a global character set, whereas the URI is limited to ASCII and has far fewer characters. IRIs enable the representation and communication of data-related knowledge in several languages. IRIs can be transformed into URIs using percentage encoding, enabling backward compatibility.
+
+
+    \subsubsection{RDF}
+    RDF is a resource description framework developed by W3C. It is used in particular on the World Wide Web for data exchange. The RDF data model allows data resources to be uniquely recognised and linked to other data resources for reading, analysis and action. 
+
+    RDF [ ] introduces several fundamental Semantic Web terms:
+
+    \begin{itemize}
+        \item A resource is anything that can be characterized by an RDF declaration. URIs ensure that resources are always uniquely named. Any physical thing or notion can be represented by a URI, allowing RDF to be used to describe different types of domains.
+        \item Description:
+        \item Framework:
+        \item A “thing” is either an individual object, called an instance, or a definition of a type of thing, called a class. 
+        \item A schema is an abstract description of a set of objects. It consists of a hierarchical taxonomy that describes how the elements of the domain are classified. In RDF, schemas are also known as terminology boxes (Tboxes). 
+        \item A property is an attribute, feature, characteristic or connection that facilitates the description of a URI. In the RDF architecture, a property is also represented in the form of a URI. It always has a precise meaning and determines the type of resource it can describe, known as the property domain, as well as the permitted values. It can also specify how it relates to other attributes. 
+        \item "Axioms” are property declarations for schema classes, often known as Role Boxes (Rbox) in RDF. They define the relationships between classes.
+    \end{itemize}
+
+    RDF is a model based on “Triples”. Triples are built around subject-predicate-object relationships, and are the most common type of axiom. The predicate is a property or a relation; the subject is a “thing”. When the object is a thing, the property is called an object property. If the object is a literal, such as a character, integer or string, the property is called a data property. Once a triplet has been defined, it is referred to as a statement.\\
+
+    Take, for example, this basic English sentence: “Germany is in Europe”. Table\ref{tab:rdf-example} shows how the sentence can be divided syntactically. If this statement were to be expressed visually, this could be done using the following directed graph, shown in Figure \ref{fig:rdf-example}.\\
+    
+    \begin{table}[H]
+        \centering
+	    \rowcolors{2}{teal!10}{white}
+	    \begin{tabular}{ | m{4cm} | m{4cm} | m{4cm} | }
+            \hline
+            \rowcolor{teal!30} Subject & Predicate & Object \\
+            
+            \hline
+            Germany  & is in & Europe\\
+            
+            \hline
+        \end{tabular}
+        \caption{\label{tab:rdf-example} RDF Syntactic division}
+        \end{table}
+        
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.6]{images/Foundation-RDF Example.drawio.png}
+        \caption{\label{fig:rdf-example}  RDF Graphical representation}
+    \end{figure}
+
+    RDF uses the same techniques to demonstrate the links between subjects and objects. However, as explained earlier, to represent resources and features accurately on the web, they need to be assigned a unique URI. To demonstrate the representation of the above example sentence as a triple, the URIs of the resources and attributes are assumed to be those shown in Table\ref{tab:rdf-example-uri}.
+    
+    \begin{table}[H]
+        \centering
+	    {\rowcolors{2}{teal!10}{white}
+	    \begin{tabular}{ | m{2.5cm} | m{2.5cm} | c | }
+            \hline
+            \rowcolor{teal!30} Entity & Role & URI \\
+            
+            \hline
+            Germany  & Subject & $<http://example/resource/Germany>$\\
+            
+            \hline
+            is in  & Predicate & $<http://example/resource/isIn>$\\
+            
+            \hline
+            Europe  & Object & $<http://example/resource/Europe>$\\
+            
+            \hline
+        \end{tabular}}
+        \caption{\label{tab:rdf-example-uri} Example of URI Scheme}
+    \end{table}
+
+    \subsubsection{Linked Data Principles}
+    Linked data is a way of representing and distributing structured data on the web. Data generated and structured according to Linked Data principles is machine-readable and connected to other data on the web. It uses conventional web technologies such as HTTP, RDF and URI, but not only does it provide human-readable data via web pages, it also makes it machine-readable [ ]. Linked data allows concepts, elements, events, people, places, etc. to be organized and linked together. There are many platforms on the web that make available a large amount of linked data and the relationships between them. These include WikiData, DBpedia and Linked Open Vocabularies (LOV).\\
+
+    Tim Berners-Lee, the initiator and defender of the Semantic Web and linked data, established the four design principles of linked data back in 2006.
+    \begin{enumerate}
+        \item Use URIs to name objects.
+        \item Use HTTP URIs to provide useful information. 
+        \item Use open standards such as RDF and SPARQL to provide meaningful information about what a name indicates when searched. 
+        \item Include connections to other URIs to allow them to find new information. 
+    \end{enumerate}
+
+    The more data is represented as linked data on the web, the greater the possibility of linking it to other linked data sources. For example, if a resource represented by a URI in one data source is discovered in an existing linked data source (e.g., WikiData or DBpedia), it can be connected to a property such as “owl:sameAs” to extract further metadata and investigate links to other data resources [ ].\\
+
+    \subsubsection{RDF's Serializations}
+    Unlike other data models, RDF data models do not rely on a single serialization syntax. Triples in an RDF dataset can be serialized in a number of ways, and some of the most common serialization methods are : 
+
+    \begin{itemize}
+        \item \textbf{RDF/XML}: RDF/XML is the most widely used serialization format for RDF in the W3C recommendations. RDF/XML is an XML-style tree document with a graph based on triples, which makes it theoretically difficult and verbose. 
+        \item \textbf{Notation3 (.n3)}: Unlike R/XML, N3 syntax is more concise and easier to understand because it is closer to the subject-predicate-object paradigm of RDF. 
+        \item JSON for Linking Data (JSON-LD) is a relatively new, user-friendly format. It combines web syntax (JSON) with RDF principles. [ ] 
+        \item \textbf{Turtle}: The Turtle syntax is the successor to the N3 syntax, allowing more concise encoding of RDF data.
+    \end{itemize}
+
+    Listing \ref{lst:rdf-xml}, Listing \ref{lst:rdf-turtle} and Listing \ref{lst:rdf-json-ld} show the serializations of a single example in different formats (RDF/XML, Turtle, JSON-LD) and the Figure \ref{fig:rdf-xml-example} shows the graphical representation in RDF/XML. As you can see, the “turtle” syntax uses namespace prefixes to provide a more concise and clear syntax. It can also be used to describe lists of predicates or objects. There are also various serialization syntaxes for representing RDF. However, due to its short structure and readability, the “turtle” syntax is used in this thesis for ontology development.\\
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.6]{images/Foundation-RDF XML.drawio.png}
+        \caption{\label{fig:rdf-xml-example}  Graph Example in RDF/XML}
+    \end{figure}
+
+\begin{lstlisting}[language=XML, caption=Example of RDF Serialization in RDF/XML, label={lst:rdf-xml}]
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+            xmlns:ns0="http://dbpedia.org/ontology/">
+
+    <rdf:Description rdf:about="http://dbpedia.org/resource/Pluto">
+        <ns0:discovered>1930</ns0:discovered>
+        <ns0:discoverer rdf:resource="http://dbpedia.org/resource/Clyde_Tombaugh"/>
+    </rdf:Description>
+</rdf:RDF>
+\end{lstlisting}
+
+\begin{lstlisting}[caption=Example of RDF Serialization in Turtle, label={lst:rdf-turtle}]
+@prefix ns0: <http://dbpedia.org/ontology/> .
+
+<http://dbpedia.org/resource/Pluto>
+  ns0:discovered "1930" ;
+  ns0:discoverer <http://dbpedia.org/resource/Clyde_Tombaugh> .
+\end{lstlisting}
+
+\begin{lstlisting}[caption=Example of RDF Serialization in JSON-LD, label={lst:rdf-json-ld}]
+[ {
+  "@id" : "_:genid1",
+  "@type" : [ "http://www.w3.org/2002/07/owl#Ontology" ]
+}, {
+  "@id" : "http://dbpedia.org/ontology/discovered",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://dbpedia.org/ontology/discoverer",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
+  "@id" : "http://dbpedia.org/resource/Pluto",
+  "http://dbpedia.org/ontology/discovered" : [ {
+    "@value" : "1930"
+  } ],
+  "http://dbpedia.org/ontology/discoverer" : [ {
+    "@id" : "http://dbpedia.org/resource/Clyde_Tombaugh"
+  } ]
+} ]
+\end{lstlisting}
+
+    \subsubsection{Ontology}
+    In the field of philosophy, ontology is a discipline that studies existence, the way in which knowledge, language, and perception are related to the nature of reality. It is concerned with the question of what entities exist and how they can be classified, ordered hierarchically and discriminated against. \\
+    Since the mid-1970s, AI researchers have realized that knowledge engineering is essential for developing large and powerful AI systems[ ]. AI researchers suggested that they could develop new ontologies as computational models to enable certain types of automated reasoning, but their efforts were only moderately successful. In the 1980s, the AI community began using the term ontology to describe both a theory of a modelled world and a component of knowledge-based systems [ ].\\
+    An ontology captures the structure of a domain, i.e. the model and its constraints. In other words, an ontology is a structure for systematically storing and formalizing domain knowledge. Ontology schemas are created using two modelling languages, RDF Schema (RDFS) [ ] and Ontology Web Language (OWL) [ ]. Their basic URIs are the abbreviations rdfs: and owl.\\
+
+    Tim Berners-Lee [ ] defines an ontology as having the following properties: 
+    \begin{enumerate}
+        \item It must have a concise syntax.
+        \item It must have well-defined semantics, making it possible to state correctly what is represented.
+        \item It must have sufficient expressive capacity to convey human knowledge.
+        \item It must have an effective, robust and simple reasoning process. 5. it must be capable of generating huge knowledge bases.
+    \end{enumerate}
+
+
+    \subsubsection{Model Building with RDFS}
+    RDFS presents the main techniques for creating a taxonomy and instantiating objects [ ] : 
+
+    \begin{itemize}
+        \item Subclass Statements : As in object-oriented programming, the rdfs:subClassOf statement allows an rdfs:Class to inherit the attributes and descriptions of its superclass while allowing further definition. rdfs:subPropertyOf works in the same way as rdf:Property. Unlike object-oriented programming, a class can be a subclass of more than one superclass. 
+        \item Property domain and range: Properties can be defined using the attributes rdfs:domain and rdfs:range. They indicate that the subject or object of a triple containing the property must belong to the given classes. Multiple domain or range axioms must be read in combination. This means that if the domain has several limits, the object of the triple must satisfy both axioms. 
+        \item Instantiating an object: \textbf{rdf:type} creates an object as an instance of a \textbf{rdfs:Class}. This is often abbreviated to “$is\_a$” or “a”. [ ] 
+    \end{itemize}
+    
+    \subsubsection{Owls}
+    The W3C group created the OWL language as a set of formal languages for semantic ontologies on the Web. OWL shares many properties with RDF; in fact, it is an extension of the RDF vocabulary. An OWL ontology is represented by an RDF graph. It can be serialized using one of the RDF syntaxes described above. \\
+
+    An OWL ontology includes an optional ontology header, class axioms, property axioms and information about individuals/instances. The OWL vocabulary is derived from the OWL namespace: "$https://www.w3.org/2002/07/owl#$". 
+
+    \begin{itemize}
+        \item Instance: An instance is the equivalent of an object in object-oriented modelling. 
+        \item Class: A class is a collection of elements. A class can contain any number of instances. A class in an OWL ontology can be a subclass of another class, inheriting the characteristics of the parent class. All classes are considered subclasses of the owl:Thing class, which is the root class of an OWL ontology and represents the collection of all people. 
+        \item Object properties : The properties that link people (instances) of two OWL classes. All object properties are subclasses of owl:ObjectProperty. 
+        \item Data type attributes: These attributes link people (instances) of OWL classes to literal values. All datatype properties are subclasses of owl:DatatypeProperty.
+    \end{itemize}
+
+    OWL is made up of structures and terminology used to semantically represent a domain. It is a set of expressive operators used to describe concepts, including Boolean operators such as intersection, union, and complement. It also includes explicit quantifiers that allow attributes to specify their characteristics such as domain, extent, and cardinality.\\
+
+    OWL has three variants based on its use cases: OWL-Lite, OWL-DL and OWL-Full. 
+
+    \begin{itemize}
+        \item Of the three options listed, OWL-Full is the most expressive. 
+        \item OWL-Lite supports taxonomy and basic restrictions, such as 0 and 1 cardinality. 
+        \item OWL-DL is more expressive and is based on description logic. Description logic, which is a subset of first-order logic, facilitates automated reasoning. 
+        \item OWL-Full, on the other hand, is effective in cases where a high level of expressively outweighs the decidability and computational completeness of the language.
+    \end{itemize}
+
+    \subsubsection{Query and SPARQL}
+    SPARQL is the equivalent of SQL for graphical databases. It is a declarative query language for extracting information from graphical databases. It is a recursive acronym for SPARQL Protocol and RDF Query Language. The World Wide Web Consortium's RDF Data Access Working Group (DAWG) has established it as the standard for accessing RDF data [ ]. A SPARQL query is made up of triple patterns, known as fundamental graphical patterns. Triple patterns are structured in the same way as RDF triples, except that in a SPARQL query, the subject, predicate, or object can be modified. When the fundamental graph pattern provided in a SPARQL query matches a subgraph of the RDF data graph, the variables in the pattern are replaced with values from the subgraph [].\\
+
+    The main aspects of the SPARQL query language are as follows: 
+
+    \begin{itemize}
+        \item SPARQL allows a collection of graphical databases to be queried in a single query 
+        \item SPARQL queries include triple patterns, conjunctions, disjunctions and optional patterns. 
+        \item SPARQL offers analytical operations such as join, sort, and aggregate. 
+        \item Unlike SQL, SPARQL queries can be directed to several data shops at the same time. 
+        \item SPARQL is more than just a query language; it also supports INSERT and DELETE to update the data in a dataset.
+        \item SPARQL uses pattern matching to navigate between relationships and attributes in RDF graph data. Simple patterns can be concatenated to create complex SPARQL queries, allowing indirect relationships to be explored and analyzed. 
+        \item SPARQL can extract data from non-uniform datasets stored in a variety of formats.
+    \end{itemize}
+
+
+
+
+    \subsubsection{Logical Inference and Reasoning}
+    Semantic reasoning is about drawing conclusions or inferences from facts. As semantic technology attempts to make data more useful and machine-readable, semantic reasoning can use these simplifications of data to reason and draw its own conclusions. It is used for both proof and logic. Proof can be used to verify and, if necessary, correct facts. This can be done using form constraint language (SHACL) statements [ ]. Logic can be used to derive new 'triples' from an existing graph. For example, deduced transitive properties are obtained from strings of asserted properties, but subclass and type declarations can be derived from properties of an individual. There are several reasoning engines (reasoners), as well as a vocabulary and library of inference rules. Popular examples are the HermiT [ ] and Pellet [ ] reasoners.\\
+
+    More precisely, a reasoner is a type of software capable of deducing logical consequences from a collection of claimed facts or axioms. A semantic reasoner extends the concept of an inference engine by offering a wider range of mechanisms to work with. An ontology language, as well as a description logic language, are widely used to provide inference rules. Many reasoners use first-order predicate logic to perform the reasoning; inference is often performed by forward and backward chaining. Examples of probabilistic reasoners include non-axiomatic reasoning systems[ ] and probabilistic logic networks[ ].\\
+
+    For example, if we have the following information, we could use rule-based reasoning to deduce other truths from our data. If Appel is a Microsoft partner, the situation would be expressed as follows:\\
+
+    \textbf{:Appel :partnerOf :Microsoft}
+    
+    However, since partnership is a relationship between two companies, it makes sense to express it in both directions. Therefore, we can use rule-based reasoning to create a two-way link by applying the following rule:\\
+
+    \textbf{[?companyB :partnerOf ?companyA] :- [?companyA :partnerOf ?companyB]}\\
+
+    In simple terms, this rule implies that if “company A” is a partner of “company B”, we must also include a link in which “company B” is a partner of “company A”. The text after “:-” is the body of the rule, and the text before it is the head, which is applied if the body is found to be true.
+
+
+    \subsubsection{Advantages of semantic technologies}
+    The creation of domain models based on ontologies has several advantages: 
+
+    \begin{itemize}
+        \item Ontologies facilitate knowledge transfer between IT entities by providing a standard set of syntax and semantics for capturing domain knowledge. 
+        \item The constraints and syntax of ontologies can facilitate the detection and resolution of contradictions in the conceptual representation of a domain. 
+        \item Ontologies make it possible to use a wide range of reasoning capabilities to obtain more information about a concept. 
+        \item By using existing ontologies, it is possible to produce ontologies for broader domains without having to start from scratch. 
+        \item Ontologies provide a formal semantics for the data in a domain, making it easier to identify data quality problems.
+    \end{itemize}
+
+    Semantic reasoning alone is also a very relevant asset. The partnership example above is simple, but the use of rules-based reasoning can help to reduce the time and effort spent on the project. Rules can simplify data, enabling more efficient data analysis and product creation. Instead of having someone comb through the data and generate insights and conclusions, we can use semantic technology and reasoning to do it for us, increasing efficiency and saving money.\\
+
+    Semantic reasoning can be combined with machine learning to improve the overall data management process. Machine learning uses models to automate tasks, while semantic reasoning relies on rules and ontologies. The process of creating an ontology or collecting data can be extremely time-consuming. Combining machine learning and semantic technologies can therefore make data collection less onerous and improve the overall user experience. Large Language Models (LLMs) (generative AI) have recently demonstrated their language understanding capabilities, which could facilitate the process of integrating unstructured data into knowledge graphs.\\
+
+    Semantic technologies are often associated with graphical databases, which are used by businesses for a variety of purposes. Graph databases are renowned for their flexibility and ability to speed up and simplify data retrieval, enabling businesses to be more cost-effective and efficient. They are used across a range of sectors, including media, healthcare and finance, and the ability of semantic reasoning and technology to understand relationships in the same way as humans can greatly benefit organizations in any field.\\
+
+
+
+
+
+\subsection{Role of Semantic Technology in Systems Engineering}
+In order to improve the efficiency of systems engineering processes, the integration of semantic technology appears to be a promising avenue. The application of semantic technology to simulation configuration in the automotive industry provides a more nuanced understanding of the relationships between simulation parameters, facilitating intelligent decision-making and configuration suggestion. Using RDF standards, the metadata of many artifacts in a simulation can be merged into a single database. The database will include objects and information useful throughout the configuration process, uniformly represented as RDF graphs. This integration allows SPARQL to query the database, enabling complex queries to be managed.\\
+
+This study aims to bridge the gap between traditional systems engineering methodologies and cutting-edge semantic technologies, providing a new perspective on the configuration processes that are essential for advancing simulation capabilities in the automotive sector. In the next chapter, an analysis of the “State of the Art” and “of Practice” will be made in order to have a more precise idea of the work already done on this subject.
+
+
+
+
+
+
+
+
+
+
+

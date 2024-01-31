@@ -1,0 +1,358 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% NB:
+% This file requires 'biber' instead of 'bibtex' to create the bibliography. Please change the setting in your editor / makefile to call 'biber' instead of 'bibtex'.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Determine general 'layout'
+\documentclass[twoside, paper=a4, english, abstracton, 12pt, listof=entryprefix, toc=sectionentrywithdots, toc=listof]{scrartcl}
+
+% Section title in serif font
+\addtokomafont{disposition}{\rmfamily}
+
+% duplicate Word-page borders
+\usepackage[left=2.5cm,right=2.5cm, top=3cm, bottom=3cm]{geometry}
+
+% languages
+\usepackage[ngerman, english,main=english]{babel}
+
+% 'draft' line is a switch: if there are huge figures, use draft to get a quick compile.
+\usepackage[
+%draft
+]{graphicx}
+
+% allows using German umlauts ä, ö, ü and ß
+\usepackage[utf8]{inputenc}
+
+% prevent 'out-of-Dimension' problems
+\usepackage{etex}
+\reserveinserts{30}
+
+% Math-packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% for reeeaally long tables
+\usepackage{longtable}
+
+% set links in the document; MUST BE LOADED prior to 'arydshln' and AFTER 'longtable', or else there will be lots of errors (see hyperref-manual)
+\usepackage[unicode, hidelinks]{hyperref}
+%\usepackage[unicode, colorlinks, allcolors=red]{hyperref}
+
+\usepackage[toc, acronym, nogroupskip, nonumberlist]{glossaries}
+
+\usepackage{listings}
+
+% Table of contents more like in the Word-template
+%\RedeclareSectionCommand[
+%  tocindent=0pt,
+%  tocnumwidth=2.3em,
+%  tocbeforeskip=1em plus 1pt,
+%  tocentryformat=\textbf,
+%  tocpagenumberformat=\textbf
+%]{section}
+
+%\RedeclareSectionCommand[
+%  tocindent=0.42cm,
+%  tocnumwidth=1.8cm
+%]{subsection}
+
+%\RedeclareSectionCommand[
+%  tocindent=0.42cm,
+%  tocnumwidth=1.8cm
+%]{subsubsection}
+
+%\RedeclareSectionCommand[
+%  tocindent=0.42cm,
+%  tocnumwidth=1.8cm
+%]{paragraph}
+
+%Add linefeed after paragraph
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+  {-3.25ex\@plus -1ex \@minus -.2ex}%
+  {1.5ex \@plus .2ex}%
+  {\normalfont\normalsize\bfseries}}
+\makeatother
+
+%Add linefeed after subparagraph
+\makeatletter
+\renewcommand\subparagraph{\@startsection{subparagraph}{4}{\z@}%
+  {-3.25ex\@plus -1ex \@minus -.2ex}%
+  {1.5ex \@plus .2ex}%
+  {\normalfont\normalsize\bfseries}}
+\makeatother
+
+% to have 'Figure' & 'Table' in front of the numbers in the listoffigures / -tables
+\providecaptionname{english}{\listoflofentryname}{Figure}
+\providecaptionname{ngerman}{\listoflofentryname}{Abb.}
+\BeforeStartingTOC[lof]{\def\autodot{:}}
+
+\providecaptionname{english}{\listoflotentryname}{Table}
+\providecaptionname{ngerman}{\listoflotentryname}{Table}  % Yes, english here as well... TeX is still in german-mode when creating LoT
+\BeforeStartingTOC[lot]{\def\autodot{:}}
+
+%Rename how the Code should be named
+%\renewcommand\lstlistingname{Code}
+%rename how the List should be named
+\renewcommand{\lstlistlistingname}{List of \lstlistingname s}
+
+\usepackage[table]{xcolor}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{ultramarine}{rgb}{0,0.125,0.376}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstset{
+    basicstyle=\ttfamily\footnotesize\color{ultramarine},
+    breaklines=true,
+    captionpos=b,
+    commentstyle=\color{mygreen},
+    keywordstyle=\color{blue},
+    stringstyle=\color{mymauve},
+    showstringspaces=false,
+    numbers=left,                    
+    numbersep=5pt,
+    backgroundcolor=\color{backcolour},
+}
+
+\lstdefinelanguage{CXX}[]{C++} {
+    basicstyle=\ttfamily\footnotesize,
+    morekeywords={constexpr,static_assert,override,is_base_of_v,is_base_of_template_v,conditional_t,ifdef,endif},
+    breaklines=true,
+    captionpos=b,
+    commentstyle=\color{mygreen},
+    keywordstyle=\color{blue},
+    emphstyle=\color{ultramarine},
+    stringstyle=\color{mymauve},
+    showstringspaces=false,
+    frame=tb,
+    aboveskip=20pt,
+}
+
+\lstdefinelanguage{SCXML}[]{XML} {
+    basicstyle=\footnotesize,
+    morekeywords={scxml,state,transition,invoke,initial},
+    breaklines=true,
+    captionpos=b,
+    commentstyle=\color{mygreen},
+    keywordstyle=\color{blue},
+    emphstyle=\color{ultramarine},
+    stringstyle=\color{mymauve},
+    showstringspaces=false,
+    frame=tb,
+    aboveskip=20pt,
+}
+
+
+% Ploting
+\usepackage{bubbleplot}
+
+\definecolor{1992}{rgb}{1, 0.5, 0.5}
+\definecolor{1995}{rgb}{1, 0.6363636363636364, 0.5}
+\definecolor{2001}{rgb}{1, 0.7727272727272727, 0.5}
+\definecolor{2002}{rgb}{1, 0.9090909090909091, 0.5}
+\definecolor{2003}{rgb}{0.9545454545454546, 1, 0.5}
+\definecolor{2006}{rgb}{0.8181818181818182, 1, 0.5}
+\definecolor{2007}{rgb}{0.6818181818181819, 1, 0.5}
+\definecolor{2008}{rgb}{0.5454545454545454, 1, 0.5}
+\definecolor{2010}{rgb}{0.5, 1, 0.5909090909090908}
+\definecolor{2011}{rgb}{0.5, 1, 0.7272727272727273}
+\definecolor{2012}{rgb}{0.5, 1, 0.8636363636363635}
+\definecolor{2013}{rgb}{0.5, 1.0, 1}
+\definecolor{2014}{rgb}{0.5, 0.8636363636363638, 1}
+\definecolor{2015}{rgb}{0.5, 0.7272727272727271, 1}
+\definecolor{2016}{rgb}{0.5, 0.5909090909090908, 1}
+\definecolor{2017}{rgb}{0.5454545454545454, 0.5, 1}
+\definecolor{2018}{rgb}{0.6818181818181817, 0.5, 1}
+\definecolor{2019}{rgb}{0.8181818181818183, 0.5, 1}
+\definecolor{2020}{rgb}{0.9545454545454546, 0.5, 1}
+\definecolor{2021}{rgb}{1, 0.5, 0.9090909090909092}
+\definecolor{2022}{rgb}{1, 0.5, 0.7727272727272729}
+\definecolor{2023}{rgb}{1, 0.5, 0.6363636363636362}
+
+\pgfplotsset{
+  colormap={yearcolor}{
+    color=(1992),
+    color=(1995),
+    color=(2001),
+    color=(2002),
+    color=(2003),
+    color=(2006),
+    color=(2007),
+    color=(2008),
+    color=(2010),
+    color=(2011),
+    color=(2012),
+    color=(2013),
+    color=(2014),
+    color=(2015),
+    color=(2016),
+    color=(2017),
+    color=(2018),
+    color=(2019),
+    color=(2020),
+    color=(2021),
+    color=(2022),
+    color=(2023),
+  }
+}
+
+%does what it says on the lid
+\usepackage{multirow}
+
+%for texttimes, trademark (\texttrademark)
+\usepackage{textcomp}
+
+% turns on latin modern fonts, e.g. italics in headlines
+\usepackage{lmodern}
+
+% page numbers and header
+\usepackage[automark,headsepline]{scrlayer-scrpage}
+\setkomafont{pagehead}{\normalfont}
+
+%better tables
+\usepackage{tabularx}
+
+\newcolumntype{s}{>{\columncolor{teal!30}} c}
+\newcolumntype{t}{>{\columncolor{teal!10}} c}
+
+% place figures HERE and nowhere else! Option: [H]
+\usepackage{float}
+
+\usepackage{comment}
+% at least for \begin{comment}...\end{comment} <- comment out sections
+\usepackage{verbatim}
+
+% for captions
+\usepackage[format=plain,labelfont={it,small},font={it,small}]{caption}
+
+% have dashed separators in tables ':'
+\usepackage{arydshln}
+
+% needed by excel2latex for 'addlinespace'
+\usepackage{booktabs}
+
+%line skip 1.5
+\usepackage[onehalfspacing]{setspace}
+
+% varying space character after 'newcommand' constructs; if normal space, then space, if comma or dot, then no space
+\usepackage{xspace}
+
+% References list - because it schould be APA-style as in Word
+%\usepackage[style=apa,backend=biber]{biblatex}
+\usepackage[style=alphabetic,backend=biber]{biblatex}
+
+\addbibresource{biblio.bib}
+
+% biblatex would like to have this package loaded
+\usepackage{csquotes}
+
+% counters count into depth 4 for TOC; depth 4 is paragraph
+%\usepackage{titlesec}
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{3}
+
+% Distances between paragraphs
+\setlength{\parskip}{0.5em}
+\setlength{\parindent}{0ex}
+%\setlength{\parindent}{1em}
+
+% Page numbers, header, footer
+\pagestyle{scrheadings}
+
+% Header a bit larger
+\setlength{\headheight}{1.1\baselineskip}
+
+\clearscrheadfoot
+\ihead{\headmark}
+\ohead{\pagemark}
+
+% remove number in front of section name (in header)
+\renewcommand*{\sectionmarkformat}{}
+
+% uncomment to supress printing images
+%\renewcommand{\includegraphics}[2][]{\fbox{}}
+
+\input{glossary.tex}
+
+\begin{document}
+
+\pagenumbering{gobble}
+
+\input{chapters/titlepage.tex}
+\clearpage
+
+\input{chapters/declaration.tex}
+\clearpage
+
+\input{chapters/abstract.tex}
+\clearpage
+
+\input{chapters/acknowledgements.tex}
+\clearpage
+
+\pagenumbering{Roman}
+
+{
+\hypersetup{hidelinks}
+
+\phantomsection
+\addcontentsline{toc}{section}{Table of Contents}
+\renewcommand{\contentsname}{Table of Contents}
+\tableofcontents
+\clearpage
+
+\phantomsection
+\setglossarystyle{long}
+\setlength\LTleft{0pt}
+\setlength\LTright{0pt}
+\setlength\glsdescwidth{0.8\hsize}
+\printnoidxglossary[title=List of Abbreviations, type=\acronymtype]
+\clearpage
+
+\phantomsection
+\listoftables
+\clearpage
+
+\phantomsection
+\listoffigures
+\clearpage
+\phantomsection
+\begingroup
+\let\oldnumberline\numberline
+\renewcommand{\numberline}[1]{Listing \oldnumberline{#1}}
+\lstlistoflistings
+\endgroup
+\cleardoublepage
+
+}
+
+\setcounter{table}{0}
+
+\pagenumbering{arabic}
+
+\input{chapters/introduction}
+\clearpage
+\input{chapters/foundation}
+\clearpage
+\input{chapters/related}
+\clearpage
+\input{chapters/conception}
+\clearpage
+\input{chapters/implementation}
+\clearpage
+\input{chapters/evaluation}
+\clearpage
+\input{chapters/conclusion.tex}
+\clearpage
+
+% Remove the following line if you want to have only the actually referenced references printed.
+\nocite{*}
+\printbibliography[heading=bibintoc,title=References]
+\clearpage
+
+\input{chapters/appendix.tex}
+
+\end{document}

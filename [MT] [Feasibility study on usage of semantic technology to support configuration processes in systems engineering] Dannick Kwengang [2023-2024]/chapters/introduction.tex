@@ -1,0 +1,82 @@
+\section{Introduction\label{sec:introduction}}
+
+
+\subsection{Motivation}
+In engineering, it is extremely important to set up simulations during the design phase (left-hand side of the V-Model). This enables the behavior of the product or components to be predicted at a very early stage, so that potential problems can be anticipated.  As technology advances, the automotive sector relies more and more on simulations to drive innovation and efficiency. However, with the increasing complexity of systems, the configuration of these simulations poses significant challenges. The process of configuring a simulation depends on a number of factors, properties and the objective being pursued. Depending on the values of these factors, a basic simulation can be obtained. Because of their large number and the interdependence between them, it quickly becomes complicated to know which values to choose and what the repercussions of this choice will be. This problem becomes even more obvious when the engineer responsible for the configuration lacks experience. It therefore becomes necessary to set up a tool to assist in the implementation of simulations. As part of the EP4.0 project, a platform is being developed to help simulation engineers select previous load cases and determine parameter values for new simulations. This will make it possible to benefit from the experience accumulated in previous projects over time.
+
+
+\subsection{Research Goals}
+
+To be able to exploit these old simulations, their metadata must be stored efficiently and robustly. Semantic technologies, in particular ontologies, offer a viable solution for structuring, modelling and storing this data. These technologies use formal semantics to give meaning to raw data, thereby making it machine-readable. This thesis undertakes an in-depth study of the feasibility of using semantic technologies to improve configuration processes in systems engineering.\\
+
+From this, the main objective can be broken down into several high-level objectives:
+
+\begin{itemize}
+  \item \textbf{G1\label{G1}}: The first objective is to create an ontology that can be used to represent simulations, their meta-information, and all the interdependencies and rules that apply to them.
+
+    \item \textbf{G1\label{G2}}: The second objective is to create an automated framework for identifying similar simulations from previous project databases, as well as a mechanism for suggesting viable parameter values throughout the process.
+    
+    \item \textbf{G1\label{G3}}: Another objective of this thesis is to develop a prototype web application, which consumes the services of our framework. This application will allow a user to configure a basic simulation step by step using the data and rules defined in our ontology.
+
+\end{itemize}
+
+
+\subsection{Research Questions}
+
+In order to determine whether the use of semantic technologies actually brings benefits in supporting process configuration in systems engineering, the following research questions have been defined: 
+
+\begin{itemize}
+  \item \textbf{Q1\label{Q1}}: What are the main challenges and limitations of current configuration processes for simulations in the automotive industry?
+    \item \textbf{Q1\label{Q2}}: How can semantic technology be used to support simulation configuration processes?
+    \item \textbf{Q1\label{Q3}}: What are the requirements of a semantic-based configuration tool for automotive simulations?
+    \item \textbf{Q1\label{Q4}}: What are the existing semantic technologies and standards applicable to the field of systems engineering and simulation configuration, and how can they be adapted to support simulation configuration processes?
+ \end{itemize}
+
+
+\clearpage
+\subsection{Research Approach}
+The research approach used consists firstly of understanding the different areas involved. This enables the identification of the main limitations and challenges inherent in current simulation configuration processes in the automotive industry. It critically assesses the shortcomings that hinder the seamless integration and adaptation of new simulation configurations.
+In order to have a structured and well-documented research process, the Thematic Mapping study method was chosen.\\
+
+This defined the essential requirements for a semantic-based configuration tool tailored to the specific needs of simulation configuration. Focusing on the critical features and functionalities that such a tool must encompass.\\
+
+The research also includes an in-depth analysis of existing semantic technologies and standards applicable to the field of systems engineering and simulation configuration. By assessing their adaptability and relevance to the domain, the study provides insight into the potential changes and extensions needed to adapt these technologies to the unique requirements of simulation configuration.\\
+
+The approach described can be summarised in the following steps, which can also be repeated iteratively:
+
+\begin{enumerate}
+    \item \textbf{Find a Problem.} Find an interesting and practically relevant problem that also
+        has the potential for theoretical contribution.
+    \item \textbf{Understand.} Establish a baseline and obtain a practical and theoretical
+        understanding of both the concrete problem and the topic area. This includes the
+        elicitation of the state of practice via e.g.~interviews or observations and a
+        literature review to get an overall picture of the relevant body of knowledge.
+    \item \textbf{Set goals.} Define quantifiable goals that can later be used to validate the
+        solution.
+    \item \textbf{Innovate.} Use the obtained knowledge to construct an innovative solution
+        concept and implement a proof of concept solution.
+    \item \textbf{Analyse.} Analyse the solution and demonstrate that it works. Examine the scope
+        of applicability and generalise. Reason how the solution can be applied to other problem
+        domains or organisations. Show theoretical contributions and novelty.
+\end{enumerate}
+
+
+\subsection{Key Contributions}
+Overall, this thesis contributes to a global understanding of the practical applications of semantic technologies in the field of systems engineering. It proposes the development of a knowledge model (ontology) for simulations. The ontology developed will provide a better understanding of the structure of a simulation and a formal vocabulary. This formalism is of paramount importance, in particular to enable global understanding and the use of the same terms by all users.\\
+
+The framework we have developed makes it possible to identify the old simulations that are most similar to the simulation currently being configured, and proposes the (most plausible) values that a parameter could have at each stage throughout the configuration process. These two services depend heavily on the information already entered the previous stages of the cases stored in the database.
+
+
+\subsection{Thesis Structure}
+This thesis report begins with an overview of the foundations of systems engineering simulations in \textbf{Chapter \ref{sec:foundation}}, where we analyze the steps in the configuration process and the metadata that is important to us. This understanding will be of paramount importance when structuring our knowledge graph (Ontology). Next, the concept of an “Expert System” will be explored, enabling us to understand how such tools can assist engineers. This chapter also includes a study of the various semantic technologies such as RDF, OWL, SPARQL, etc., together with examples of their use and applications. \\
+
+In order to analyze previous research work more effectively in the context of the theme of this thesis, a “Systematic mapping study” will be carried out in \textbf{Chapter \ref{sec:relwork}}. Then, depending on the analysis made, a result on the state of current studies will be defined.\\
+
+\textbf{Chapter \ref{sec:conception}} deals with the modelling of simulations using ontologies. Concepts, properties, important entities and the relationships between them are identified. This information will be used to create the ontology in \textbf{Chapter \ref{sec:implementation}}. In this chapter, the operating mode and algorithms (pseudocode) of “Case-Based Reasoning” and “Rule-Based Reasoning” will be studied. \\
+
+In addition to setting up the ontology, the reasoning mechanisms analyzed in \textbf{Chapter \ref{sec:conception}} will be implemented in \textbf{Chapter \ref{sec:implementation}}. A web application (prototype) will also be set up as a demonstration tool. It will be used for the evaluation tests in \textbf{Chapter \ref{sec:evaluation}}.\\
+
+\textbf{Chapter \ref{sec:evaluation}} is devoted solely to evaluating the solution developed. Various use cases will be defined and then executed. Based on the results, an analysis will be made to determine whether the proposed solution effectively addresses the problems identified. This chapter extends the discussion to the benefits obtained from the developed solution, as well as the limitations that can still be identified.\\
+
+Finally, in \textbf{Chapter \ref{sec:conclusion}} the conclusion will be presented. It is accompanied by suggestions for future work.
+

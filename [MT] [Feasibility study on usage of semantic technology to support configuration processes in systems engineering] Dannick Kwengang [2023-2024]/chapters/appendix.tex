@@ -1,0 +1,238 @@
+\appendix
+
+\phantomsection
+\section*{Appendices}
+\addcontentsline{toc}{section}{Appendices}
+\renewcommand{\thesubsection}{\Alph{subsection}}
+
+\label{annex:framework}
+
+\subsection{Statechart Inheritance in Rhapsody\label{annex:proto_inheritance}}
+
+A concrete prototype that makes use of stepwise customisation was implemented in Rhapsody to
+show how state machine inheritance can be used and to find possible limitations.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/mechanism_rhapsody_1}
+    \caption{Model inheritance: base model.}
+    \label{fig:mechanism_rhapsody_1}
+\end{figure}
+
+Figure~\ref{fig:mechanism_rhapsody_1} shows an example state machine model that acts as a base
+for stepwise customisation using inheritance semantics. Note that in Rhapsody states of the
+current specialisation are depicted in blue color whereas inherited states and transitions are
+greyed out.
+
+\clearpage
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/mechanism_rhapsody_2}
+    \caption{Model inheritance: first specialisation.}
+    \label{fig:mechanism_rhapsody_2}
+\end{figure}
+
+Figure~\ref{fig:mechanism_rhapsody_2} shows the first specialisation of the basic model.
+The specialisation refines three transitions into corresponding transient states using
+Operation \hyperref[sec:operation_5]{5}. In addition a new transition with event \textit{Error}
+has been introduced according to Operation \hyperref[sec:operation_1]{1}.
+
+\clearpage
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/mechanism_rhapsody_3}
+    \caption{Model inheritance: second specialisation.}
+    \label{fig:mechanism_rhapsody_3}
+\end{figure}
+
+The next specialisation of the state machine in Figure~\ref{fig:mechanism_rhapsody_3} shows the
+refinement of state \textit{Operational} into a composite state according to Operation
+\hyperref[sec:operation_7]{7}.
+
+\clearpage
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/mechanism_rhapsody_4}
+    \caption{Model inheritance: third specialisation.}
+    \label{fig:mechanism_rhapsody_4}
+\end{figure}
+
+The last specialisation step depicted in Figure~\ref{fig:mechanism_rhapsody_4} applies parallel
+extension (see Operations \hyperref[sec:operation_9]{9} and \hyperref[sec:operation_3]{3}) to add
+new behaviour that is running in a dedicated parallel region of state \textit{Operational}.
+
+
+\clearpage
+\subsection{State Machine Model Data Structure\label{annex:proto_delta}}
+
+\begin{lstlisting}[language=CXX, label={lst:proto_sm_model}, caption={State machine model data structure.}]
+
+enum StateType {
+    Machine,
+    Simple,
+    Parallel,
+    Composite,
+    Initial,
+    Final
+};
+
+struct State {
+    string id;
+    StateType type;
+    State* parent;
+    list<State*> children;
+    string do_activity_id;
+    string entry_action_id;
+    string exit_action_id;
+};
+
+struct Transition {
+    State* source;
+    State* target;
+    string event_id;
+    string guard_id;
+    string action_id;
+};
+
+struct StateMachine : State { // type = Machine;
+    list<State*> m_all_states;
+    list<Transition*> m_all_transitions;
+};
+
+\end{lstlisting}
+
+Listing~\ref{lst:proto_sm_model} shows the data structure that describes the state machine model.
+A \lstinline{StateMachine} is a special kind of state that is composed of a list of states and
+transitions that are organised in a hierarchy. States can have different types and transitions
+connect a source state with a target state.
+
+
+\clearpage
+\subsection{State Machine Model Definitions\label{annex:impl_basic_sm}}
+
+\begin{lstlisting}[language=CXX, label={lst:annex_basic_model}, caption={Basic life cycle without omissions.}]
+struct ModelBuilder : IModelBuilder {
+
+    std::unique_ptr<Model> MakeModel() override {
+        auto model = std::make_unique<Model>("sm");
+
+        // add states
+        AddState(*model, Initial,   "Initial");
+        AddState(*model, Composite, "On");
+        AddState(*model, Final,     "Off");
+        AddState(*model, Initial,   "On.Initial",
+                                    "On");
+        AddState(*model, Composite, "On.NotOperational",
+                                    "On");
+        AddState(*model, Simple,    "On.Operational",
+                                    "On");
+        AddState(*model, Initial,   "On.NotOperational.Initial",
+                                    "On.NotOperational");
+        AddState(*model, Simple,    "On.NotOperational.Starting",
+                                    "On.NotOperational",
+                                    "ActivityStarting",
+                                    "ActionStartingEntry");
+        AddState(*model, Simple,    "On.NotOperational.NotReady",
+                                    "On.NotOperational");
+        AddState(*model, Simple,    "On.NotOperational.Initialising",
+                                    "On.NotOperational",
+                                    "ActivityInitialising",
+                                    "ActionInitialisingEntry");
+        AddState(*model, Simple,    "On.NotOperational.Ready",
+                                    "On.NotOperational");
+        AddState(*model, Simple,    "On.NotOperational.Enabling",
+                                    "On.NotOperational",
+                                    "ActivityEnabling",
+                                    "ActionEnablingEntry");
+        AddState(*model, Simple,    "On.NotOperational.Disabling",
+                                    "On.NotOperational",
+                                    "ActivityDisabling",
+                                    "ActionDisablingEntry");
+        // add transitions
+        AddTrans(*model, "Initial",
+                         "On");
+        AddTrans(*model, "On",
+                         "Off",
+                         "events.Exit",
+                         "",
+                         "ActionExit");
+        AddTrans(*model, "On",
+                         "",
+                         "events.GetState",
+                         "",
+                         "ActionGetState");
+        AddTrans(*model, "On",
+                         "On",
+                         "events.Reset");
+        AddTrans(*model, "On.Initial",
+                         "On.NotOperational");
+        AddTrans(*model, "On.NotOperational.Initial",
+                         "On.NotOperational.Starting");
+        AddTrans(*model, "On.NotOperational.Starting",
+                         "On.NotOperational.NotReady",
+                         "events.Done",
+                         "",
+                         "ActionStartingDone");
+        AddTrans(*model, "On.NotOperational.NotReady",
+                         "On.NotOperational.Initialising",
+                         "events.Init");
+        AddTrans(*model, "On.NotOperational.Initialising",
+                         "On.NotOperational.Ready",
+                         "events.Done",
+                         "",
+                         "ActionInitialisingDone");
+        AddTrans(*model, "On.NotOperational.Initialising",
+                         "On.NotOperational.NotReady",
+                         "events.Error",
+                         "",
+                         "ActionInitialisingFailed");
+        AddTrans(*model, "On.NotOperational.Initialising",
+                         "On.NotOperational.NotReady",
+                         "events.Stop",
+                         "",
+                         "ActionInitialisingStopped");
+        AddTrans(*model, "On.NotOperational.Initialising",
+                         "On.NotOperational.Initialising",
+                         "events.Init",
+                         "",
+                         "ActionInitialisingRestarted");
+        AddTrans(*model, "On.NotOperational.Ready",
+                         "On.NotOperational.Initialising",
+                         "events.Init");
+        AddTrans(*model, "On.NotOperational.Ready",
+                         "On.NotOperational.Enabling",
+                         "events.Enable");
+        AddTrans(*model, "On.NotOperational.Enabling",
+                         "On.Operational",
+                         "events.Done",
+                         "",
+                         "ActionEnablingDone");
+        AddTrans(*model, "On.NotOperational.Enabling",
+                         "On.NotOperational.Ready",
+                         "events.Error",
+                         "",
+                         "ActionEnablingFailed");
+        AddTrans(*model, "On.Operational",
+                         "On.NotOperational.Disabling",
+                         "events.Disable");
+        AddTrans(*model, "On.NotOperational.Disabling",
+                         "On.NotOperational.Ready",
+                         "events.Done",
+                         "",
+                         "ActionDisablingDone");
+        AddTrans(*model, "On.NotOperational.Disabling",
+                         "On.NotOperational.Ready",
+                         "events.Error",
+                         "",
+                         "ActionDisablingFailed");
+
+        return model;
+    }
+};
+\end{lstlisting}
+
+
+
