@@ -127,19 +127,7 @@
             meta=\meta
         ] {\datatable};
       \end{axis}
-    % Invisible node used as an anchor for placing the legend.
-    %\node[below=\yearYShift of yTickLabel0, xshift=\yearXShift] (offset) {};
-    % Legend for the years.
-    %\pgfmathsetmacro{\paddingFromOffset}{0}
-    %\foreach[remember=\paddingFromOffset as \paddingFromOffset] \color in {#3}{%
-    %    \node[%
-    %        right=\paddingFromOffset mm of offset,
-    %        draw=\yearColorOutline{\color},
-    %       fill=\color,
-    %        label={[align=center]below:\color-}
-    %    ] (\color) {};
-    %    \pgfmathsetmacro{\paddingFromOffset}{\paddingFromOffset + \yearPadding}
-    %}
+      
     % Get the left most year and place the x left label to its left.
     %\pgfmathparse{{#3}[0]}
     %\node[left=\xLeftLabelShift of \pgfmathresult] {\xLeftLabel};
@@ -152,5 +140,27 @@
     \node[draw=none] at (2,0) {\textbullet};
     \node[anchor=east] at (2,0) {\xLeftLabel};
     \node[anchor=west] at (2,0) {\xRightLabel};
+\end{tikzpicture}
+
+
+\begin{tikzpicture}
+    % Legend for the years.
+    \pgfmathsetmacro{\paddingFromOffset}{0}
+    \pgfmathsetmacro{\paddingTop}{10}
+    \foreach[remember=\paddingFromOffset as \paddingFromOffset,
+                remember=\paddingTop as \paddingTop] \color in {#3}{%
+            \node[%
+                draw=\yearColorOutline{\color},
+                fill=\color,
+                label={[align=center]below:\color-}
+            ] at (\paddingFromOffset, \paddingTop) (\color) {};
+            
+            \pgfmathsetmacro{\paddingFromOffset}{\paddingFromOffset + 1}
+            
+            \if\paddingFromOffset=8
+                \pgfmathsetmacro{\paddingFromOffset}{0}
+                \pgfmathsetmacro{\paddingTop}{\paddingTop + 1}
+            \fi
+    }
 \end{tikzpicture}
 }

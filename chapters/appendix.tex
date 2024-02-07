@@ -12,57 +12,7 @@
 A concrete prototype that makes use of stepwise customisation was implemented in Rhapsody to
 show how state machine inheritance can be used and to find possible limitations.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1.0\textwidth]{images/mechanism_rhapsody_1}
-    \caption{Model inheritance: base model.}
-    \label{fig:mechanism_rhapsody_1}
-\end{figure}
 
-Figure~\ref{fig:mechanism_rhapsody_1} shows an example state machine model that acts as a base
-for stepwise customisation using inheritance semantics. Note that in Rhapsody states of the
-current specialisation are depicted in blue color whereas inherited states and transitions are
-greyed out.
-
-\clearpage
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1.0\textwidth]{images/mechanism_rhapsody_2}
-    \caption{Model inheritance: first specialisation.}
-    \label{fig:mechanism_rhapsody_2}
-\end{figure}
-
-Figure~\ref{fig:mechanism_rhapsody_2} shows the first specialisation of the basic model.
-The specialisation refines three transitions into corresponding transient states using
-Operation \hyperref[sec:operation_5]{5}. In addition a new transition with event \textit{Error}
-has been introduced according to Operation \hyperref[sec:operation_1]{1}.
-
-\clearpage
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1.0\textwidth]{images/mechanism_rhapsody_3}
-    \caption{Model inheritance: second specialisation.}
-    \label{fig:mechanism_rhapsody_3}
-\end{figure}
-
-The next specialisation of the state machine in Figure~\ref{fig:mechanism_rhapsody_3} shows the
-refinement of state \textit{Operational} into a composite state according to Operation
-\hyperref[sec:operation_7]{7}.
-
-\clearpage
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1.0\textwidth]{images/mechanism_rhapsody_4}
-    \caption{Model inheritance: third specialisation.}
-    \label{fig:mechanism_rhapsody_4}
-\end{figure}
-
-The last specialisation step depicted in Figure~\ref{fig:mechanism_rhapsody_4} applies parallel
-extension (see Operations \hyperref[sec:operation_9]{9} and \hyperref[sec:operation_3]{3}) to add
-new behaviour that is running in a dedicated parallel region of state \textit{Operational}.
 
 
 \clearpage

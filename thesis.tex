@@ -19,6 +19,8 @@
 \usepackage[
 %draft
 ]{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
 
 % allows using German umlauts ä, ö, ü and ß
 \usepackage[utf8]{inputenc}
@@ -81,6 +83,9 @@
   {1.5ex \@plus .2ex}%
   {\normalfont\normalsize\bfseries}}
 \makeatother
+
+\usepackage{changepage}   % for the adjustwidth environment
+\newenvironment{identedParagraph}{\begin{adjustwidth}{2cm}{}}{\end{adjustwidth}}
 
 % to have 'Figure' & 'Table' in front of the numbers in the listoffigures / -tables
 \providecaptionname{english}{\listoflofentryname}{Figure}
@@ -148,6 +153,7 @@
 
 % Ploting
 \usepackage{bubbleplot}
+\usepackage{tikz-uml}
 
 \definecolor{1992}{rgb}{1, 0.5, 0.5}
 \definecolor{1995}{rgb}{1, 0.6363636363636364, 0.5}

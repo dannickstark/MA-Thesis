@@ -1,0 +1,6 @@
+PWD /Users/dannickstark/Documents/Uni/MA/MA-Thesis
+INPUT /Users/dannickstark/Library/TinyTeX/texmf.cnf
+INPUT /Users/dannickstark/Library/TinyTeX/texmf-dist/web2c/texmf.cnf
+INPUT /Users/dannickstark/Library/TinyTeX/texmf-var/web2c/pdftex/pdflatex.fmt
+INPUT /Users/dannickstark/Documents/Uni/MA/MA-Thesis/thesis.tex
+OUTPUT thesis.log
