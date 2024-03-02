@@ -2,11 +2,10 @@
 
 
 \subsection{Motivation}
-In engineering, it is extremely important to set up simulations during the design phase (left-hand side of the V-Model). This enables the behavior of the product or components to be predicted at a very early stage, so that potential problems can be anticipated.  As technology advances, the automotive sector relies more and more on simulations to drive innovation and efficiency. However, with the increasing complexity of systems, the configuration of these simulations poses significant challenges. The process of configuring a simulation depends on a number of factors, properties and the objective being pursued. Depending on the values of these factors, a basic simulation can be obtained. Because of their large number and the interdependence between them, it quickly becomes complicated to know which values to choose and what the repercussions of this choice will be. This problem becomes even more obvious when the engineer responsible for the configuration lacks experience. It therefore becomes necessary to set up a tool to assist in the implementation of simulations. As part of the EP4.0 project, a platform is being developed to help simulation engineers select previous load cases and determine parameter values for new simulations. This will make it possible to benefit from the experience accumulated in previous projects over time.
+In engineering, it is extremely important to set up simulations during the design phase (left-hand side of the V-Model) \cite{hammami2015thefose}. This enables the behavior of the product or components to be predicted at a very early stage, so that potential problems can be anticipated.  As technology advances, the automotive sector relies more and more on simulations to drive innovation and efficiency \cite{hammami2015thefose}. However, with the increasing complexity of systems, the configuration of these simulations poses significant challenges. The process of configuring a simulation depends on a number of factors, properties and the objective being pursued. Depending on the values of these factors, a basic simulation can be obtained. Because of their large number and the interdependence between them, it quickly becomes complicated to know which values to choose and what the repercussions of this choice will be \cite{hammami2015thefose, horsch2021osmo, spelten2023simulation}. This problem becomes even more obvious when the engineer responsible for the configuration lacks experience. It therefore becomes necessary to set up a tool to assist in the implementation of simulations. As part of the \textbf{\acrfull{ep} 4.0 project}, a platform is being developed to help simulation engineers select previous load cases and determine parameter values for new simulations. This will make it possible to benefit from the experience accumulated in previous projects over time.
 
 
 \subsection{Research Goals}
-
 To be able to exploit these old simulations, their metadata must be stored efficiently and robustly. Semantic technologies, in particular ontologies, offer a viable solution for structuring, modelling and storing this data. These technologies use formal semantics to give meaning to raw data, thereby making it machine-readable. This thesis undertakes an in-depth study of the feasibility of using semantic technologies to improve configuration processes in systems engineering.\\
 
 From this, the main objective can be broken down into several high-level objectives:
@@ -16,7 +15,7 @@ From this, the main objective can be broken down into several high-level objecti
 
     \item \textbf{G1\label{G2}}: The second objective is to create an automated framework for identifying similar simulations from previous project databases, as well as a mechanism for suggesting viable parameter values throughout the process.
     
-    \item \textbf{G1\label{G3}}: Another objective of this thesis is to develop a prototype web application, which consumes the services of our framework. This application will allow a user to configure a basic simulation step by step using the data and rules defined in our ontology.
+    \item \textbf{G1\label{G3}}: Another objective of this thesis is to develop a prototype web application, which consumes the services of our framework. This application should allow a user to configure a basic simulation step by step using the data and rules defined in our ontology.
 
 \end{itemize}
 
@@ -42,29 +41,29 @@ This defined the essential requirements for a semantic-based configuration tool 
 
 The research also includes an in-depth analysis of existing semantic technologies and standards applicable to the field of systems engineering and simulation configuration. By assessing their adaptability and relevance to the domain, the study provides insight into the potential changes and extensions needed to adapt these technologies to the unique requirements of simulation configuration.\\
 
-The approach described can be summarised in the following steps, which can also be repeated iteratively:
+The approach described can be summarized in the following steps, which can also be repeated iteratively:
 
 \begin{enumerate}
     \item \textbf{Find a Problem.} Find an interesting and practically relevant problem that also
         has the potential for theoretical contribution.
     \item \textbf{Understand.} Establish a baseline and obtain a practical and theoretical
         understanding of both the concrete problem and the topic area. This includes the
-        elicitation of the state of practice via e.g.~interviews or observations and a
+        elicitation of the state of practice via, e.g.,~interviews or observations and a
         literature review to get an overall picture of the relevant body of knowledge.
     \item \textbf{Set goals.} Define quantifiable goals that can later be used to validate the
         solution.
     \item \textbf{Innovate.} Use the obtained knowledge to construct an innovative solution
         concept and implement a proof of concept solution.
-    \item \textbf{Analyse.} Analyse the solution and demonstrate that it works. Examine the scope
-        of applicability and generalise. Reason how the solution can be applied to other problem
-        domains or organisations. Show theoretical contributions and novelty.
+    \item \textbf{Analyze.} Analyze the solution and demonstrate that it works. Examine the scope
+        of applicability and generalize. Reason how the solution can be applied to other problem
+        domains or organizations. Show theoretical contributions and novelty.
 \end{enumerate}
 
 
 \subsection{Key Contributions}
 Overall, this thesis contributes to a global understanding of the practical applications of semantic technologies in the field of systems engineering. It proposes the development of a knowledge model (ontology) for simulations. The ontology developed will provide a better understanding of the structure of a simulation and a formal vocabulary. This formalism is of paramount importance, in particular to enable global understanding and the use of the same terms by all users.\\
 
-The framework we have developed makes it possible to identify the old simulations that are most similar to the simulation currently being configured, and proposes the (most plausible) values that a parameter could have at each stage throughout the configuration process. These two services depend heavily on the information already entered the previous stages of the cases stored in the database.
+The framework we have developed makes it possible to identify the old simulations that are most similar to the simulation currently being configured, and proposes the (most plausible) values that a parameter could have at each stage throughout the configuration process. These two services depend heavily on the information already entered in the previous stages of the cases stored in the database.
 
 
 \subsection{Thesis Structure}

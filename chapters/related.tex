@@ -5,7 +5,7 @@ This chapter presents the techniques and conclusions of the literature review. F
         \subsubsection{\acrfull{sms}}
         Systematic mapping is a strategy for creating a categorization system and organizing a specific topic of interest. It is a research approach that involves examining current published research reports, evaluating them in depth and summarizing their methodology and conclusions. It is carried out in several stages, as shown in the Figure\ref{fig:SysMapProcess}, and results in a classification (mapping) of the articles studied.\\
 
-        \begin{figure}[H]
+        \begin{figure}[h]
             \centering
             \includegraphics[scale=0.6]{images/RelatedWork-SysMapProcess.drawio.png}
             \caption{\label{fig:SysMapProcess}  The Systematic Mapping Process (Petersen et al. 2008)}
@@ -49,7 +49,7 @@ This chapter presents the techniques and conclusions of the literature review. F
             \paragraph{Search strings for search}
             The Table\ref{tab:keyw-syno} shows the keywords obtained after the preliminary search.\\
 
-            \begin{table}[H]
+            \begin{table}[h]
                 \centering
         	    {\rowcolors{2}{teal!10}{white}
         	    \begin{tabular}{ | m{5.5cm} | m{9cm} | }
@@ -126,18 +126,18 @@ OR (("Computer Aided" OR "Computer Assisted") AND "engineering")
             In this section, we follow the approach introduced by Bailey and described in Figure\ref{fig:BuildClassSchem}. Here, classification is based mainly on keywording. Keywording is a method of speeding up the classification process by extracting keywords from the abstracts of selected articles. In this way, the context of each contribution can be easily obtained. Once this stage has been completed, an examination of the relevant keywords in each article provides an in-depth understanding of the nature and importance of the research (Petersen et al. 2008). \\
             This knowledge is used to create categories to classify all the articles. When the quality of abstracts is insufficient to allow the selection of significant keywords, it may be necessary to read the introduction and conclusion of an article.
 
-            \begin{figure}[H]
+            \begin{figure}[h]
                 \centering
                 \includegraphics[scale=0.6]{images/RelatedWork-Build-Class-Schem.drawio.png}  \caption{\label{fig:BuildClassSchem}  Building the Classification Scheme []}
             \end{figure}
 
-           In the context of this research, three facets have been identified. The first facet summarises the subject of our thesis (i.e., Semantic Technologies usage). Table\ref{tab:sem-tec-usage} shows the possible values of this facet. The other two facets are more commonly used to group research contributions and can therefore be integrated (Petersen et al. 2008) (Wieringa et al. 2006): research type and contribution.\\
+           In the context of this research, three facets have been identified. The first facet summarizes the subject of our thesis (i.e., Semantic Technologies usage). Table\ref{tab:sem-tec-usage} shows the possible values of this facet. The other two facets are more commonly used to group research contributions and can therefore be integrated (Petersen et al. 2008) (Wieringa et al. 2006): research type and contribution.\\
             The research facet represents the research technique used in the study; these approaches are domain-neutral and can be used without change (Table\ref{tab:contri-ty-face}).\\
             The third facet, the contribution facet, documents the contribution made in terms of, for example, process, method or tool, etc. (Table\ref{tab:research-ty-face}).\\
             The results of the SMS are presented below. The appendix contains the full results.
 
         
-            \begin{table}[H]
+            \begin{table}[h]
                 \centering
         	    {\rowcolors{2}{teal!10}{white}
         	    \begin{tabular}{ | m{14.5cm} | }
@@ -161,7 +161,7 @@ OR (("Computer Aided" OR "Computer Assisted") AND "engineering")
                 \caption{\label{tab:sem-tec-usage} Semantic Technologies usage}
             \end{table}
 
-            \begin{table}[H]
+            \begin{table}[h]
                 \centering
         	    {\rowcolors{2}{teal!10}{white}
         	    \begin{tabular}{ | m{2cm} | m{12.5cm} | }
@@ -188,7 +188,7 @@ OR (("Computer Aided" OR "Computer Assisted") AND "engineering")
                 \caption{\label{tab:contri-ty-face} Contribution Type Facet}
             \end{table}
 
-            \begin{table}[H]
+            \begin{table}[h]
                 \centering
         	    {\rowcolors{2}{teal!10}{white}
         	    \begin{tabular}{ | m{2cm} | m{12.5cm} | }
@@ -343,7 +343,7 @@ OR (("Computer Aided" OR "Computer Assisted") AND "engineering")
             Here, a bubble chart has been used to present the frequencies, as shown in Figure\ref{fig:viz-smb}. Essentially, these are two x-y scatter plots whose bubbles represent category crossovers. The size of a bubble is proportional to the number of items in the category pair corresponding to its coordinates. The same concept is repeated, in separate quadrants of the same figure, to demonstrate the intersection with the third aspect. In the case of this thesis, bubble charts are more useful for analysis than frequency tables. It is simpler to evaluate many facets at once, although summary data can still be provided for specific facets. It's also more effective at providing a quick overview of a domain, thus acting as a map. In addition to this diagram, Figure\ref{fig:distro-art} presents sector diagrams showing the statistical distribution of each of our facet points.
 
             
-            \begin{figure}[H]
+            \begin{figure}[h]
             \centering
             \bubbleplot[%
                 width=1cm,
@@ -369,7 +369,7 @@ OR (("Computer Aided" OR "Computer Assisted") AND "engineering")
             \caption{\label{fig:viz-smb}  Visualization of a Systematic Map as a Bubble Plot (each color represent different years of publication)}
             \end{figure}
 
-            \begin{figure}[H]
+            \begin{figure}[h]
                 \centering
                 \begin{subfigure}[b]{0.45\textwidth}
                     \centering
@@ -473,7 +473,7 @@ OR (("Computer Aided" OR "Computer Assisted") AND "engineering")
 
                 Listing \ref{lst:rdf-xml}, Listing \ref{lst:rdf-turtle} and Listing \ref{lst:rdf-json-ld} show the serializations of a single example in different formats (RDF/XML, Turtle, JSON-LD) and the Figure \ref{fig:rdf-xml-example} shows the graphical representation in RDF/XML. As you can see, the “turtle” syntax uses namespace prefixes to provide a more concise and clear syntax. It can also be used to describe lists of predicates or objects. There are also various serialization syntaxes for representing RDF. However, due to its short structure and readability, the “turtle” syntax is used in this thesis for ontology development.\\
             
-                \begin{figure}[H]
+                \begin{figure}[h]
                     \centering
                     \includegraphics[scale=0.6]{images/Foundation-RDF XML.drawio.png}
                     \caption{\label{fig:rdf-xml-example}  Graph Example in RDF/XML}

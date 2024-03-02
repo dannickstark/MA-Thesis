@@ -23,7 +23,7 @@ Here are a few use cases that can be derived from the problem raised by this the
 \subsection{Simulation's Architecture}
 Figure[] shows a general problem-solving diagram, illustrating how a problem might be handled using CAE methods. Above each phase is the sequence of different steps.\\
 
-\begin{figure}[H]
+\begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{images/Concept-cae-process.drawio.png}
     \caption{\label{fig:cea-proc}  The CAE core process, illustrated with the stages of a general problem-solving scheme. [ ]}
@@ -31,7 +31,7 @@ Figure[] shows a general problem-solving diagram, illustrating how a problem mig
 
 Based on the elements and steps involved in this process, a simulation ontology will be created. This will enable us to capture and formalize the elements involved in the configuration process, as well as the interdependencies between them. Particularly important in the context of this thesis are the elements involved in the “Definition” and “Composition” stages, as these lead to a "CAE-Model". Figure[] shows a UML diagram representing the information extracted from Figure[] and the relationships between them.\\
 
-\begin{figure}[H]
+\begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{images/UML-Sim.png}
     \caption{\label{fig:uml-sim}  UML representation of the simulation’s metadata}
@@ -39,7 +39,7 @@ Based on the elements and steps involved in this process, a simulation ontology 
 
 
 \subsection{Simulation Modeling using Ontology}
-There is no single technique for modeling a domain; there are always valid options. The ideal method is almost always determined by the application and extensions you intend to implement. Ontology development is an iterative process. Ontology concepts need to be linked to objects (physical or logical) and relationships in your field of interest. These objects are most likely to be nouns (things) or verbs (relations) in the sentences describing your domain. As presented in Section\ref{subsec:sms_analysis}, the researchers behind the "Protégé" software have put together a set of best practices, which will be followed in this work []. The steps to follow are:
+There is no single technique for modeling a domain; there are always valid options. The ideal method is almost always determined by the application and extensions you intend to implement. Ontology development is an iterative process. Ontology concepts need to be linked to object (physical or logical) and relationships in your field of interest. These objects are most likely to be nouns (things) or verbs (relations) in the sentences describing your domain. As presented in Section\ref{subsec:sms_analysis}, the researchers behind the “Protégé” software have put together a set of best practices, which will be followed in this work []. The steps to follow are:
 
 \begin{itemize}
     \item Step1: Scope Definition
@@ -144,14 +144,14 @@ There is no single technique for modeling a domain; there are always valid optio
     
     
     \subsubsection{Step6: Define the Facets of the Slots}
-    Slots can have many facets that describe the type of value, the permitted values, the number of values (cardinality) and other characteristics of the values the slot can accept. A facet can be a string, a number, a Boolean literal or an instance of a class. The "range" represents the classes authorized for the value of a property. And the "domain" represents the classes that a property can describe. The diagram in Figure\ref{fig:uml-sim} also shows the relationships between the various classes, as well as their cardinalities.
+    Slots can have many facets that describe the type of value, the permitted values, the number of values (cardinality) and other characteristics of the values the slot can accept. A facet can be a string, a number, a Boolean literal or an instance of a class. The “range” represents the classes authorized for the value of a property. And the “domain” represents the classes that a property can describe. The diagram in Figure\ref{fig:uml-sim} also shows the relationships between the various classes, as well as their cardinalities.
     
     
     \subsubsection{Step7: Creation of Instances}
     For our purposes, instances will be created using a migration system when our server is first launched (see Chapter\ref{sec:implementation}).
     
 
-\subsection{Case-Based reasoning}
+\subsection{Case-Based reasoning \label{subsec:cbr}}
 Case-based reasoning (CBR) is an approach to building intelligent systems that models the way humans think. Figure\ref{fig:simple-cbr} shows a simplified model of CBR. This method involves recording past experiences in the form of cases. These cases are then retrieved and reused (partially, fully or modified) to solve new problems. The new experience acquired in this way will in turn be stored in the memory and will later help in the resolution of a new case. It's therefore a cycle following a number of stages. Figure\ref{fig:cbr-cycle} shows the CBR cycle. And the stages making up this cycle are as follows.
     
     \begin{enumerate}
@@ -161,13 +161,13 @@ Case-based reasoning (CBR) is an approach to building intelligent systems that m
         \item Retain
     \end{enumerate}
     
-    \begin{figure}[H]
+    \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{images/Concept-simplified-cbr-Simplified CBR princip.drawio.png}
     \caption{\label{fig:simple-cbr}  Simplified model of CBR []}
     \end{figure}
     
-    \begin{figure}[H]
+    \begin{figure}[h]
     \centering
     \includegraphics[scale=0.6]{images/Concept-cbr-cycle.png}
     \caption{\label{fig:cbr-cycle}  CBR cycle []}
@@ -175,13 +175,13 @@ Case-based reasoning (CBR) is an approach to building intelligent systems that m
     
 
     \subsection{Retrieve}
-    The aim here is to find the case(s) in the database most similar to the query, taking into account certain similarity functions or criteria. The key question here is how to measure similarity between 2 entities. This will be studied in greater depth in Section\ref{parag:similarity}. The problem that can quickly arise here is that, over time, as the database of cases increases, the efficiency of the search decreases. This is because a large number of cases have to be examined to find the most similar ones. There is therefore a sub-field of CBR research which focuses on methods to improve search efficiency. One example is the use of special index structures such as "kd-trees", case-finding networks or discrimination networks [ ].
+    The aim here is to find the case(s) in the database most similar to the query, taking into account certain similarity functions or criteria. The key question here is how to measure similarity between 2 entities. This will be studied in greater depth in Section\ref{parag:similarity}. The problem that can quickly arise here is that, over time, as the database of cases increases, the efficiency of the search decreases. This is because numerous cases have to be examined to find the most similar ones. There is therefore a sub-field of CBR research which focuses on methods to improve search efficiency. One example is the use of special index structures such as "kd-trees", case-finding networks or discrimination networks [ ].
     
     \subsection{Reuse}
     Once similar cases have been obtained, the answer (or any other information relating to the solution of the problem) from these cases is used to deal with the current problem. There are two types of reuse: simple reuse and reuse with adaptation. 
     
     \begin{itemize}
-        \item \textbf{Simple reuse} involves using the recovered answer as a suggested solution for the new problem, without modification. This method is much better suited to classification work, which involves a small number of solutions but a large number of cases.  For this scenario, all potential solutions are already present in the case base, so adaptation is generally not necessary. 
+        \item \textbf{Simple reuse} involves using the recovered answer as a suggested solution for the new problem, without modification. This method is much better suited to classification work, which involves a few solutions but many cases.  For this scenario, all potential solutions are already present in the case base, so adaptation is generally not necessary. 
         
         \item \textbf{Reuse with adaptation} is necessary for synthetic tasks such as planning or configuration. For these tasks, the number of possible solutions far exceeds the number of available examples (or is even infinite).
     \end{itemize}
@@ -222,7 +222,7 @@ Case-based reasoning (CBR) is an approach to building intelligent systems that m
     \[sim(x,y) = sim((x_1,...,x_n),(y_1,...,y_n)) = F(sim_{A_1}(x_1, y_1),..., sim_{A_n}(x_n, y_n) )\] where \[F: [0,1]_n \rightarrow [0,1]\].\\
 
 
-    \begin{figure}[H]
+    \begin{figure}[h]
     \centering
     \includegraphics[scale=0.6]{images/Concept-CBR Exemple.drawio.png}
     \caption{\label{fig:cbr-exam}  Calculation of similarity using the local-global principle}

@@ -1,57 +1,545 @@
 \section{Implementation\label{sec:implementation}}
-
-This chapter describes how the solution concept from Section \ref{sec:design} was realised.
-Implementation work was carried out 
+This chapter describes how the solution concept from Section \ref{subsec:cbr} was realized. This chapter begins by presenting the overall architecture of the solution to be set up. The tools used are then presented. To facilitate understanding of the implementation process, the development strategy is described, followed by the choice of programming languages. For each of these languages, an explanation of their choice is given, followed by a listing of the libraries or packages used. Then the framework's main functions (code snippets) are explained, to give further details on how similarity is calculated. Once the back-end has been explained, a brief presentation of the front-end is given to show how the framework can be used and integrated into applications.
 
 
-\subsection{Architecture of the Framework}
+\subsection{Architecture of the Framework \label{subsec:archi-frame}}
+Figure\ref{fig:frame-archi} shows the overall structure to be implemented. The chosen architecture is the microservice architecture. Here we have four services:
+\begin{itemize}
+    \item Client: provides the UI application, which will be used directly by the user
+    \item Server: exposes the Reasoning Framework. It exposes an API, which can be consumed to access the functions defined in it. It also features:
+    \begin{itemize}
+        \item a reasoner: for executing case-based reasoning
+        \item a storage layer: to interact with the various storage services
+    \end{itemize}
+    
+    \item a storage service: for non-graphical data
+    \item a storage service: for graphical / ontological data
+\end{itemize}
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.6]{images/SemanticAssistant-Detailled Architecture.drawio.png}
+\caption{\label{fig:frame-archi}  Framework architecture}
+\end{figure}
 
 
 \subsection{Used Tools}
     \subsubsection{Protégé}
+    Protégé is an ontology development and knowledge management tool that plays a central role in our feasibility study on the use of semantic technologies to support configuration processes in systems engineering. In particular, Protégé facilitates the creation, modification and visualization of ontologies and enables us to define and organize the key attributes relevant for simulations in the automotive industry.
     
     \subsubsection{Apache Jana}
+    Apache Jena is a semantic web framework that proves to be very helpful in implementing semantic technologies in our platform. As part of our solution, Apache Jena supports processing RDF data, performing semantic reasoning and executing SPARQL queries to improve the identification of similarities between new and existing simulations in our knowledge graph.
+    
+    \subsubsection{Apache Fuseki}
+    Apache Fuseki is an important component for managing and exposing RDF data as linked data resources. In our study, Apache Fuseki is used to provide an endpoint for querying and retrieving information from the knowledge graph and to ensure seamless integration with other tools and components of our platform.
+
+    
+    \subsubsection{TDB2}
+    TDB2, the native triple store for Apache Jena, is used for persistent storage of RDF data. This ensures efficient data retrieval and management and contributes to the robustness and scalability of our simulation configuration solution.
+    
     
     \subsubsection{MongoDB}
+    MongoDB is used as a NoSQL database to store additional non-semantic data related to simulations. It complements the semantic aspects by providing a flexible and scalable storage solution for various parameters and attributes related to simulations in the automotive industry.
     
     \subsubsection{Docker}
+    Docker is essential for containerizing our platform by creating an isolated and uniform environment for component deployment and execution. This simplifies deployment, scalability, and repeatability across many computer settings.
+    
+    \subsubsection{Docker Compose}
+    Docker Compose is a tool for managing several Docker containers. It allows for the orchestration of various services inside our platform, ensuring that the many components involved in automotive simulation configuration procedures communicate and interact seamlessly. This improves the overall efficiency and reliability of our solution.
 
     
 \subsection{Development Strategy}
+Development begins with the creation of the ontology. Once the ontology had been created, all the architecture elements presented in Section\ref{subsec:archi-frame} were parameterized. These are the Front-end, the Back-end, MongoDB and Apache Fuseki. DockerFiles for setting up the containers were then created. Then a Docker-Compose file was defined for orchestration and communication between containers.\\
+
+Once the setup had been done, a set of functions (CRUD) for manipulating the databases were defined in the back-end. The CBR principles presented in Section\ref{subsec:cbr} were then implemented. This enabled us to:
+\begin{itemize}
+    \item retrieve cases from the TDB2 database
+    \item generate questions for users based on the elements present in the ontology
+    \item calculate the similarity between two cases
+    \item find the set of cases similar to a problem
+\end{itemize}
+
+Once these functions had been fully defined, an API was defined so that they could be accessed and used by other applications.
+
+After completing the back-end implementation, a prototype user interface was coded and integrated with the API.
 
 
 \subsection{Development of the Ontology}
+Two options were considered for ontology development. The first was OntoUML, and the second was Protégé. In this section, we will analyze the strengths and weaknesses of each of these tools, and explain why Protégé was chosen.
+
     \subsubsection{Usage of OntoUML}
+    OntoUML (Ontology Unified Modelling Language) is a language designed primarily for the creation of ontologies. It is based on the Unified Modeling Language (UML), with which software developers and modelers are already familiar. OntoUML relies on the Unified Fundamental Ontology (UFO) as its philosophical basis, enabling complex connections and structures to be defined in a precise and semantically rich way, thus ensuring the consistency and clarity of the final ontology.
+    
+    \paragraph{Advantages}
+        \begin{itemize}
+            \item \textbf{Intuitive}: OntoUML builds on the established foundation of UML, providing a familiar, user-friendly experience for those familiar with UML diagrams.
+            \item \textbf{Formalism}: Based on UFO, OntoUML offers a rigorous, formal framework for knowledge representation, enabling precise, unambiguous descriptions of ideas and their connections.
+            \item \textbf{Integration}: Thanks to its UML base, OntoUML interfaces effortlessly with existing software development tools, making it easy to integrate ontology into software applications.
+        \end{itemize}
+        
+    \paragraph{Inconveniences}
+        \begin{itemize}
+            \item \textbf{Limited tool support}: Although OntoUML is a language, there is no specialized, widely-used ontology editor.
+            \item \textbf{Learning Curve}: Mastering OntoUML may require a steep learning curve, especially for those inexperienced with ontological notions and object-oriented modeling.
+            \item \textbf{Complexity}: in some cases, the richness of OntoUML can add a complexity that exceeds the needs of the modeling mission.
+        \end{itemize}
     
     \subsubsection{Usage of Protégé}
+    Protégé is an open-source ontology authoring tool that makes it easy to create, modify and manage ontologies. It supports a variety of ontology languages, including OWL.
+    
+    \paragraph{Advantages}
+    \begin{itemize}
+        \item \textbf{User-friendly interface}: Protégé's simple interface makes ontology building easy for ontology experts and professionals alike.
+        \item \textbf{Feature-rich}: Protégé's toolbox enables users to create sophisticated and powerful ontologies.
+        \item \textbf{Extensibility}: The platform supports the incorporation of plugins, extending its capabilities to meet a wide range of modeling requirements.
+        \item \textbf{Community support}: Protégé benefits from a thriving community that provides resources, documentation, and collaboration opportunities.
+        \item \textbf{Interoperability}: Protégé supports a variety of ontology languages, enabling the exchange of information with other systems using different forms.
+        \item \textbf{Integration}:  Integration with reasoning tools that can detect errors and extract more information from the ontology.
+    \end{itemize}
+    
+    \paragraph{Inconveniences}
+    \begin{itemize}
+        \item \textbf{Performance limitations}: Large ontologies can cause performance problems in Protégé, reducing application speed and responsiveness.
+        \item \textbf{Limited visualizations}: Although Protégé has visualization capabilities, there may be limitations in developing dynamic and interactive visual representations. The representation it provides may be less natural for people used to UML-based techniques such as OntoUML.
+    \end{itemize}
+    
+
+    \subsubsection{Why Protégé was chosen over OntoUML}
+    Protégé was chosen because of its user-friendly interface and widespread use in the ontology development community. The flexibility of the platform and the support of the community were considered essential for the efficient creation and maintenance of the ontology for our feasibility research. In addition, Protégé's interoperability with OWL is consistent with conventional ontology representation standards. The fact that Protégé supports different ontology languages increases the potential for future integration of the ontology developed with other systems.
+    
+    The graph in Figure\ref{fig:viz-ontology} shows a representation of the ontology developed. It shows the different classes and the relationships between them.
+    
+    \begin{figure}[p]
+        \input{chapters/Simulation.ttl}
+         \caption{\label{fig:viz-ontology}  Visualization of a Systematic Map as a Bubble Plot (each color represent different years of publication)}
+    \end{figure}
 
     
-\subsection{Used Programming Language}
+\subsection{Used Programming Languages}
+    \subsubsection{Python}
+        \paragraph{Advantages}
+        \begin{itemize}
+            \item \textbf{Versatility}: Python's versatility allows for seamless integration with various libraries and frameworks, making it suitable for a wide range of applications.
+            \item \textbf{Rapid Development}: Python's syntax and extensive libraries enable rapid prototyping and development, crucial for an efficient master thesis project timeline.
+            \item \textbf{Community Support}: The large and active Python community provides extensive documentation, support, and a wealth of resources for problem-solving.
+            \item \textbf{Interdisciplinary Integration}: Python's popularity in scientific computing, data analysis, and artificial intelligence domains aligns with the interdisciplinary nature of your thesis.
+        \end{itemize}
+        
+        \paragraph{Used Libraries / Package}
+        \begin{table}[H]
+            \centering
+    	    {\rowcolors{2}{teal!10}{white}
+    	    \begin{tabular}{ | m{2.5cm} | m{12cm} | }
+                \hline
+                \rowcolor{teal!30} Libraries / Packages & Description \\
+                
+                \hline
+                FastAPI & A modern, fast web framework for building APIs with automatic OpenAPI and JSON Schema generation.\\
 
-\subsection{Used Libraries / Packages}
+                \hline
+                Uvicorn & A production-grade ASGI (Asynchronous Server Gateway Interface) server used to run FastAPI applications, ensuring efficient handling of asynchronous requests.\\
 
+                \hline
+                Pydantic & A data validation library used for defining the data schema in FastAPI, enhancing API request and response handling.\\
+
+                \hline
+                pip, setuptools, wheel & Essential tools for package management, distribution, and installation in Python.\\
+
+                \hline
+                sparqlwrapper & Facilitates SPARQL query execution in Python, essential for querying semantic knowledge graphs.\\
+
+                \hline
+                rdflib & A library for working with RDF (Resource Description Framework) data, supporting semantic data representation.\\
+
+                \hline
+                openpyxl & A library for reading and writing Excel files, facilitating data exchange with other applications.\\
+
+                \hline
+                levenshtein & A library for calculating Levenshtein distance, beneficial for string similarity comparisons.\\
+
+                \hline
+                rapidfuzz & Offers efficient fuzzy string matching, valuable for handling variations in input data.\\
+
+                \hline
+                pymongo & A Python driver for MongoDB, supporting integration with MongoDB databases\\
+                
+                \hline
+            \end{tabular}}
+            \caption{\label{tab:python-libs} Used Python libraries}
+        \end{table}
+    
+    \subsubsection{JavaScript / TypeScript}
+        \paragraph{Advantages}
+        \begin{itemize}
+            \item Front-end Development: JavaScript and TypeScript are fundamental for building interactive and dynamic user interfaces, enhancing the user experience.
+            \item Asynchronous Operations: Asynchronous capabilities of JavaScript and TypeScript are crucial for responsive and efficient web applications.
+            \item Widespread Adoption: JavaScript is universally supported in web browsers.
+            \item TypeScript: TypeScript, a superset of JavaScript, adds optional static typing, enhancing code reliability and maintainability for larger projects.
+            \item Ecosystem: The vast ecosystem of JavaScript libraries and frameworks provides flexibility and choice in front-end development.
+        \end{itemize}
+        
+        \paragraph{Used Libraries / Package}
+        \begin{table}[h]
+            \centering
+    	    {\rowcolors{2}{teal!10}{white}
+    	    \begin{tabular}{ | m{2.5cm} | m{12cm} | }
+                \hline
+                \rowcolor{teal!30} Libraries / Packages & Description \\
+                
+                \hline
+                Svelte & A modern JavaScript framework for building user interfaces with a focus on simplicity and performance. \\
+
+                \hline
+                SvelteKit & A full-stack framework built on Svelte, facilitating the creation of complex, scalable web applications and enabling the development of both server-side rendered (SSR) and statically generated applications. \\
+
+                \hline
+                Axios & A popular HTTP client for making asynchronous requests, crucial for communicating with backend APIs. \\
+
+                \hline
+                Tailwind & A utility-first CSS framework that streamlines the styling process and promotes consistency in the user interface.\\
+
+                \hline
+            \end{tabular}}
+            \caption{\label{tab:js-libs} Used JavaScript libraries}
+        \end{table}
+        
 \subsection{Framework's main Functions and Classes}
+\subsubsection{Extract the schema of a graph}
+ When the backend server is launched, one of the first functions to be executed is to extract the ontology schema. To do this, the graph is traversed from an input class considered to be the root. The \textbf{create\_schema\_from\_class} function shown in Listing\ref{lst:create-schema} is used recursively. It extracts the attributes (\textbf{Data Properties}) of the class and is then used on each of the classes linked by a relationship to the one being studied (\textbf{Object Properties}).\\
 
-\subsection{Measure Similarity with Case-Based Reasoning}
-    \subsubsection{Similarity Measures}
-        \paragraph{String}
-        \paragraph{URI}
-        \paragraph{Numeric}
-        \paragraph{Interval}
-        \paragraph{Collection}
-        \paragraph{Agregate}
-        \paragraph{Nested Graph}
-    
-    \subsubsection{Similarity Computation}
+An important point to note is that in an ontology, classes can be subclasses of another (\textbf{rdfs:subClassOf}). When creating the schema for a class, it is therefore important to check whether it has a parent class. If it does, the properties (Data Properties, Object Properties) of its parent should be added to its schema.
+The user can also exclude certain classes from the analysis. This is made possible by the \textbf{EXCLUDED\_CLASSES} global variable, which is a list of classes to be ignored.\\
 
-\subsection{Determination of Values of Attributes with Rules (Rule-Based)}
-    \subsubsection{List of Rules}
+\begin{lstlisting}[language=Python, caption=Function to create the schema of the ontology, label={lst:create-schema}]
+def create_schema_from_class(
+        self, class_uri: str, depth: int, visited: dict[str, bool]
+    ) -> Node:
+        visited[class_uri] = True
+        node = Node(None, class_uri, depth)
+
+        # Get all DataProperties of the instance
+        data_properties = get_class_data_properties(class_uri)
+        # Get all DataProperties of the superClass
+        super_data_properties = get_super_class_data_properties(class_uri)
+        data_properties += super_data_properties
+
+        # Add all data properties to the node
+        for property_uri, type_uri, type_list in data_properties:
+            property_suffix_uri = extractSuffixURI(Config.BASEPREFIX, property_uri)
+            type = type_list if type_list else extractSchemaType(type_uri)
+            node.addAttribute(DataObject(property_suffix_uri, None, type, depth))
+
+        # Get all ObjectProperties of the instance
+        object_properties = get_class_object_properties(class_uri)
+        # Get all ObjectProperties of his super class
+        super_object_properties = get_super_class_object_properties(class_uri)
+        object_properties += super_object_properties
+
+        # Add edges
+        for property_uri, child_class_name_uri in object_properties:
+            child_class_name_turtle_uri = extractSuffixURI(
+                Config.BASEPREFIX, child_class_name_uri
+            )
+            if (child_class_name_turtle_uri not in visited) and (
+                child_class_name_turtle_uri not in Config.EXCLUDED_CLASSES
+            ):
+                property_suffix_uri = extractSuffixURI(Config.BASEPREFIX, property_uri)
+                node.addEdge(
+                    property_suffix_uri,
+                    self.create_schema_from_class(
+                        child_class_name_turtle_uri, depth + 1, visited
+                    ),
+                )
+
+        return node
+\end{lstlisting}
+
+
+\subsubsection{Generate the list of questions}
+Once the ontology schema has been extracted, it is searched (Depth search) using the recursive function \textbf{collectQuestionsFromClass}. For each attribute of a class, the \textbf{generateQuestion} function is used, and a question is generated based on the type of the attribute.
+
+\subsubsection{Get the similar cases}
+Listing\ref{lst:comp-sim} shows the main function of our framework. This function takes as its parameters the problem (target: Node), the list of attributes that must work, and the list of answers already given. To do this, for each graph in our ontology, the mandatory attributes are checked. If the graph respects these attributes, the function presented in Listing\ref{lst:comp-sim-node} is used to calculate the similarity between the target graph and that of the current iteration.\\
+
+
+\begin{lstlisting}[language=Python, caption=Function to find the similarity between one case and all the cases in the data-base, label={lst:comp-sim}]
+def computeSimilarity(
+        self, target: Node, mandatories: list[str], responsesStack: dict[str, Any]
+    ) -> list[Similarity]:
+        similarities = []
+
+        print("-------------Similar", mandatories)
+        for graphKey, graph in self.ontology.graphs.items():
+            # Check if the graph respect the mandatories
+            check = checkValidGraphByMandatories(graph, mandatories, responsesStack)
+            if check:
+                simi = Similarity(self.computeSimilarityForNode(graph, target), graph)
+                similarities.append(simi)
+
+        mean = self.similarityMean(similarities)
+        print("-------------Mean", mean)
+
+        similarities = list(filter(lambda x: x.value >= mean, similarities))
+
+        # order by similarity descending
+        similarities.sort(key=lambda x: x.value, reverse=True)
+
+        return similarities
+\end{lstlisting}
     
-    \subsubsection{Determination Process}
     
+    
+\subsubsection{Get the similar cases} 
+Here the principle of local-to-global calculation presented in Section\ref{subsec:similarity} is implemented. First we iterate over the set of Node target attributes and for each pair of values, the function presented in Listing\ref{lst:comp-sim-att} is called. This calculates the similarity value between two attributes according to their type. Then, for each Edge in our graph, the function is used iteratively.
+After iterating over all the attributes and edges (child nodes), the similarity value between the two nodes is calculated by applying the same weight to each attribute and child.\\
+
+\begin{lstlisting}[language=Python, caption=Function to find the similarity between one case and all the cases in the data-base, label={lst:comp-sim-node}]
+def computeSimilarityForNode(self, node: Node, target: Node) -> float:
+        # Local computation
+        attributSimilarity = 0
+        numberOfAttribute = 0
+        for key, targetAttribute in target.attributes.items():
+            if targetAttribute.value is not None:
+                nodeAttribute = node.getAttribute(key)
+
+                if nodeAttribute is None:
+                    continue
+
+                sim = self.computeSimilarityForAttribute(nodeAttribute, targetAttribute)
+                attributSimilarity += sim
+                numberOfAttribute += 1
+
+        # Global computation
+        childSimilarity = 0
+        numberOfEdges = 0
+        for key, targetEdges in target.edges.items():
+            nodeEdges = node.getEdge(key)
+
+            if nodeEdges is None:
+                continue
+
+            # iterate over all the edeges of this node with the same URI
+            collectorSim = [0]
+            for targetEdge in targetEdges:
+                for nodeEdge in nodeEdges:
+                    if nodeEdge is not None:
+                        collectorSim.append(
+                            self.computeSimilarityForNode(
+                                nodeEdge["childNode"], targetEdge["childNode"]
+                            )
+                        )
+
+            sim = max(collectorSim)
+            childSimilarity += sim
+            numberOfEdges += 1
+
+        if (numberOfAttribute + numberOfEdges) == 0:
+            return 0
+
+        nodeSimilarity = (attributSimilarity + childSimilarity) / (
+            numberOfAttribute + numberOfEdges
+        )
+
+        return nodeSimilarity
+\end{lstlisting}
+
+
+
+\subsubsection{Find the similarity value between two attributes} 
+Calculating the similarity between two attributes depends largely on their type. In the function presented in Listing\ref{lst:comp-sim-att}, a distinction is made between cases based on the type of attributes. Depending on the type, a specific utility function is used.\\
+
+\begin{lstlisting}[language=Python, caption=Function to compute the similarity value between two attributes, label={lst:comp-sim-att}]
+def computeSimilarityForAttribute(
+        self, nodeAttribute: DataObject, targetAttribute: DataObject
+    ) -> float:
+        similarity = 0
+
+        match nodeAttribute.type:
+            case "string":
+                similarity = computeStringLevensteinSimilarity(
+                    nodeAttribute.value, targetAttribute.value
+                )
+            case "int":
+                similarity = computeNumericSigmoidSimilarity(
+                    nodeAttribute.value, targetAttribute.value
+                )
+            case "double":
+                similarity = computeNumericSigmoidSimilarity(
+                    nodeAttribute.value, targetAttribute.value
+                )
+            case "decimal":
+                similarity = computeNumericSigmoidSimilarity(
+                    nodeAttribute.value, targetAttribute.value
+                )
+            case "float":
+                similarity = computeNumericSigmoidSimilarity(
+                    nodeAttribute.value, targetAttribute.value
+                )
+            case "boolean":
+                similarity = self.computeEqualSimilarity(
+                    nodeAttribute.value, targetAttribute.value
+                )
+            case "date":
+                similarity = computeStringSortRatio(
+                    nodeAttribute.value, targetAttribute.value
+                )
+            case _:
+                similarity = self.computeEqualSimilarity(
+                    nodeAttribute.value, targetAttribute.value
+                )
+
+        return similarity
+\end{lstlisting}
+    
+
+\subsection{Similarity Measures}
+For the same type, there are numerous functions for calculating similarity. The choice of one depends on the case and the purpose. In this section, various functions for \textbf{String} and \textbf{Numeric} will be presented, along with the cases in which each of them is appropriate.
+    
+    \subsubsection{String}
+    The function in Listing\ref{lst:leven-string} uses Levenshtein's algorithm to calculate how different two Strings are from each other. It is suitable for long texts or when you want to make a comparison while allowing a certain degree of error.\\
+    
+\begin{lstlisting}[language=Python, caption=Levenstein distance between two strings, label={lst:leven-string}]
+# Compute the Levenstein distance between the two strings
+def computeStringLevensteinSimilarity(nodeValue: str, targetValue: str) -> float:
+    return fuzz.partial_ratio(nodeValue, targetValue)
+\end{lstlisting}
+    
+    
+    The function in Listing\ref{lst:leven-string-ratio} works like the previous function, but ignores special characters such as full stops or commas.\\
+    
+\begin{lstlisting}[language=Python, caption=Levenstein distance between two strings without considering special characters, label={lst:leven-string-ratio}]
+def computeStringSortRatio(nodeValue: str, targetValue: str) -> float:
+    return fuzz.token_sort_ratio(nodeValue, targetValue)
+\end{lstlisting}
+
+
+
+
+
+    \subsubsection{Numeric}
+    
+    \textbf{Exponential similarity} in Listing\ref{lst:expo-sim-num} is useful when you want to emphasize the sensitivity to proximity. It is suitable for cases where small differences between numeric values should result in significantly higher similarity scores.\\
+    
+\begin{lstlisting}[language=Python, caption=Function to compute the similarity value between two attributes, label={lst:expo-sim-num}]
+# Compute the Exponential similarity between two numeric values
+def computeNumericExponentialSimilarity(value1, value2):
+    num1 = int(value1)
+    num2 = int(value2)
+    return math.exp(-abs(num1 - num2))
+\end{lstlisting}
+    
+    
+    \textbf{Fuzzy similarity} in Listing\ref{lst:fuzzy-sim-num} is beneficial when dealing with uncertain or imprecise numeric data. It can handle situations where the exact values may not be known, and there is a need to capture the degree of similarity despite the fuzziness in the data.\\
+\begin{lstlisting}[language=Python, caption=Function to compute the similarity value between two attributes, label={lst:fuzzy-sim-num}]
+# Compute the Fuzzy similarity between two numeric values
+def computeNumericFuzzySimilarity(value1, value2):
+    num1 = int(value1)
+    num2 = int(value2)
+    return 1 - abs(num1 - num2) / (num1 + num2)
+\end{lstlisting}
+
+    
+    \textbf{Sigmoid similarity} in Listing\ref{lst:sigmo-sim-num} is appropriate when you expect the similarity to saturate at a certain point, indicating that beyond a specific difference threshold, additional proximity has a diminishing impact.\\
+
+\begin{lstlisting}[language=Python, caption=Function to compute the similarity value between two attributes, label={lst:sigmo-sim-num}]
+# Compute the sigmoid similarity between two numeric values
+def computeNumericSigmoidSimilarity(value1, value2):
+    num1 = int(value1)
+    num2 = int(value2)
+    return 1 / (1 + math.exp(-(num1 - num2)))
+\end{lstlisting}
+        
+In summary, the choice of similarity computation method depends on the nature of the data and the desired characteristics of the similarity measure. Exponential similarity emphasizes proximity sensitivity, fuzzy similarity accommodates uncertainty, and sigmoid similarity is suitable for situations where similarity saturates with increasing proximity.
+
 \subsection{Web Application}
-    \subsubsection{UI}
+As already explained in the previous chapters, a prototype UI has been set up in order to demonstrate the use of the CBR mechanism in practical cases. In this section, the different views and elements of this UI will be presented, along with their usefulness.
+
+    \subsubsection{The home page}
+    Figure\ref{fig:proto-home} shows the home view of the UI. Here the user can create a new account in which to work or choose an existing account. Each account has a list of configuration processes.
     
-    \subsubsection{Demonstration Showcase}
+    \begin{figure}[h]
+    \centering
+    \frame{\includegraphics[width=\textwidth]{images/proto-home.png}}
+    \caption{\label{fig:proto-home}  Home view of the UI prototype}
+    \end{figure}
     
-\subsection{Testing}
+    
+    \subsubsection{The working page}
+    Figure\ref{fig:proto-demo} shows the working view. This is where all operations are performed. 
+    
+    \begin{itemize}
+        \item The sidebar \textbf{(1)} lists all the processes associated with the current user. It can also be used to create and delete a process.
+        \item The box at the bottom left \textbf{(2)} shows the name of the current user and provides a button for logging out and going to the home page (see Figure\ref{fig:proto-home}).
+        \item The title bar \textbf{(3)} shows the name of the selected configuration and allows you to modify or delete it.
+        \item The buttons at the bottom right \textbf{(4)} are used to manage the zoom percentage of the decision tree shown in the center of the work area.
+    \end{itemize}
+    
+    \begin{figure}[h]
+    \centering
+    \frame{\includegraphics[width=\textwidth]{images/proto-demo.png}}
+    \caption{\label{fig:proto-demo}  Main view of the UI prototype}
+    \end{figure}
+    
+    
+    \subsubsection{Answering to question}
+    To add an answer to the tree, simply click on the “+” button below a Node. Figure\ref{fig:proto-demo-add-answer} shows the dialogue box that appears once you have clicked on this button. This dialogue box contains:
+    
+    \begin{itemize}
+        \item \textbf{(1)} an entry for selecting the element for which you would like to give a value
+        \item \textbf{(2)} an entry for giving the value of this element. As shown in Figure\ref{fig:proto-demo-add-answer-proba} a suggestion of possible values is automatically made. And for each of the suggested values, a probability of use is provided, allowing you to find out how many similar simulations have used this value.
+        \item a “mandatory” switch \textbf{(3)} to define whether only graphs with exactly the value selected for the element selected should be taken into account
+        \item In \textbf{(4)} we have the question asked for this element. This is generated automatically by the backend.
+    \end{itemize}
+    
+
+    \begin{figure}[h]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+            \centering
+            \frame{\includegraphics[width=\textwidth]{images/proto-demo-add-answer.png}}
+            \caption{\label{fig:proto-demo-add-answer} Dialog to answer to a question}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.45\textwidth}
+            \centering
+            \frame{\includegraphics[width=\textwidth]{images/proto-demo-add-answer-proba.png}}
+            \caption{\label{fig:proto-demo-add-answer-proba} Probability of usage}
+        \end{subfigure}
+    \end{figure}
+    
+    
+    \subsubsection{Edit / Delete an answer}
+    It is also possible to edit or delete an answer given previously. Figure\ref{fig:proto-demo-edit-delete-answer} shows the elements of our interface which allow this to be done. 
+    
+    \begin{itemize}
+        \item when a Node (response) in the graph is edited, this automatically deletes all the child Nodes it had, since these may no longer be relevant for the new values of the modified Node
+        \item when a Node is deleted, its child Nodes are also deleted
+    \end{itemize}
+
+    \begin{figure}[h]
+    \centering
+    \frame{\includegraphics[scale=0.5]{images/proto-demo-edit-delete-answer.png}}
+    \caption{\label{fig:proto-demo-edit-delete-answer}  Edit / Delete an answer (a Node)}
+    \end{figure}
+
+    
+    \subsubsection{Inspecting results}
+    After each response, the reasoner recalculates the similar simulations and returns them. You can see the number of simulations found in the top right-hand corner of each Node. For more details, simply click on the Node you wish to inspect. Figure\ref{fig:proto-demo-detail} shows the details of one of these Nodes.
+    
+    \begin{itemize}
+        \item In \textbf{(1)} we have information about the number of simulations found.
+        \item The selection list \textbf{(2)} allows you to choose one of the simulations found in order to inspect it.
+        \item Once one of the simulations has been chosen, we can see the percentage of similarity \textbf{(3)} of this simulation with the one currently being configured.
+        \item The table in \textbf{(4)} shows all the attributes of this simulation and their values.
+    \end{itemize}
+    
+    \begin{figure}[h]
+    \centering
+    \frame{\includegraphics[width=\textwidth]{images/proto-demo-detail.png}}
+    \caption{\label{fig:proto-demo-detail}  Inspect the details of a node}
+    \end{figure}
+
+
+
+
+    

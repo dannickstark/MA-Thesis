@@ -13,7 +13,7 @@ CAE, also known as digital engineering or computer-aided engineering, brings tog
     
     Figure \ref{fig:v-model-sim} shows the different types of simulations and tests throughout the “V” model presented above. Initial design and simulation of CAD geometry under appropriate conditions is the CEA's standard workflow. Based on the results of the simulation, the design is improved. This process may need to be repeated until the product requirements are met and virtually confirmed. If there are differences in behavior between the digital prototype and expectations, the CAD model or input data can be adjusted. This process speeds up product development because there is no need to create physical prototypes in the early stages of development.
 
-    \begin{figure}[H]
+    \begin{figure}[h]
         \centering
         \includegraphics[scale=0.6]{images/Foundation-V-Model-Sim.drawio.png}
         \caption{\label{fig:v-model-sim} V-Model with simulations }
@@ -48,7 +48,7 @@ CAE, also known as digital engineering or computer-aided engineering, brings tog
     \end{itemize}
 
 \subsection{Expert System\label{subsec:exp-sys}}
-An expert system in artificial intelligence is a computer programme that simulates the decision-making process of a human expert[]. It possesses knowledge in a given domain, extracted from the knowledge of experts in that domain.  Rather than using traditional procedural code, expert systems are designed to deal with complex questions posed by the user by reasoning from bodies of knowledge. The 1970s saw the development of the first expert systems, which came into widespread use in the 1980s[]. They were one of the first applications of artificial intelligence (AI) software to achieve real success[]. \\
+An expert system in artificial intelligence is a computer program that simulates the decision-making process of a human expert[]. It possesses knowledge in a given domain, extracted from the knowledge of experts in that domain.  Rather than using traditional procedural code, expert systems are designed to deal with complex questions posed by the user by reasoning from bodies of knowledge. The 1970s saw the development of the first expert systems, which came into widespread use in the 1980s[]. They were one of the first applications of artificial intelligence (AI) software to achieve real success[]. \\
 
 Figure \ref{fig:es-archi} shows the architecture of an expert system. An expert system consists of two subsystems: the knowledge base and the inference engine. Rules and information are represented in the knowledge base. To deduce new facts, the inference engine applies the rules to the known facts. In addition, inference engines can be capable of debugging and explanation.\\
 
@@ -56,7 +56,7 @@ A non-expert user uses this software to gather information, while people who are
 
 The process of creating an expert system is called 'knowledge engineering', and the people who carry it out are known as knowledge engineers. The main responsibility of the knowledge engineer is to ensure that the computer has all the knowledge it needs to solve a problem. To express the necessary information in the form of a symbolic model in the computer's memory, the knowledge engineer must choose one or more forms (the ontology will be chosen for the purposes of this thesis).\\
 
-\begin{figure}[H]
+\begin{figure}[h]
     \centering
     \includegraphics[scale=0.6]{images/Foundation-Architecture_Expert_System.drawio.png}
     \caption{\label{fig:es-archi} Architecture of an Expert System }
@@ -65,7 +65,7 @@ The process of creating an expert system is called 'knowledge engineering', and 
 Components of an expert system : 
 \begin{itemize}
     \item Knowledge base: Facts and rules are represented here. It is made up of intrinsic facts relevant to the domain, methods, rules for solving problems and knowledge specific to the domain.
-    \item Inference engine: this retrieves relevant information from the knowledge base, analyses it and determines a solution that addresses the user's problem. To deduce new facts, the inference engine extracts rules from its knowledge base and applies them to known facts. In addition, debugging and explanation functions can be added to inference engines.
+    \item Inference engine: this retrieves relevant information from the knowledge base, analyses it, and determines a solution that addresses the user's problem. To deduce new facts, the inference engine extracts rules from its knowledge base and applies them to known facts. In addition, debugging and explanation functions can be added to inference engines.
     \item Learning and knowledge acquisition module: The aim of this part is to enable the expert system to collect and store knowledge from various sources on an ongoing basis.
     \item User interface: Using this module, a non-expert user can communicate with the expert system and work out a solution.
     \item The explanation module helps the expert system to provide the user with a detailed explanation of how it arrived at a certain result.
@@ -73,13 +73,13 @@ Components of an expert system :
 
 
 \subsection{Semantic Web\label{sec:semweb}}
-The Semantic Web is an expansion of the World Wide Web that intends to enable robots comprehend and interpret the meaning of content on the internet. It entails encoding data in a way that improves interconnectivity, connecting similar information, and enabling computerised processing. The objective is to improve information retrieval efficiency while also enabling more intelligent online apps and services.\\
+The Semantic Web is an expansion of the World Wide Web that intends to enable robots to comprehend and interpret the meaning of content on the internet. It entails encoding data in a way that improves interconnectivity, connecting similar information, and enabling computerized processing. The objective is to improve information retrieval efficiency while also enabling more intelligent online apps and services.\\
 
 In 2001, Tim Berners-Lee coined the term “Semantic Web” to describe the use of semantic technologies in data connectivity [ ]. The World Wide Web Consortium (W3C), founded by Berners-Lee, disseminates and supports a number of technical guidelines for the Semantic Web. “Semantic web technologies allow people to create data shops on the web, build vocabularies and write rules to process data”.\\
 
 Improving the way computers understand data makes it easier to share data and enables it to be processed automatically. As Figure \ref{fig:sem-web-stack} shows, the Web Ontology Language (OWL), SPARQL and Resource Description Framework (RDF) are the main standards on which semantic technology is developing. In contrast, in conventional information technology, meanings are hard-coded into application code and data at the design stage. \\
 
-\begin{figure}[H]
+\begin{figure}[h]
     \centering
     \includegraphics[scale=0.6]{images/foundation-sem-web-tech-stack.png}
     \caption{\label{fig:sem-web-stack} Semantic Web Technologies Stack }
@@ -92,7 +92,7 @@ Improving the way computers understand data makes it easier to share data and en
 
         Semantic Web resource identifiers can be divided into a base URI and a local name. In serialization, the base URI is often shortened by a prefix defined at the beginning. Figure \ref{fig:uri-example} shows an example of a URI and its decomposition with a prefix.\\
 
-        \begin{figure}[H]
+        \begin{figure}[h]
             \centering
             \includegraphics[scale=0.6]{images/Foundation-URI Decomposition.drawio.png}
             \caption{\label{fig:uri-example} Example of URI and decomposition with prefix}
@@ -100,11 +100,11 @@ Improving the way computers understand data makes it easier to share data and en
 
         
         \paragraph{IRI}
-        The Internationalised Resource Identifier (IRI) is an extension of the URI that adapts to a global character set, whereas the URI is limited to ASCII and has far fewer characters. IRIs enable the representation and communication of data-related knowledge in several languages. IRIs can be transformed into URIs using percentage encoding, enabling backward compatibility.
+        The Internationalized Resource Identifier (IRI) is an extension of the URI that adapts to a global character set, whereas the URI is limited to ASCII and has far fewer characters. IRIs enable the representation and communication of data-related knowledge in several languages. IRIs can be transformed into URIs using percentage encoding, enabling backward compatibility.
 
 
     \subsubsection{RDF}
-    RDF is a resource description framework developed by W3C. It is used in particular on the World Wide Web for data exchange. The RDF data model allows data resources to be uniquely recognised and linked to other data resources for reading, analysis and action. 
+    RDF is a resource description framework developed by W3C. It is used in particular on the World Wide Web for data exchange. The RDF data model allows data resources to be uniquely recognized and linked to other data resources for reading, analysis and action. 
 
     RDF [ ] introduces several fundamental Semantic Web terms:
 
@@ -115,14 +115,14 @@ Improving the way computers understand data makes it easier to share data and en
         \item A “thing” is either an individual object, called an instance, or a definition of a type of thing, called a class. 
         \item A schema is an abstract description of a set of objects. It consists of a hierarchical taxonomy that describes how the elements of the domain are classified. In RDF, schemas are also known as terminology boxes (Tboxes). 
         \item A property is an attribute, feature, characteristic or connection that facilitates the description of a URI. In the RDF architecture, a property is also represented in the form of a URI. It always has a precise meaning and determines the type of resource it can describe, known as the property domain, as well as the permitted values. It can also specify how it relates to other attributes. 
-        \item "Axioms” are property declarations for schema classes, often known as Role Boxes (Rbox) in RDF. They define the relationships between classes.
+        \item “Axioms” are property declarations for schema classes, often known as Role Boxes (Rbox) in RDF. They define the relationships between classes.
     \end{itemize}
 
     RDF is a model based on “Triples”. Triples are built around subject-predicate-object relationships, and are the most common type of axiom. The predicate is a property or a relation; the subject is a “thing”. When the object is a thing, the property is called an object property. If the object is a literal, such as a character, integer or string, the property is called a data property. Once a triplet has been defined, it is referred to as a statement.\\
 
     Take, for example, this basic English sentence: “Germany is in Europe”. Table\ref{tab:rdf-example} shows how the sentence can be divided syntactically. If this statement were to be expressed visually, this could be done using the following directed graph, shown in Figure \ref{fig:rdf-example}.\\
     
-    \begin{table}[H]
+    \begin{table}[h]
         \centering
 	    \rowcolors{2}{teal!10}{white}
 	    \begin{tabular}{ | m{4cm} | m{4cm} | m{4cm} | }
@@ -137,7 +137,7 @@ Improving the way computers understand data makes it easier to share data and en
         \caption{\label{tab:rdf-example} RDF Syntactic division}
         \end{table}
         
-    \begin{figure}[H]
+    \begin{figure}[h]
         \centering
         \includegraphics[scale=0.6]{images/Foundation-RDF Example.drawio.png}
         \caption{\label{fig:rdf-example}  RDF Graphical representation}
@@ -145,7 +145,7 @@ Improving the way computers understand data makes it easier to share data and en
 
     RDF uses the same techniques to demonstrate the links between subjects and objects. However, as explained earlier, to represent resources and features accurately on the web, they need to be assigned a unique URI. To demonstrate the representation of the above example sentence as a triple, the URIs of the resources and attributes are assumed to be those shown in Table\ref{tab:rdf-example-uri}.
     
-    \begin{table}[H]
+    \begin{table}[h]
         \centering
 	    {\rowcolors{2}{teal!10}{white}
 	    \begin{tabular}{ | m{2.5cm} | m{2.5cm} | c | }
