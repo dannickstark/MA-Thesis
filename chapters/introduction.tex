@@ -6,16 +6,16 @@ In engineering, it is extremely important to set up simulations during the desig
 
 
 \subsection{Research Goals}
-To be able to exploit these old simulations, their metadata must be stored efficiently and robustly. Semantic technologies, in particular ontologies, offer a viable solution for structuring, modelling and storing this data. These technologies use formal semantics to give meaning to raw data, thereby making it machine-readable. This thesis undertakes an in-depth study of the feasibility of using semantic technologies to improve configuration processes in systems engineering.\\
+To be able to exploit these old simulations, their metadata must be stored efficiently and robustly. Semantic technologies, in particular ontologies, offer a viable solution for structuring, modelling and storing this data \cite{horsch2021osmo, spelten2023simulation}. These technologies use formal semantics to give meaning to raw data, thereby making it machine-readable. This thesis undertakes an in-depth study of the feasibility of using semantic technologies to improve configuration processes in systems engineering.\\
 
 From this, the main objective can be broken down into several high-level objectives:
 
 \begin{itemize}
   \item \textbf{G1\label{G1}}: The first objective is to create an ontology that can be used to represent simulations, their meta-information, and all the interdependencies and rules that apply to them.
 
-    \item \textbf{G1\label{G2}}: The second objective is to create an automated framework for identifying similar simulations from previous project databases, as well as a mechanism for suggesting viable parameter values throughout the process.
+    \item \textbf{G2\label{G2}}: The second objective is to create an automated framework for identifying similar simulations from previous project databases, as well as a mechanism for suggesting viable parameter values throughout the process.
     
-    \item \textbf{G1\label{G3}}: Another objective of this thesis is to develop a prototype web application, which consumes the services of our framework. This application should allow a user to configure a basic simulation step by step using the data and rules defined in our ontology.
+    \item \textbf{G3\label{G3}}: Another objective of this thesis is to develop a prototype web application, which consumes the services of our framework. This application should allow a user to configure a basic simulation step by step using the data and rules defined in our ontology.
 
 \end{itemize}
 
@@ -25,10 +25,10 @@ From this, the main objective can be broken down into several high-level objecti
 In order to determine whether the use of semantic technologies actually brings benefits in supporting process configuration in systems engineering, the following research questions have been defined: 
 
 \begin{itemize}
-  \item \textbf{Q1\label{Q1}}: What are the main challenges and limitations of current configuration processes for simulations in the automotive industry?
-    \item \textbf{Q1\label{Q2}}: How can semantic technology be used to support simulation configuration processes?
-    \item \textbf{Q1\label{Q3}}: What are the requirements of a semantic-based configuration tool for automotive simulations?
-    \item \textbf{Q1\label{Q4}}: What are the existing semantic technologies and standards applicable to the field of systems engineering and simulation configuration, and how can they be adapted to support simulation configuration processes?
+    \item \textbf{Q1\label{Q1}}: What are the main challenges and limitations of current configuration processes for simulations in the automotive industry?
+    \item \textbf{Q2\label{Q2}}: How can semantic technology be used to support simulation configuration processes?
+    \item \textbf{Q3\label{Q3}}: What are the requirements of a semantic-based configuration tool for automotive simulations?
+    \item \textbf{Q4\label{Q4}}: What are the existing semantic technologies and standards applicable to the field of systems engineering and simulation configuration, and how can they be adapted to support simulation configuration processes?
  \end{itemize}
 
 
@@ -69,7 +69,7 @@ The framework we have developed makes it possible to identify the old simulation
 \subsection{Thesis Structure}
 This thesis report begins with an overview of the foundations of systems engineering simulations in \textbf{Chapter \ref{sec:foundation}}, where we analyze the steps in the configuration process and the metadata that is important to us. This understanding will be of paramount importance when structuring our knowledge graph (Ontology). Next, the concept of an “Expert System” will be explored, enabling us to understand how such tools can assist engineers. This chapter also includes a study of the various semantic technologies such as RDF, OWL, SPARQL, etc., together with examples of their use and applications. \\
 
-In order to analyze previous research work more effectively in the context of the theme of this thesis, a “Systematic mapping study” will be carried out in \textbf{Chapter \ref{sec:relwork}}. Then, depending on the analysis made, a result on the state of current studies will be defined.\\
+In order to analyze previous research work more effectively in the context of the theme of this thesis, a “Systematic mapping study” will be carried out in \textbf{Chapter \ref{sec:relwork}}. Then, depending on the analysis made, a result on the state of current studies will be elaborate.\\
 
 \textbf{Chapter \ref{sec:conception}} deals with the modelling of simulations using ontologies. Concepts, properties, important entities and the relationships between them are identified. This information will be used to create the ontology in \textbf{Chapter \ref{sec:implementation}}. In this chapter, the operating mode and algorithms (pseudocode) of “Case-Based Reasoning” and “Rule-Based Reasoning” will be studied. \\
 
