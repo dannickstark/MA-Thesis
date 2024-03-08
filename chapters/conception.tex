@@ -26,7 +26,7 @@ Figure\ref{fig:cea-proc} shows a general problem-solving diagram, illustrating h
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{images/Concept-cae-process.drawio.png}
-    \caption{\label{fig:cea-proc}  The CAE core process, illustrated with the stages of a general problem-solving scheme. [ ]}
+    \caption{\label{fig:cea-proc}  The CAE core process, illustrated with the stages of a general problem-solving scheme. \cite{assistSim}}
 \end{figure}
 
 Based on the elements and steps involved in this process, a simulation ontology will be created. This will enable us to capture and formalize the elements involved in the configuration process, as well as the interdependencies between them. Particularly important in the context of this thesis are the elements involved in the “Definition” and “Composition” stages, as these lead to a "CAE-Model". Figure\ref{fig:uml-sim} shows a UML diagram representing the information extracted from Figure\ref{fig:cea-proc} and the relationships between them.\\
@@ -39,20 +39,20 @@ Based on the elements and steps involved in this process, a simulation ontology 
 
 
 \subsection{Simulation Modeling using Ontology}
-There is no single technique for modeling a domain; there are always valid options. The ideal method is almost always determined by the application and extensions you intend to implement. Ontology development is an iterative process. Ontology concepts need to be linked to object (physical or logical) and relationships in your field of interest. These objects are most likely to be nouns (things) or verbs (relations) in the sentences describing your domain. As presented in Section\ref{subsec:sms_analysis}, the researchers behind the “Protégé” software have put together a set of best practices, which will be followed in this work []. The steps to follow are:
+There is no single technique for modeling a domain; there are always valid options. The ideal method is almost always determined by the application and extensions you intend to implement. Ontology development is an iterative process. Ontology concepts need to be linked to object (physical or logical) and relationships in your field of interest. These objects are most likely to be nouns (things) or verbs (relations) in the sentences describing your domain. As presented in Section\ref{para:sms_analysis}, the researchers behind the “Protégé” software have put together a set of best practices, which will be followed in this work \cite{noy2001ontology}. The steps to follow are:
 
 \begin{itemize}
-    \item Step1: Scope Definition
-    \item Step2: Reuse Existing Vocabulary
-    \item Step3: Identification of Important Terms
-    \item Step4: Class Hierarchy and Taxonomy
-    \item Step5: Define Attributes and Properties of Classes — Slots
-    \item Step6: Define the Facets of the Slots
-    \item Step7: Creation of Instances
+    \item \textbf{Step1}: Scope Definition
+    \item \textbf{Step2}: Reuse Existing Vocabulary
+    \item \textbf{Step3}: Identification of Important Terms
+    \item \textbf{Step4}: Class Hierarchy and Taxonomy
+    \item \textbf{Step5}: Define Attributes and Properties of Classes — Slots
+    \item \textbf{Step6}: Define the Facets of the Slots
+    \item \textbf{Step7}: Creation of Instances
 \end{itemize}
 
     \subsubsection{Step1: Scope Definition}
-    The development of an ontology begins with the definition of its domain and field of application. To do this, few questions need to be answered []:
+    The development of an ontology begins with the definition of its domain and field of application. To do this, few questions need to be answered \cite{noy2001ontology}:
     
     \begin{itemize}
         \item What domain will the ontology cover? 
@@ -67,11 +67,11 @@ There is no single technique for modeling a domain; there are always valid optio
     \subsubsection{Step2: Reuse Existing Vocabulary}
     Setting up an ontology from scratch can be a rather tedious and complex process, requiring a certain level of knowledge in the target domain. That's why it's worth investigating whether there's a similar ontology to the one you want to build, which can be extended and refined to meet your requirements 100\%. Numerous ontologies are available in electronic form on the Internet. Platforms such as \textbf{DBPedia}, \textbf{WikiData} or \textbf{Linked Open Vocabularies (LOV)} allow you to access free ontologies, download them and integrate them into other ontologies.\\
     
-    During the study in Chapter\ref{sec:relwork}, a number of simulation ontologies were identified. These include: OSMO [], I2Sim [], OntologySim[] and VIO[]. Unfortunately, given that the elements we want to model (see Figure\ref{fig:cea-proc}) come from conventions defined as part of the EP4.0 project [], it was impossible to find a free ontology that could cover our needs. The ontology will therefore have to be built from scratch, using the structure described in Figure\ref{fig:uml-sim}.
+    During the study in Chapter\ref{sec:relwork}, a number of simulation ontologies were identified. These include: OSMO \cite{horsch2021osmo}, I2Sim \cite{grolinger2012ontology}, OntologySim \cite{may2022ontology} and VIO \cite{spelten2023simulation}. Unfortunately, given that the elements we want to model (see Figure\ref{fig:cea-proc}) come from conventions defined as part of the EP4.0 project \cite{assistSim}, it was impossible to find a free ontology that could cover our needs. The ontology will therefore have to be built from scratch, using the structure described in Figure\ref{fig:uml-sim}.
 
 
     \subsubsection{Step3: Identification of Important Terms}
-    All the important terms can be extracted from the diagram in Figure[]. The most important are:
+    All the important terms can be extracted from the diagram in Figure\ref{fig:uml-sim}. The most important are:
     \begin{itemize}
         \item LoadCase Template
         \item LoadCase
@@ -164,18 +164,18 @@ Case-based reasoning (CBR) is an approach to building intelligent systems that m
     \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{images/Concept-simplified-cbr-Simplified CBR princip.drawio.png}
-    \caption{\label{fig:simple-cbr}  Simplified model of CBR []}
+    \caption{\label{fig:simple-cbr}  Simplified model of CBR \cite{probSolCBR}}
     \end{figure}
     
     \begin{figure}[h]
     \centering
     \includegraphics[scale=0.6]{images/Concept-cbr-cycle.png}
-    \caption{\label{fig:cbr-cycle}  CBR cycle []}
+    \caption{\label{fig:cbr-cycle}  CBR cycle \cite{cbrIntroRecent}}
     \end{figure}
     
 
     \subsection{Retrieve}
-    The aim here is to find the case(s) in the database most similar to the query, taking into account certain similarity functions or criteria. The key question here is how to measure similarity between 2 entities. This will be studied in greater depth in Section\ref{parag:similarity}. The problem that can quickly arise here is that, over time, as the database of cases increases, the efficiency of the search decreases. This is because numerous cases have to be examined to find the most similar ones. There is therefore a sub-field of CBR research which focuses on methods to improve search efficiency. One example is the use of special index structures such as "kd-trees", case-finding networks or discrimination networks [ ].
+    The aim here is to find the case(s) in the database most similar to the query, taking into account certain similarity functions or criteria. The key question here is how to measure similarity between 2 entities. This will be studied in greater depth in Section\ref{subsec:similarity}. The problem that can quickly arise here is that, over time, as the database of cases increases, the efficiency of the search decreases. This is because numerous cases have to be examined to find the most similar ones. There is therefore a sub-field of CBR research which focuses on methods to improve search efficiency. One example is the use of special index structures such as "kd-trees", case-finding networks or discrimination networks \cite{cbrIntroRecent}.
     
     \subsection{Reuse}
     Once similar cases have been obtained, the answer (or any other information relating to the solution of the problem) from these cases is used to deal with the current problem. There are two types of reuse: simple reuse and reuse with adaptation. 
@@ -203,15 +203,15 @@ Case-based reasoning (CBR) is an approach to building intelligent systems that m
     
     \subsection{Retain}
     This phase represents the learning phase of the CBR system. In a CBR system, learning consists in adding a new case, generally by modifying a case already in the case base. This new case then becomes available for use in future problem-solving processes.\\
-    However, as mentioned above, the constant expansion of the case base can at some point create a utility problem, as it reduces the efficiency of the search. Researchers have devised special algorithms for learning similarity measures. Early techniques focused on the use of feature weights [ ]. But more recent methods tackle the more difficult task of using local and global similarity functions [ ]. 
+    However, as mentioned above, the constant expansion of the case base can at some point create a utility problem, as it reduces the efficiency of the search. Researchers have devised special algorithms for learning similarity measures. Early techniques focused on the use of feature weights \cite{cbrIntroRecent}. But more recent methods tackle the more difficult task of using local and global similarity functions \cite{shaheen2020novel, jaiswal2022f}. 
 
     
     
     \subsection{Similarity\label{subsec:similarity}}
-    As presented in the retrieve step, the main concept of CBR is similarity. This is due to the fact that the cases chosen during the process are those most similar to the current situation (query). Similarity can be formalized by a function $sim: P \times P \rightarrow [0, 1]$, which compares two problem descriptions of type \textbf{P} and returns a score between 0 and 1. The higher this score, the more similar the two problems are considered to be [ ].\\
+    As presented in the retrieve step, the main concept of CBR is similarity. This is due to the fact that the cases chosen during the process are those most similar to the current situation (query). Similarity can be formalized by a function $sim: P \times P \rightarrow [0, 1]$, which compares two problem descriptions of type \textbf{P} and returns a score between 0 and 1. The higher this score, the more similar the two problems are considered to be \cite{cbrIntroRecent}.\\
     For a new problem \textbf{p}, a case $c_1 = (p_1, s_1)$ is more appropriate than a case $c_2 = (p_2, s_2)$ (represented by $c_1 \succ_p c_2$) \textbf{iff} $sim(p, p_2) < sim(p, p_3)$. Here, the exact value of the similarities is not the most important factor, but the fact that these values allow us to give an order of relevance between the different cases considered. This order of preference corresponds to the evaluation of the usefulness of these cases for the treatment of problem \textbf{p} during the reuse phase.\\
     
-    The local-global approach, first introduced by Richter [ , ], is the most widely implemented. Figure\ref{fig:cbr-exam} shows an example of similarity calculation using this principle. Here, cases are represented by graphs, in which each \textbf{Node} has attributes $A_i$ of different types $T_i$. For each Node, a local calculation is first performed at the level of these attributes, using a similarity function $_i = sim_{A_i} : T_i \times T_i$ according to the type of attribute. The local similarities are then combined to calculate the global similarity using an appropriate combination. The combination adopted is called the \textbf{amalgamation function: F}, and also takes into account the different weights of the attributes. There are a number of different amalgamation functions:
+    The local-global approach, first introduced by Richter \cite{richter2008similarity, richter2013basic}, is the most widely implemented. Figure\ref{fig:cbr-exam} shows an example of similarity calculation using this principle. Here, cases are represented by graphs, in which each \textbf{Node} has attributes $A_i$ of different types $T_i$. For each Node, a local calculation is first performed at the level of these attributes, using a similarity function $_i = sim_{A_i} : T_i \times T_i$ according to the type of attribute. The local similarities are then combined to calculate the global similarity using an appropriate combination. The combination adopted is called the \textbf{amalgamation function: F}, and also takes into account the different weights of the attributes. There are a number of different amalgamation functions:
     \begin{itemize}
         \item \textbf{Weighted Average}: $F(s_1,...,s_n)= \sum_{1=1}^{n} w_i*s_i$
         \item \textbf{Maximum}: $F(s_1,...,s_n) = max\{s_1,...,s_n\}$
@@ -234,7 +234,7 @@ Case-based reasoning (CBR) is an approach to building intelligent systems that m
         \item $sim_{fuel}$ is calculated using a string equality measure. Since \textbf{Petrol != Diesel} we obtain a value of 0
         \item $sim_{cylinder}$ is calculated using linear numeric measure. Since they two values are equal, we have a similarity of 1.
         \item $sim(X_2, Y_2)$ is obtained by aggregating the similarities of the Fuel and Cylinders attributes with equal weighting. $sim(X_2, Y_2) = \frac{1}{2} * 0 + \frac{1}{2} * 1 = 0.5$
-        \item $sim_{name}$ is calculated using a \textbf{taxonomic similarity measure} based on a semantic taxonomy (Bergmann 2002)[].
+        \item $sim_{name}$ is calculated using a \textbf{taxonomic similarity measure} based on a semantic taxonomy \cite{malburg2021improving}.
         \item $sim(X_1, Y_1) = 1 * 0.4 = 0.4$
         \item finally $sim(X, Y) = \frac{1}{4} sim_{price} + \frac{1}{4} sim_{color} + \frac{1}{4} sim(X_1, Y_1) + \frac{1}{4} sim(X_2, Y_2) = 0.46$
 
