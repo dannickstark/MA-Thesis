@@ -21,7 +21,7 @@ Here are a few use cases that can be derived from the problem raised by this the
 
 
 \subsection{Simulation's Architecture}
-Figure[] shows a general problem-solving diagram, illustrating how a problem might be handled using CAE methods. Above each phase is the sequence of different steps.\\
+Figure\ref{fig:cea-proc} shows a general problem-solving diagram, illustrating how a problem might be handled using CAE methods. Above each phase is the sequence of different steps.\\
 
 \begin{figure}[h]
     \centering
@@ -29,7 +29,7 @@ Figure[] shows a general problem-solving diagram, illustrating how a problem mig
     \caption{\label{fig:cea-proc}  The CAE core process, illustrated with the stages of a general problem-solving scheme. [ ]}
 \end{figure}
 
-Based on the elements and steps involved in this process, a simulation ontology will be created. This will enable us to capture and formalize the elements involved in the configuration process, as well as the interdependencies between them. Particularly important in the context of this thesis are the elements involved in the “Definition” and “Composition” stages, as these lead to a "CAE-Model". Figure[] shows a UML diagram representing the information extracted from Figure[] and the relationships between them.\\
+Based on the elements and steps involved in this process, a simulation ontology will be created. This will enable us to capture and formalize the elements involved in the configuration process, as well as the interdependencies between them. Particularly important in the context of this thesis are the elements involved in the “Definition” and “Composition” stages, as these lead to a "CAE-Model". Figure\ref{fig:uml-sim} shows a UML diagram representing the information extracted from Figure\ref{fig:cea-proc} and the relationships between them.\\
 
 \begin{figure}[h]
     \centering
@@ -106,7 +106,7 @@ There is no single technique for modeling a domain; there are always valid optio
             \umlVHVinherit[arm2=-1.2cm]{LoadCaseTemplate}{Package} 
             \umlVHVinherit[arm2=-1.2cm]{LoadCase}{Package} 
             \end{tikzpicture} 
-        \caption{\label{fig:distro-art} Classification of “Package”}
+        \caption{\label{fig:classi-pack} Classification of “Package”}
     \end{figure}
     
     \begin{figure}
@@ -119,7 +119,7 @@ There is no single technique for modeling a domain; there are always valid optio
             \umlVHVinherit[arm2=-1.2cm]{BasicModel}{Model} 
             \umlVHVinherit[arm2=-1.2cm]{CoreModel}{Model} 
             \end{tikzpicture} 
-        \caption{\label{fig:distro-art} Classification of “Model”}
+        \caption{\label{fig:classi-model} Classification of “Model”}
     \end{figure}
     
     \begin{figure}
@@ -134,7 +134,7 @@ There is no single technique for modeling a domain; there are always valid optio
             \umlVHVinherit[arm2=-1.2cm]{MathematicalBasicStructure}{BasicStructure} 
             \umlVHVinherit[arm2=-1.2cm]{LogicalBasicStructure}{BasicStructure} 
             \end{tikzpicture} 
-        \caption{\label{fig:distro-art} Classification of “BasicStructure”}
+        \caption{\label{fig:classi-basic-struct} Classification of “BasicStructure”}
     \end{figure}
     
 
