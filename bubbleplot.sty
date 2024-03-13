@@ -146,7 +146,7 @@
 \begin{tikzpicture}
     % Legend for the years.
     \pgfmathsetmacro{\paddingFromOffset}{0}
-    \pgfmathsetmacro{\paddingTop}{10}
+    \pgfmathsetmacro{\paddingTop}{20}
     \foreach[remember=\paddingFromOffset as \paddingFromOffset,
                 remember=\paddingTop as \paddingTop] \color in {#3}{%
             \node[%
@@ -159,7 +159,7 @@
             
             \if\paddingFromOffset=8
                 \pgfmathsetmacro{\paddingFromOffset}{0}
-                \pgfmathsetmacro{\paddingTop}{\paddingTop + 1}
+                \pgfmathsetmacro{\paddingTop}{\paddingTop - 1}
             \fi
     }
 \end{tikzpicture}

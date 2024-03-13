@@ -50,7 +50,7 @@ In this chapter, the basic concepts fundamental to understanding the subject of 
 \subsection{Expert System\label{subsec:exp-sys}}
 An expert system in artificial intelligence is a computer program that simulates the decision-making process of a human expert \cite{liao2005expert, waterman1985guide}. It possesses knowledge in a given domain, extracted from the knowledge of experts in that domain.  Rather than using traditional procedural code, expert systems are designed to deal with complex questions posed by the user by reasoning from bodies of knowledge. The 1970s saw the development of the first expert systems, which came into widespread use in the 1980s \cite{buchanan1988fundamentals}. They were one of the first applications of \acrfull{ai} software to achieve real success \cite{buckley1986fuzzy, buchanan1988fundamentals, waterman1985guide}. \\
 
-Figure \ref{fig:es-archi} shows the architecture of an expert system. An expert system consists of two subsystems: the knowledge base and the inference engine \cite{tripathi2011review}. Rules and information are represented in the knowledge base. To deduce new facts, the inference engine applies the rules to the known facts. In addition, inference engines can be capable of debugging and explanation.\\
+Figure\ref{fig:es-archi} shows the architecture of an expert system. An expert system consists of two subsystems: the knowledge base and the inference engine \cite{tripathi2011review}. Rules and information are represented in the knowledge base. To deduce new facts, the inference engine applies the rules to the known facts. In addition, inference engines can be capable of debugging and explanation.\\
 
 A non-expert user uses this software to gather information, while people who are experts in a given field enter data into the knowledge base. It is widely used in a number of fields, including coding, games, accounting and medical diagnostics \cite{liao2005expert}. They can guide users and explain how they arrived at a specific recommendation or conclusion.\\
 
@@ -103,7 +103,7 @@ Improving the way computers understand data makes it easier to share data and en
         \acrshort{iri} is an extension of the \acrshort{uri} that adapts to a global character set, whereas the \acrshort{uri} is limited to \acrshort{ascii} and has far fewer characters. \acrshort{iri}s enable the representation and communication of data-related knowledge in several languages. \acrshort{iri}s can be transformed into \acrshort{uri}s using percentage encoding, enabling backward compatibility.
 
 
-    \subsubsection{\acrfull{rdf}}
+    \subsubsection{\acrfull{rdf} \label{subsubsec:rdf}}
     \acrshort{rdf} is a resource description framework developed by W3C. It is used in particular on the World Wide Web for data exchange. The \acrshort{rdf} data model allows data resources to be uniquely recognized and linked to other data resources for reading, analysis and action \textbf{decker2000framework}. 
 
     \acrshort{rdf} introduces several fundamental Semantic Web terms:
@@ -177,7 +177,7 @@ Improving the way computers understand data makes it easier to share data and en
 
     The more data is represented as linked data on the web, the greater the possibility of linking it to other linked data sources. For example, if a resource represented by a \acrshort{uri} in one data source is discovered in an existing linked data source (e.g., WikiData or DBpedia), it can be connected to a property such as \textbf{owl:sameAs} to extract further metadata and investigate links to other data resources \cite{bizer2008linked}.\\
 
-    \subsubsection{Ontology}
+    \subsubsection{Ontology \label{subsubsec:ontology}}
     In the field of philosophy, ontology is a discipline that studies existence, the way in which knowledge, language, and perception are related to the nature of reality \cite{smith2012ontology}. It is concerned with the question of what entities exist and how they can be classified, ordered hierarchically and discriminated against. \\
     Since the mid-1970s, \acrshort{ai} researchers have realized that knowledge engineering is essential for developing large and powerful \acrshort{ai} systems \textbf{fensel2001ontologies}. \acrshort{ai} researchers suggested that they could develop new ontologies as computational models to enable certain types of automated reasoning, but their efforts were only moderately successful. In the 1980s, the \acrshort{ai} community began using the term ontology to describe both a theory of a modelled world and a component of knowledge-based systems \textbf{guarino1995formal}.\\
     An ontology captures the structure of a domain, i.e. the model and its constraints. In other words, an ontology is a structure for systematically storing and formalizing domain knowledge. Ontology schemas are created using two modelling languages, \acrfull{rdfs} and \acrfull{owl} \textbf{fensel2001ontologies}.\\

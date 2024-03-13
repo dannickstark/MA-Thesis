@@ -1,19 +1,31 @@
 \section{Implementation\label{sec:implementation}}
-This chapter describes how the solution concept from Section \ref{subsec:cbr} was realized. This chapter begins by presenting the overall architecture of the solution to be set up. The tools used are then presented. To facilitate understanding of the implementation process, the development strategy is described, followed by the choice of programming languages. For each of these languages, an explanation of their choice is given, followed by a listing of the libraries or packages used. Then the framework's main functions (code snippets) are explained, to give further details on how similarity is calculated. Once the back-end has been explained, a brief presentation of the front-end is given to show how the framework can be used and integrated into applications.
+This chapter describes how the solution concept from Section\ref{subsec:cbr} was realized. It first explains why the \acrshort{cbr} tools presented in Section\ref{sec:exonto} were not used. Then, the overall architecture of the solution to be implemented will be presented. The tools used are then presented. To facilitate understanding of the implementation process, the development strategy is described, followed by the choice of programming languages. For each of these languages, an explanation of their choice is given, followed by a listing of the libraries or packages used. Then the framework's main functions (code snippets) are explained, to give further details on how similarity is calculated. Once the back-end has been explained, a brief presentation of the front-end is given to show how the framework can be used and integrated into applications.
+
+\subsection{Why not myCBR, JCollibri or ProCAKE?\label{sec:whyNot}}
+\begin{itemize}
+    \item The main reason why these tools will not be used is their age. Apart from ProCAKE, the other tools are quite old and not maintained. Due to their lack of maintenance, these tools are difficult to integrate with modern technologies, so it would be very dangerous to use them for a long-term project. 
+    \item The second reason is that these tools are mainly developed in Java. One of our requirements when choosing tools is that they should (if possible) be able to be integrated into Python code.
+    \item The third reason is that their documentation is complicated to understand, and there is a lack of articles showing how to use them and integrate them with other tools through APIs, for example. 
+    \item Many players are involved in the EP4.0 project. So it's vital to choose solutions that are easy to understand for everyone involved.\\
+\end{itemize}
+Faced with these problems, it was decided that it would be much simpler to implement a \acrshort{cbr} solution from scratch.
 
 
 \subsection{Architecture of the Framework \label{subsec:archi-frame}}
 Figure\ref{fig:frame-archi} shows the overall structure to be implemented. The chosen architecture is the microservice architecture. Here we have four services:
 \begin{itemize}
-    \item Client: provides the UI application, which will be used directly by the user
-    \item Server: exposes the Reasoning Framework. It exposes an API, which can be consumed to access the functions defined in it. It also features:
-    \begin{itemize}
-        \item a reasoner: for executing case-based reasoning
-        \item a storage layer: to interact with the various storage services
-    \end{itemize}
+    \item \textbf{Client}: provides the \acrfull{ui}, which will be used directly by the user
+    \item \textbf{Server}: exposes the Reasoning Framework. It exposes an API, which can be consumed to access the functions defined in it. It also features:
+        \begin{itemize}
+            \item a \textbf{reasoner}: for executing case-based reasoning
+            \item a \textbf{storage layer}: to interact with the various storage services
+        \end{itemize}
     
-    \item a storage service: for non-graphical data
-    \item a storage service: for graphical / ontological data
+    \item two \textbf{storage services}: 
+        \begin{itemize}
+            \item for \textbf{non-graphical data}
+            \item for \textbf{graphical / ontological data}
+        \end{itemize}
 \end{itemize}
 
 
@@ -25,7 +37,7 @@ Figure\ref{fig:frame-archi} shows the overall structure to be implemented. The c
 
 
 \subsection{Used Tools}
-    \subsubsection{Protégé}
+    \subsubsection{Protégé \label{subsubsec:protege}}
     Protégé is an ontology development and knowledge management tool that plays a central role in our feasibility study on the use of semantic technologies to support configuration processes in systems engineering. In particular, Protégé facilitates the creation, modification and visualization of ontologies and enables us to define and organize the key attributes relevant for simulations in the automotive industry.
     
     \subsubsection{Apache Jana}
@@ -35,8 +47,8 @@ Figure\ref{fig:frame-archi} shows the overall structure to be implemented. The c
     Apache Fuseki is an important component for managing and exposing RDF data as linked data resources. In our study, Apache Fuseki is used to provide an endpoint for querying and retrieving information from the knowledge graph and to ensure seamless integration with other tools and components of our platform.
 
     
-    \subsubsection{TDB2}
-    TDB2, the native triple store for Apache Jena, is used for persistent storage of RDF data. This ensures efficient data retrieval and management and contributes to the robustness and scalability of our simulation configuration solution.
+    \subsubsection{\acrshort{tdb2}}
+    \acrshort{tdb2}, the native triple store for Apache Jena, is used for persistent storage of RDF data. This ensures efficient data retrieval and management and contributes to the robustness and scalability of our simulation configuration solution.
     
     
     \subsubsection{MongoDB}
@@ -52,7 +64,7 @@ Figure\ref{fig:frame-archi} shows the overall structure to be implemented. The c
 \subsection{Development Strategy}
 Development begins with the creation of the ontology. Once the ontology had been created, all the architecture elements presented in Section\ref{subsec:archi-frame} were parameterized. These are the Front-end, the Back-end, MongoDB and Apache Fuseki. DockerFiles for setting up the containers were then created. Then a Docker-Compose file was defined for orchestration and communication between containers.\\
 
-Once the setup had been done, a set of functions (CRUD) for manipulating the databases were defined in the back-end. The CBR principles presented in Section\ref{subsec:cbr} were then implemented. This enabled us to:
+Once the setup had been done, a set of functions (CRUD) for manipulating the databases were defined in the back-end. The \acrshort{cbr} principles presented in Section\ref{subsec:cbr} were then implemented. This enabled us to:
 \begin{itemize}
     \item retrieve cases from the TDB2 database
     \item generate questions for users based on the elements present in the ontology
@@ -65,7 +77,7 @@ Once these functions had been fully defined, an API was defined so that they cou
 After completing the back-end implementation, a prototype user interface was coded and integrated with the API.
 
 
-\subsection{Development of the Ontology}
+\subsection{Development of the Ontology \label{subsec:ontologyDev}}
 Two options were considered for ontology development. The first was OntoUML, and the second was Protégé. In this section, we will analyze the strengths and weaknesses of each of these tools, and explain why Protégé was chosen.
 
     \subsubsection{Usage of OntoUML}
@@ -127,7 +139,7 @@ Two options were considered for ontology development. The first was OntoUML, and
         \end{itemize}
         
         \paragraph{Used Libraries / Package}
-        \begin{table}[H]
+        \begin{table}[h]
             \centering
     	    {\rowcolors{2}{teal!10}{white}
     	    \begin{tabular}{ | m{2.5cm} | m{12cm} | }
@@ -205,8 +217,10 @@ Two options were considered for ontology development. The first was OntoUML, and
         \end{table}
         
 \subsection{Framework's main Functions and Classes}
+All the codes presented in this section are simplified versions. Full versions can be found in the Appendix.\\
+
 \subsubsection{Extract the schema of a graph}
- When the backend server is launched, one of the first functions to be executed is to extract the ontology schema. To do this, the graph is traversed from an input class considered to be the root. The \textbf{create\_schema\_from\_class} function shown in Listing\ref{lst:create-schema} is used recursively. It extracts the attributes (\textbf{Data Properties}) of the class and is then used on each of the classes linked by a relationship to the one being studied (\textbf{Object Properties}).\\
+ When the backend server is launched, one of the first functions to be executed is to extract the ontology schema. To do this, the graph is traversed from an input class considered to be the root. The \textbf{create\_schema\_from\_class} function shown in Listing\ref{lst:create-schema} (see \textbf{Appendix\ref{annex:create-schema-full}} for a full version) is used recursively. It extracts the attributes (\textbf{Data Properties}) of the class and is then used on each of the classes linked by a relationship to the one being studied (\textbf{Object Properties}).\\
 
 An important point to note is that in an ontology, classes can be subclasses of another (\textbf{rdfs:subClassOf}). When creating the schema for a class, it is therefore important to check whether it has a parent class. If it does, the properties (Data Properties, Object Properties) of its parent should be added to its schema.
 The user can also exclude certain classes from the analysis. This is made possible by the \textbf{EXCLUDED\_CLASSES} global variable, which is a list of classes to be ignored.\\
@@ -219,16 +233,16 @@ def create_schema_from_class(
         node = Node(None, class_uri, depth)
 
         # Get all DataProperties of the instance
-        data_properties = get_class_data_properties(class_uri)
+        data_properties = get_class_data_properties(...)
         # Get all DataProperties of the superClass
-        super_data_properties = get_super_class_data_properties(class_uri)
+        super_data_properties = get_super_class_data_properties(...)
         data_properties += super_data_properties
 
         # Add all data properties to the node
         for property_uri, type_uri, type_list in data_properties:
-            property_suffix_uri = extractSuffixURI(Config.BASEPREFIX, property_uri)
-            type = type_list if type_list else extractSchemaType(type_uri)
-            node.addAttribute(DataObject(property_suffix_uri, None, type, depth))
+            property_suffix_uri = ...
+            type = ...
+            node.addAttribute(...)
 
         # Get all ObjectProperties of the instance
         object_properties = get_class_object_properties(class_uri)
@@ -238,19 +252,11 @@ def create_schema_from_class(
 
         # Add edges
         for property_uri, child_class_name_uri in object_properties:
-            child_class_name_turtle_uri = extractSuffixURI(
-                Config.BASEPREFIX, child_class_name_uri
-            )
-            if (child_class_name_turtle_uri not in visited) and (
-                child_class_name_turtle_uri not in Config.EXCLUDED_CLASSES
-            ):
-                property_suffix_uri = extractSuffixURI(Config.BASEPREFIX, property_uri)
-                node.addEdge(
-                    property_suffix_uri,
-                    self.create_schema_from_class(
-                        child_class_name_turtle_uri, depth + 1, visited
-                    ),
-                )
+            child_class_name_turtle_uri = extractSuffixURI(...)
+            # Check if the class is not already visited and is not in the list of excluded classes
+            if (...):
+                property_suffix_uri = ...
+                node.addEdge(...)
 
         return node
 \end{lstlisting}
@@ -260,7 +266,7 @@ def create_schema_from_class(
 Once the ontology schema has been extracted, it is searched (Depth search) using the recursive function \textbf{collectQuestionsFromClass}. For each attribute of a class, the \textbf{generateQuestion} function is used, and a question is generated based on the type of the attribute.
 
 \subsubsection{Get the similar cases}
-Listing\ref{lst:comp-sim} shows the main function of our framework. This function takes as its parameters the problem (target: Node), the list of attributes that must work, and the list of answers already given. To do this, for each graph in our ontology, the mandatory attributes are checked. If the graph respects these attributes, the function presented in Listing\ref{lst:comp-sim-node} is used to calculate the similarity between the target graph and that of the current iteration.\\
+Listing\ref{lst:comp-sim} shows the main function of our framework. This function takes as its parameters the problem (target: Node), the list of attributes that must work, and the list of answers already given. To do this, for each graph in our ontology, the mandatory attributes are checked. If the graph respects these attributes, the function presented in Listing\ref{lst:comp-sim-node} (see \textbf{Appendix\ref{annex:comp-sim-full}} for a full version) is used to calculate the similarity between the target graph and that of the current iteration.\\
 
 
 \begin{lstlisting}[language=Python, caption=Function to find the similarity between one case and all the cases in the data-base, label={lst:comp-sim}]
@@ -269,18 +275,17 @@ def computeSimilarity(
     ) -> list[Similarity]:
         similarities = []
 
-        print("-------------Similar", mandatories)
         for graphKey, graph in self.ontology.graphs.items():
             # Check if the graph respect the mandatories
-            check = checkValidGraphByMandatories(graph, mandatories, responsesStack)
+            check = checkValidGraphByMandatories(...)
             if check:
-                simi = Similarity(self.computeSimilarityForNode(graph, target), graph)
+                simi = Similarity(self.computeSimilarityForNode(...), graph)
                 similarities.append(simi)
 
         mean = self.similarityMean(similarities)
-        print("-------------Mean", mean)
 
-        similarities = list(filter(lambda x: x.value >= mean, similarities))
+        # Get only the most similar
+        similarities = list(filter(..., similarities))
 
         # order by similarity descending
         similarities.sort(key=lambda x: x.value, reverse=True)
@@ -291,7 +296,7 @@ def computeSimilarity(
     
     
 \subsubsection{Get the similar cases} 
-Here the principle of local-to-global calculation presented in Section\ref{subsec:similarity} is implemented. First we iterate over the set of Node target attributes and for each pair of values, the function presented in Listing\ref{lst:comp-sim-att} is called. This calculates the similarity value between two attributes according to their type. Then, for each Edge in our graph, the function is used iteratively.
+Here the principle of local-to-global calculation presented in Section\ref{subsec:similarity} is implemented. First we iterate over the set of Node target attributes and for each pair of values, the function presented in Listing\ref{lst:comp-sim-node} (see \textbf{Appendix\ref{annex:comp-sim-node-full}} for a full version) is called. This calculates the similarity value between two attributes according to their type. Then, for each Edge in our graph, the function is used iteratively.
 After iterating over all the attributes and edges (child nodes), the similarity value between the two nodes is calculated by applying the same weight to each attribute and child.\\
 
 \begin{lstlisting}[language=Python, caption=Function to find the similarity between one case and all the cases in the data-base, label={lst:comp-sim-node}]
@@ -306,7 +311,7 @@ def computeSimilarityForNode(self, node: Node, target: Node) -> float:
                 if nodeAttribute is None:
                     continue
 
-                sim = self.computeSimilarityForAttribute(nodeAttribute, targetAttribute)
+                sim = self.computeSimilarityForAttribute(...)
                 attributSimilarity += sim
                 numberOfAttribute += 1
 
@@ -325,9 +330,7 @@ def computeSimilarityForNode(self, node: Node, target: Node) -> float:
                 for nodeEdge in nodeEdges:
                     if nodeEdge is not None:
                         collectorSim.append(
-                            self.computeSimilarityForNode(
-                                nodeEdge["childNode"], targetEdge["childNode"]
-                            )
+                            self.computeSimilarityForNode(...)
                         )
 
             sim = max(collectorSim)
@@ -347,7 +350,7 @@ def computeSimilarityForNode(self, node: Node, target: Node) -> float:
 
 
 \subsubsection{Find the similarity value between two attributes} 
-Calculating the similarity between two attributes depends largely on their type. In the function presented in Listing\ref{lst:comp-sim-att}, a distinction is made between cases based on the type of attributes. Depending on the type, a specific utility function is used.\\
+Calculating the similarity between two attributes depends largely on their type. In the function presented in Listing\ref{lst:comp-sim-att} (see \textbf{Appendix\ref{annex:comp-sim-att-full}} for a full version), a distinction is made between cases based on the type of attributes. Depending on the type, a specific utility function is used.\\
 
 \begin{lstlisting}[language=Python, caption=Function to compute the similarity value between two attributes, label={lst:comp-sim-att}]
 def computeSimilarityForAttribute(
@@ -361,33 +364,19 @@ def computeSimilarityForAttribute(
                     nodeAttribute.value, targetAttribute.value
                 )
             case "int":
-                similarity = computeNumericSigmoidSimilarity(
-                    nodeAttribute.value, targetAttribute.value
-                )
+                similarity = computeNumericSigmoidSimilarity(...)
             case "double":
-                similarity = computeNumericSigmoidSimilarity(
-                    nodeAttribute.value, targetAttribute.value
-                )
+                similarity = computeNumericSigmoidSimilarity(...)
             case "decimal":
-                similarity = computeNumericSigmoidSimilarity(
-                    nodeAttribute.value, targetAttribute.value
-                )
+                similarity = computeNumericSigmoidSimilarity(...)
             case "float":
-                similarity = computeNumericSigmoidSimilarity(
-                    nodeAttribute.value, targetAttribute.value
-                )
+                similarity = computeNumericSigmoidSimilarity(...)
             case "boolean":
-                similarity = self.computeEqualSimilarity(
-                    nodeAttribute.value, targetAttribute.value
-                )
+                similarity = self.computeEqualSimilarity(...)
             case "date":
-                similarity = computeStringSortRatio(
-                    nodeAttribute.value, targetAttribute.value
-                )
+                similarity = computeStringSortRatio(...)
             case _:
-                similarity = self.computeEqualSimilarity(
-                    nodeAttribute.value, targetAttribute.value
-                )
+                similarity = self.computeEqualSimilarity(...)
 
         return similarity
 \end{lstlisting}
@@ -453,15 +442,15 @@ def computeNumericSigmoidSimilarity(value1, value2):
 In summary, the choice of similarity computation method depends on the nature of the data and the desired characteristics of the similarity measure. Exponential similarity emphasizes proximity sensitivity, fuzzy similarity accommodates uncertainty, and sigmoid similarity is suitable for situations where similarity saturates with increasing proximity.
 
 \subsection{Web Application}
-As already explained in the previous chapters, a prototype UI has been set up in order to demonstrate the use of the CBR mechanism in practical cases. In this section, the different views and elements of this UI will be presented, along with their usefulness.
+As already explained in the previous chapters, a prototype \acrshort{ui} has been set up in order to demonstrate the use of the \acrshort{cbr} mechanism in practical cases. In this section, the different views and elements of this \acrshort{ui} will be presented, along with their usefulness.
 
     \subsubsection{The home page}
-    Figure\ref{fig:proto-home} shows the home view of the UI. Here the user can create a new account in which to work or choose an existing account. Each account has a list of configuration processes.
+    Figure\ref{fig:proto-home} shows the home view of the \acrshort{ui}. Here the user can create a new account in which to work or choose an existing account. Each account has a list of configuration processes.
     
-    \begin{figure}[h]
+    \begin{figure}[H]
     \centering
     \frame{\includegraphics[width=\textwidth]{images/proto-home.png}}
-    \caption{\label{fig:proto-home}  Home view of the UI prototype}
+    \caption{\label{fig:proto-home}  Home view of the \acrshort{ui} prototype}
     \end{figure}
     
     
@@ -478,7 +467,7 @@ As already explained in the previous chapters, a prototype UI has been set up in
     \begin{figure}[h]
     \centering
     \frame{\includegraphics[width=\textwidth]{images/proto-demo.png}}
-    \caption{\label{fig:proto-demo}  Main view of the UI prototype}
+    \caption{\label{fig:proto-demo}  Main view of the \acrshort{ui} prototype}
     \end{figure}
     
     

@@ -7,179 +7,178 @@
 
 \label{annex:framework}
 
-\subsection{Statechart Inheritance in Rhapsody\label{annex:proto_inheritance}}
+\subsection{Function to create the schema of the ontology (Full)\label{annex:create-schema-full}}
 
-A concrete prototype that makes use of stepwise customisation was implemented in Rhapsody to
-show how state machine inheritance can be used and to find possible limitations.
+\begin{lstlisting}[language=Python, caption=Function to create the schema of the ontology (Full), label={lst:create-schema-full}]
+def create_schema_from_class(
+        self, class_uri: str, depth: int, visited: dict[str, bool]
+    ) -> Node:
+        visited[class_uri] = True
+        node = Node(None, class_uri, depth)
+
+        # Get all DataProperties of the instance
+        data_properties = get_class_data_properties(class_uri)
+        # Get all DataProperties of the superClass
+        super_data_properties = get_super_class_data_properties(class_uri)
+        data_properties += super_data_properties
+
+        # Add all data properties to the node
+        for property_uri, type_uri, type_list in data_properties:
+            property_suffix_uri = extractSuffixURI(Config.BASEPREFIX, property_uri)
+            type = type_list if type_list else extractSchemaType(type_uri)
+            node.addAttribute(DataObject(property_suffix_uri, None, type, depth))
+
+        # Get all ObjectProperties of the instance
+        object_properties = get_class_object_properties(class_uri)
+        # Get all ObjectProperties of his super class
+        super_object_properties = get_super_class_object_properties(class_uri)
+        object_properties += super_object_properties
+
+        # Add edges
+        for property_uri, child_class_name_uri in object_properties:
+            child_class_name_turtle_uri = extractSuffixURI(
+                Config.BASEPREFIX, child_class_name_uri
+            )
+            # Check if the class is not already visited and is not in the list of excluded classes
+            if (child_class_name_turtle_uri not in visited) and (
+                child_class_name_turtle_uri not in Config.EXCLUDED_CLASSES
+            ):
+                property_suffix_uri = extractSuffixURI(Config.BASEPREFIX, property_uri)
+                node.addEdge(
+                    property_suffix_uri,
+                    self.create_schema_from_class(
+                        child_class_name_turtle_uri, depth + 1, visited
+                    ),
+                )
+
+        return node
+\end{lstlisting}
 
 
 
 
 \clearpage
-\subsection{State Machine Model Data Structure\label{annex:proto_delta}}
+\subsection{Function to find the similarity between one case and all the cases in the data-base (Full)\label{annex:comp-sim-full}}
+\begin{lstlisting}[language=Python, caption=Function to find the similarity between one case and all the cases in the data-base (Full), label={lst:comp-sim-full}]
+def computeSimilarity(
+        self, target: Node, mandatories: list[str], responsesStack: dict[str, Any]
+    ) -> list[Similarity]:
+        similarities = []
 
-\begin{lstlisting}[language=CXX, label={lst:proto_sm_model}, caption={State machine model data structure.}]
+        for graphKey, graph in self.ontology.graphs.items():
+            # Check if the graph respect the mandatories
+            check = checkValidGraphByMandatories(graph, mandatories, responsesStack)
+            if check:
+                simi = Similarity(self.computeSimilarityForNode(graph, target), graph)
+                similarities.append(simi)
 
-enum StateType {
-    Machine,
-    Simple,
-    Parallel,
-    Composite,
-    Initial,
-    Final
-};
+        mean = self.similarityMean(similarities)
 
-struct State {
-    string id;
-    StateType type;
-    State* parent;
-    list<State*> children;
-    string do_activity_id;
-    string entry_action_id;
-    string exit_action_id;
-};
+        similarities = list(filter(lambda x: x.value >= mean, similarities))
 
-struct Transition {
-    State* source;
-    State* target;
-    string event_id;
-    string guard_id;
-    string action_id;
-};
+        # order by similarity descending
+        similarities.sort(key=lambda x: x.value, reverse=True)
 
-struct StateMachine : State { // type = Machine;
-    list<State*> m_all_states;
-    list<Transition*> m_all_transitions;
-};
-
+        return similarities
 \end{lstlisting}
 
-Listing~[].
 
 
 \clearpage
-\subsection{State Machine Model Definitions\label{annex:impl_basic_sm}}
+\subsection{Function to find the similarity between one case and all the cases in the data-base (Full)\label{annex:comp-sim-node-full}}
+\begin{lstlisting}[language=Python, caption=Function to find the similarity between one case and all the cases in the data-base (Full), label={lst:comp-sim-node-all}]
+# compute similarity between two graph using local to global traversal
+    def computeSimilarityForNode(self, node: Node, target: Node) -> float:
+        # Local computation
+        attributSimilarity = 0
+        numberOfAttribute = 0
+        for key, targetAttribute in target.attributes.items():
+            if targetAttribute.value is not None:
+                nodeAttribute = node.getAttribute(key)
 
-\begin{lstlisting}[language=CXX, label={lst:annex_basic_model}, caption={Basic life cycle without omissions.}]
-struct ModelBuilder : IModelBuilder {
+                if nodeAttribute is None:
+                    continue
 
-    std::unique_ptr<Model> MakeModel() override {
-        auto model = std::make_unique<Model>("sm");
+                sim = self.computeSimilarityForAttribute(nodeAttribute, targetAttribute)
+                attributSimilarity += sim
+                numberOfAttribute += 1
 
-        // add states
-        AddState(*model, Initial,   "Initial");
-        AddState(*model, Composite, "On");
-        AddState(*model, Final,     "Off");
-        AddState(*model, Initial,   "On.Initial",
-                                    "On");
-        AddState(*model, Composite, "On.NotOperational",
-                                    "On");
-        AddState(*model, Simple,    "On.Operational",
-                                    "On");
-        AddState(*model, Initial,   "On.NotOperational.Initial",
-                                    "On.NotOperational");
-        AddState(*model, Simple,    "On.NotOperational.Starting",
-                                    "On.NotOperational",
-                                    "ActivityStarting",
-                                    "ActionStartingEntry");
-        AddState(*model, Simple,    "On.NotOperational.NotReady",
-                                    "On.NotOperational");
-        AddState(*model, Simple,    "On.NotOperational.Initialising",
-                                    "On.NotOperational",
-                                    "ActivityInitialising",
-                                    "ActionInitialisingEntry");
-        AddState(*model, Simple,    "On.NotOperational.Ready",
-                                    "On.NotOperational");
-        AddState(*model, Simple,    "On.NotOperational.Enabling",
-                                    "On.NotOperational",
-                                    "ActivityEnabling",
-                                    "ActionEnablingEntry");
-        AddState(*model, Simple,    "On.NotOperational.Disabling",
-                                    "On.NotOperational",
-                                    "ActivityDisabling",
-                                    "ActionDisablingEntry");
-        // add transitions
-        AddTrans(*model, "Initial",
-                         "On");
-        AddTrans(*model, "On",
-                         "Off",
-                         "events.Exit",
-                         "",
-                         "ActionExit");
-        AddTrans(*model, "On",
-                         "",
-                         "events.GetState",
-                         "",
-                         "ActionGetState");
-        AddTrans(*model, "On",
-                         "On",
-                         "events.Reset");
-        AddTrans(*model, "On.Initial",
-                         "On.NotOperational");
-        AddTrans(*model, "On.NotOperational.Initial",
-                         "On.NotOperational.Starting");
-        AddTrans(*model, "On.NotOperational.Starting",
-                         "On.NotOperational.NotReady",
-                         "events.Done",
-                         "",
-                         "ActionStartingDone");
-        AddTrans(*model, "On.NotOperational.NotReady",
-                         "On.NotOperational.Initialising",
-                         "events.Init");
-        AddTrans(*model, "On.NotOperational.Initialising",
-                         "On.NotOperational.Ready",
-                         "events.Done",
-                         "",
-                         "ActionInitialisingDone");
-        AddTrans(*model, "On.NotOperational.Initialising",
-                         "On.NotOperational.NotReady",
-                         "events.Error",
-                         "",
-                         "ActionInitialisingFailed");
-        AddTrans(*model, "On.NotOperational.Initialising",
-                         "On.NotOperational.NotReady",
-                         "events.Stop",
-                         "",
-                         "ActionInitialisingStopped");
-        AddTrans(*model, "On.NotOperational.Initialising",
-                         "On.NotOperational.Initialising",
-                         "events.Init",
-                         "",
-                         "ActionInitialisingRestarted");
-        AddTrans(*model, "On.NotOperational.Ready",
-                         "On.NotOperational.Initialising",
-                         "events.Init");
-        AddTrans(*model, "On.NotOperational.Ready",
-                         "On.NotOperational.Enabling",
-                         "events.Enable");
-        AddTrans(*model, "On.NotOperational.Enabling",
-                         "On.Operational",
-                         "events.Done",
-                         "",
-                         "ActionEnablingDone");
-        AddTrans(*model, "On.NotOperational.Enabling",
-                         "On.NotOperational.Ready",
-                         "events.Error",
-                         "",
-                         "ActionEnablingFailed");
-        AddTrans(*model, "On.Operational",
-                         "On.NotOperational.Disabling",
-                         "events.Disable");
-        AddTrans(*model, "On.NotOperational.Disabling",
-                         "On.NotOperational.Ready",
-                         "events.Done",
-                         "",
-                         "ActionDisablingDone");
-        AddTrans(*model, "On.NotOperational.Disabling",
-                         "On.NotOperational.Ready",
-                         "events.Error",
-                         "",
-                         "ActionDisablingFailed");
+        # Global computation
+        childSimilarity = 0
+        numberOfEdges = 0
+        for key, targetEdges in target.edges.items():
+            nodeEdges = node.getEdge(key)
 
-        return model;
-    }
-};
+            if nodeEdges is None:
+                continue
+
+            # iterate over all the edeges of this node with the same URI
+            collectorSim = [0]
+            for targetEdge in targetEdges:
+                for nodeEdge in nodeEdges:
+                    if nodeEdge is not None:
+                        collectorSim.append(
+                            self.computeSimilarityForNode(
+                                nodeEdge["childNode"], targetEdge["childNode"]
+                            )
+                        )
+
+            sim = max(collectorSim)
+            childSimilarity += sim
+            numberOfEdges += 1
+
+        if (numberOfAttribute + numberOfEdges) == 0:
+            return 0
+
+        nodeSimilarity = (attributSimilarity + childSimilarity) / (
+            numberOfAttribute + numberOfEdges
+        )
+
+        return nodeSimilarity
 \end{lstlisting}
 
 
+\clearpage
+\subsection{Function to compute the similarity value between two attributes (Full)\label{annex:comp-sim-att-full}}
+\begin{lstlisting}[language=Python, caption=Function to compute the similarity value between two attributes, label={lst:comp-sim-att}]
+def computeSimilarityForAttribute(
+        self, nodeAttribute: DataObject, targetAttribute: DataObject
+    ) -> float:
+        similarity = 0
 
+        match nodeAttribute.type:
+            case "string":
+                similarity = computeStringLevensteinSimilarity(
+                    nodeAttribute.value, targetAttribute.value
+                )
+            case "int":
+                similarity = computeNumericSigmoidSimilarity(
+                    nodeAttribute.value, targetAttribute.value
+                )
+            case "double":
+                similarity = computeNumericSigmoidSimilarity(
+                    nodeAttribute.value, targetAttribute.value
+                )
+            case "decimal":
+                similarity = computeNumericSigmoidSimilarity(
+                    nodeAttribute.value, targetAttribute.value
+                )
+            case "float":
+                similarity = computeNumericSigmoidSimilarity(
+                    nodeAttribute.value, targetAttribute.value
+                )
+            case "boolean":
+                similarity = self.computeEqualSimilarity(
+                    nodeAttribute.value, targetAttribute.value
+                )
+            case "date":
+                similarity = computeStringSortRatio(
+                    nodeAttribute.value, targetAttribute.value
+                )
+            case _:
+                similarity = self.computeEqualSimilarity(
+                    nodeAttribute.value, targetAttribute.value
+                )
+
+        return similarity
+\end{lstlisting}

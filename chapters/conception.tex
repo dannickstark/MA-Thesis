@@ -151,8 +151,8 @@ There is no single technique for modeling a domain; there are always valid optio
     For our purposes, instances will be created using a migration system when our server is first launched (see Chapter\ref{sec:implementation}).
     
 
-\subsection{Case-Based reasoning \label{subsec:cbr}}
-Case-based reasoning (CBR) is an approach to building intelligent systems that models the way humans think. Figure\ref{fig:simple-cbr} shows a simplified model of CBR. This method involves recording past experiences in the form of cases. These cases are then retrieved and reused (partially, fully or modified) to solve new problems. The new experience acquired in this way will in turn be stored in the memory and will later help in the resolution of a new case. It's therefore a cycle following a number of stages. Figure\ref{fig:cbr-cycle} shows the CBR cycle. And the stages making up this cycle are as follows.
+\subsection{\acrfull{cbr} \label{subsec:cbr}}
+\acrshort{cbr} is an approach to building intelligent systems that models the way humans think. Figure\ref{fig:simple-cbr} shows a simplified model of \acrshort{cbr}. This method involves recording past experiences in the form of cases. These cases are then retrieved and reused (partially, fully or modified) to solve new problems. The new experience acquired in this way will in turn be stored in the memory and will later help in the resolution of a new case. It's therefore a cycle following a number of stages. Figure\ref{fig:cbr-cycle} shows the \acrshort{cbr} cycle. And the stages making up this cycle are as follows.
     
     \begin{enumerate}
         \item Retrieve
@@ -175,7 +175,7 @@ Case-based reasoning (CBR) is an approach to building intelligent systems that m
     
 
     \subsection{Retrieve}
-    The aim here is to find the case(s) in the database most similar to the query, taking into account certain similarity functions or criteria. The key question here is how to measure similarity between 2 entities. This will be studied in greater depth in Section\ref{subsec:similarity}. The problem that can quickly arise here is that, over time, as the database of cases increases, the efficiency of the search decreases. This is because numerous cases have to be examined to find the most similar ones. There is therefore a sub-field of CBR research which focuses on methods to improve search efficiency. One example is the use of special index structures such as "kd-trees", case-finding networks or discrimination networks \cite{cbrIntroRecent}.
+    The aim here is to find the case(s) in the database most similar to the query, taking into account certain similarity functions or criteria. The key question here is how to measure similarity between 2 entities. This will be studied in greater depth in Section\ref{subsec:similarity}. The problem that can quickly arise here is that, over time, as the database of cases increases, the efficiency of the search decreases. This is because numerous cases have to be examined to find the most similar ones. There is therefore a sub-field of \acrshort{cbr} research which focuses on methods to improve search efficiency. One example is the use of special index structures such as "kd-trees", case-finding networks or discrimination networks \cite{cbrIntroRecent}.
     
     \subsection{Reuse}
     Once similar cases have been obtained, the answer (or any other information relating to the solution of the problem) from these cases is used to deal with the current problem. There are two types of reuse: simple reuse and reuse with adaptation. 
@@ -186,7 +186,7 @@ Case-based reasoning (CBR) is an approach to building intelligent systems that m
         \item \textbf{Reuse with adaptation} is necessary for synthetic tasks such as planning or configuration. For these tasks, the number of possible solutions far exceeds the number of available examples (or is even infinite).
     \end{itemize}
 
-    Numerous adaptation proposals have been put forward within the CBR framework. The main difference between all these adaptation methods is whether they are transformational or generative.
+    Numerous adaptation proposals have been put forward within the \acrshort{cbr} framework. The main difference between all these adaptation methods is whether they are transformational or generative.
     
     \begin{itemize}
         \item Transformational adaptation is based on a set of adaptation rules or operators, which specify how variations in the problem lead to the necessary changes in the solution.  
@@ -194,7 +194,7 @@ Case-based reasoning (CBR) is an approach to building intelligent systems that m
         \item Generative adaptation requires the use of a generative problem solver such as LLM. The latter must be able to solve problems based on general knowledge. Here, it's not the case solutions that are really used, but the path (reasoning) taken to obtain these solutions. 
     \end{itemize}
 
-    Adaptation can be a tedious process. This is why the majority of work in the field of CBR seeks to avoid or reduce the modifications to be made once an interesting case has been obtained.
+    Adaptation can be a tedious process. This is why the majority of work in the field of \acrshort{cbr} seeks to avoid or reduce the modifications to be made once an interesting case has been obtained.
 
 
     \subsection{Revise}
@@ -202,13 +202,13 @@ Case-based reasoning (CBR) is an approach to building intelligent systems that m
     
     
     \subsection{Retain}
-    This phase represents the learning phase of the CBR system. In a CBR system, learning consists in adding a new case, generally by modifying a case already in the case base. This new case then becomes available for use in future problem-solving processes.\\
+    This phase represents the learning phase of the \acrshort{cbr} system. In a \acrshort{cbr} system, learning consists in adding a new case, generally by modifying a case already in the case base. This new case then becomes available for use in future problem-solving processes.\\
     However, as mentioned above, the constant expansion of the case base can at some point create a utility problem, as it reduces the efficiency of the search. Researchers have devised special algorithms for learning similarity measures. Early techniques focused on the use of feature weights \cite{cbrIntroRecent}. But more recent methods tackle the more difficult task of using local and global similarity functions \cite{shaheen2020novel, jaiswal2022f}. 
 
     
     
     \subsection{Similarity\label{subsec:similarity}}
-    As presented in the retrieve step, the main concept of CBR is similarity. This is due to the fact that the cases chosen during the process are those most similar to the current situation (query). Similarity can be formalized by a function $sim: P \times P \rightarrow [0, 1]$, which compares two problem descriptions of type \textbf{P} and returns a score between 0 and 1. The higher this score, the more similar the two problems are considered to be \cite{cbrIntroRecent}.\\
+    As presented in the retrieve step, the main concept of \acrshort{cbr} is similarity. This is due to the fact that the cases chosen during the process are those most similar to the current situation (query). Similarity can be formalized by a function $sim: P \times P \rightarrow [0, 1]$, which compares two problem descriptions of type \textbf{P} and returns a score between 0 and 1. The higher this score, the more similar the two problems are considered to be \cite{cbrIntroRecent}.\\
     For a new problem \textbf{p}, a case $c_1 = (p_1, s_1)$ is more appropriate than a case $c_2 = (p_2, s_2)$ (represented by $c_1 \succ_p c_2$) \textbf{iff} $sim(p, p_2) < sim(p, p_3)$. Here, the exact value of the similarities is not the most important factor, but the fact that these values allow us to give an order of relevance between the different cases considered. This order of preference corresponds to the evaluation of the usefulness of these cases for the treatment of problem \textbf{p} during the reuse phase.\\
     
     The local-global approach, first introduced by Richter \cite{richter2008similarity, richter2013basic}, is the most widely implemented. Figure\ref{fig:cbr-exam} shows an example of similarity calculation using this principle. Here, cases are represented by graphs, in which each \textbf{Node} has attributes $A_i$ of different types $T_i$. For each Node, a local calculation is first performed at the level of these attributes, using a similarity function $_i = sim_{A_i} : T_i \times T_i$ according to the type of attribute. The local similarities are then combined to calculate the global similarity using an appropriate combination. The combination adopted is called the \textbf{amalgamation function: F}, and also takes into account the different weights of the attributes. There are a number of different amalgamation functions:

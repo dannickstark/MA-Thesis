@@ -79,7 +79,7 @@ This chapter presents the techniques and conclusions of the literature review. F
                 \caption{\label{tab:keyw-syno} Keywords and their synonyms}
             \end{table}
 
-            The keywords found were then searched for synonyms, related phrases and alternative spellings \cite{budgen2006performing}. As usual, Boolean logic was used to define a search string, combining alternative phrases with \textbf{“OR”} and linking terms with \textbf{“AND”}. The final search string is as follows:
+            The keywords found were then searched for synonyms, related phrases and alternative spellings \cite{budgen2006performing}. As usual, Boolean logic was used to define a search string, combining alternative phrases with \textbf{“OR”} and linking terms with \textbf{“AND”}. The final search string is as follows:\\
 
             \begin{lstlisting}[language=XML, caption=Generated Query, label={lst:gen-query}]
 "semantic technologies" 
@@ -100,12 +100,12 @@ OR (("Computer Aided" OR "Computer Assisted") AND "engineering")
             \begin{itemize}
                 \item Inclusion criteria:
                     \begin{itemize}
-                        \item \textbf{IC2}: Papers with keywords that match our query (at the level of their title or abstract).
+                        \item \textbf{IC1}: Papers with keywords that match our query (at the level of their title or abstract).
                     \end{itemize}
 
                 \item Exclusion criteria:
                     \begin{itemize}
-                        \item \textbf{EC1} : Papers whose abstract content does not focus on one of the following themes:
+                        \item \textbf{EC1\label{EC1}} : Papers whose abstract content does not focus on one of the following themes:
                             \begin{itemize}
                                 \item semantic technologies,
                                 \item expertise systems
@@ -113,9 +113,9 @@ OR (("Computer Aided" OR "Computer Assisted") AND "engineering")
                                 \item rule-based reasoning
                             \end{itemize}
 
-                        \item \textbf{EC2} : Papers not written in English or German
+                        \item \textbf{EC2\label{EC2}} : Papers not written in English or German
 
-                        \item \textbf{EC3} : Papers not publicly accessible from the chosen platforms
+                        \item \textbf{EC3\label{EC3}} : Papers not publicly accessible from the chosen platforms
                     \end{itemize}
             \end{itemize}
 
@@ -134,7 +134,7 @@ OR (("Computer Aided" OR "Computer Assisted") AND "engineering")
            In the context of this research, three facets have been identified. The first facet summarizes the subject of our thesis (i.e., Semantic Technologies usage). Table\ref{tab:sem-tec-usage} shows the possible values of this facet. The other two facets are more commonly used to group research contributions and can therefore be integrated \cite{petersen2008systematic, wieringa2006requirements}: research type and contribution.\\
             The research facet represents the research technique used in the study; these approaches are domain-neutral and can be used without change (Table\ref{tab:contri-ty-face}).\\
             The third facet, the contribution facet, documents the contribution made in terms of, for example, process, method or tool, etc. (Table\ref{tab:research-ty-face}).\\
-            The results of the SMS are presented below. The appendix contains the full results.
+            The results of the \acrshort{sms} are presented below. The appendix contains the full results.
 
         
             \begin{table}[h]
@@ -223,8 +223,8 @@ OR (("Computer Aided" OR "Computer Assisted") AND "engineering")
         This section presents the results of the mapping study. Paragraph\ref{para:sms_analysis} provides an analysis of the results obtained, followed by in-depth answers to the research questions defined in Paragraph\ref{para:sms_ans_rq}.
 
             \paragraph{Results of Database Search}
-            The predefined keywords and the EC2 criterion were used to obtain a total of 26270 research publications. These are classified as, 25175 for IEEE, 203 for ACM and 892 for ScienceDirect. Due to the EC3 exclusion criterion, the number of articles obtained fell to 389 for IEEE, 203 for ACM and 125 for ScienceDirect. For a total of 717 articles. The EC1 exclusion criterion was then used to reduce the number of relevant articles even further. This resulted in a total of 24 articles.\\
-            This was followed by a manual keyword-by-keyword search, which produced better quality results. Manual target searching has been shown to produce high quality search results when combined with searches of digital libraries (Jorgensen and Shepperd 2007). We integrated manual target searches from other platforms, such as Google Scholar. This resulted in 27 additional articles. Table\ref{tab:rel-papers} shows the list of articles selected, classified by publication date. This list was filtered on the basis of inclusion and exclusion criteria, and duplicate articles from different platforms were removed.\\
+            The predefined keywords and the \hyperref[EC2]{\textbf{EC2}} criterion were used to obtain a total of \textbf{26270} research publications. These are classified as, \textbf{25175} for IEEE, \textbf{203} for ACM and \textbf{892} for ScienceDirect. Due to the \hyperref[EC3]{\textbf{EC3}} exclusion criterion, the number of articles obtained fell to \textbf{389} for IEEE, \textbf{203} for ACM and \textbf{125} for ScienceDirect. For a total of \textbf{717} articles. The \hyperref[EC1]{\textbf{EC1}} exclusion criterion was then used to reduce the number of relevant articles even further. This resulted in a total of \textbf{24 articles}.\\
+            This was followed by a manual keyword-by-keyword search, which produced better quality results. Manual target searching has been shown to produce high quality search results when combined with searches of digital libraries \cite{petersen2008systematic}. We integrated manual target searches from other platforms, such as Google Scholar. This resulted in 27 additional articles. Table\ref{tab:rel-papers} shows the list of articles selected, classified by publication date. This list was filtered on the basis of inclusion and exclusion criteria, and duplicate articles from different platforms were removed.\\
 
             
         	    {\rowcolors{2}{teal!10}{white}
@@ -395,9 +395,9 @@ OR (("Computer Aided" OR "Computer Assisted") AND "engineering")
             The next step in our analysis is to interpret the figures according to how semantic technologies are used.\\
             Starting with knowledge representation, there are few tools in use. As presented in \cite{chen2012recommendation, abadi2018improving, liu2010ontology}, the tool generally used to create or maintain ontologies is “Protégé” and there is no regular procedure for setting up ontologies \cite{noy2001ontology}. This is why very few articles are based on a step-by-step presentation of the process. The team behind “Protégé” has nevertheless put together a set of best practices to follow \cite{noy2001ontology} in order to work as optimally as possible with their software. There are, however, articles that show how to create an ontology and the steps to follow \cite{sure2002methodology, li2018ontology}, but these are mostly domain-specific. \\
 
-            When creating an ontology, it is possible to define constraints and rules that will be used by reasoners to perform inferences \cite{noy2001ontology}. These rules can be further defined using SWRL (Semantic Web Rule Language) \cite{liu2010ontology, abadi2018improving}. This ontological language is based on OWL and, thanks to the principle of \acrfull{fol}, allows conditions to be defined, as well as the result if they are verified or not. A number of tools, such as JavaDON \cite{jovanovic2005achieving} or the "SWRLTab" plugin for “Protégé” \cite{liu2010ontology}, make it easy to define these rules. As demonstrated in \cite{li2018ontology, jeon2016automatic, na2016development}, the process of creating these rules is fairly standard and requires only a deep understanding of the relationships and interdependencies between the various elements of the ontology.\\
+            When creating an ontology, it is possible to define constraints and rules that will be used by reasoners to perform inferences \cite{noy2001ontology}. These rules can be further defined using \acrfull{swrl} \cite{liu2010ontology, abadi2018improving}. This ontological language is based on \acrshort{owl} and, thanks to the principle of \acrfull{fol}, allows conditions to be defined, as well as the result if they are verified or not. A number of tools, such as JavaDON \cite{jovanovic2005achieving} or the "SWRLTab" plugin for “Protégé” \cite{liu2010ontology}, make it easy to define these rules. As demonstrated in \cite{li2018ontology, jeon2016automatic, na2016development}, the process of creating these rules is fairly standard and requires only a deep understanding of the relationships and interdependencies between the various elements of the ontology.\\
 
-            Alongside rule-based reasoning, there is also case-based reasoning. The latter is used in the field of artificial intelligence \cite{wilke1995fallbasiertes, althoff1992fallbasiertes}, but is becoming less and less popular, being replaced by deep learning and neural networks \cite{wiratunga2011case}. In the field of engineering, there are numerous model proposals and experimental procedures, which show how this reasoning could be used to solve specific problems. Nevertheless, it remains very popular with companies for assisting employees in making decisions based on previous decisions present in archives \cite{eshach2003case}. Compared with other AI techniques, CBR considerably reduces the work involved in gathering and representing knowledge, which is undoubtedly one of the main reasons for the commercial success of CBR applications \cite{benjamin2006using, wiratunga2011case}. Tools for performing case-based reasoning are few and \textbf{fairly old}. They include ProCake, myCBR, jCOLIBRI and others.\\
+            Alongside rule-based reasoning, there is also case-based reasoning. The latter is used in the field of artificial intelligence \cite{wilke1995fallbasiertes, althoff1992fallbasiertes}, but is becoming less and less popular, being replaced by deep learning and neural networks \cite{wiratunga2011case}. In the field of engineering, there are numerous model proposals and experimental procedures, which show how this reasoning could be used to solve specific problems. Nevertheless, it remains very popular with companies for assisting employees in making decisions based on previous decisions present in archives \cite{eshach2003case}. Compared with other \acrshort{ai} techniques, \acrshort{cbr} considerably reduces the work involved in gathering and representing knowledge, which is undoubtedly one of the main reasons for the commercial success of \acrshort{cbr} applications \cite{benjamin2006using, wiratunga2011case}. Tools for performing case-based reasoning are few and \textbf{fairly old}. They include ProCake, myCBR, jCOLIBRI and others.\\
 
             When it comes to case-based reasoning, much of the research focuses on how similarity values between elements can be calculated. As shown in the articles \cite{shaheen2020novel, chen2012recommendation, wang2020similarity, malburg2021improving, racharak2021approximation, adel2022interval} there are numerous algorithms for calculating similarity between values depending on their type.\\
 
@@ -462,18 +462,18 @@ OR (("Computer Aided" OR "Computer Assisted") AND "engineering")
         Semantic technology is a set of approaches, tools, and strategies that offer sophisticated mechanisms for enhancing data in a domain with explicit meanings, making it understandable to computers. By creating data models known as ontologies, semantic web technologies represent an area of interest with a high degree of abstraction.\\ 
         
             \paragraph{RDF's Serializations}
-                Unlike other data models, RDF data models do not rely on a single serialization syntax. Triples in an RDF dataset can be serialized in a number of ways \cite{martinez2012exchange}, and some of the most common serialization methods are : 
+                Unlike other data models, \acrshort{rdf} data models do not rely on a single serialization syntax. Triples in an \acrshort{rdf} dataset can be serialized in a number of ways \cite{martinez2012exchange}, and some of the most common serialization methods are : 
 
                 \begin{itemize}
                     \item \textbf{RDF/XML}: RDF/XML is the most widely used serialization format for RDF in the W3C recommendations. RDF/XML is an XML-style tree document with a graph based on triples, which makes it theoretically difficult and verbose. 
-                    \item \textbf{Notation3 (.n3)}: Unlike R/XML, N3 syntax is more concise and easier to understand because it is closer to the subject-predicate-object paradigm of RDF. 
-                    \item JSON for Linking Data (JSON-LD) is a relatively new, user-friendly format. It combines web syntax (JSON) with RDF principles \cite{grlicky2005overview}. 
-                    \item \textbf{Turtle}: The Turtle syntax is the successor to the N3 syntax, allowing more concise encoding of RDF data.
+                    \item \textbf{Notation3 (.n3)}: Unlike R/XML, N3 syntax is more concise and easier to understand because it is closer to the subject-predicate-object paradigm of \acrshort{rdf}. 
+                    \item \acrfull{json} for Linking Data (JSON-LD) is a relatively new, user-friendly format. It combines web syntax (\acrshort{json}) with \acrshort{rdf} principles \cite{grlicky2005overview}. 
+                    \item \textbf{Turtle}: The Turtle syntax is the successor to the N3 syntax, allowing more concise encoding of \acrshort{rdf} data.
                 \end{itemize}
 
-                Listing \ref{lst:rdf-xml}, Listing \ref{lst:rdf-turtle} and Listing \ref{lst:rdf-json-ld} show the serializations of a single example in different formats (RDF/XML, Turtle, JSON-LD) and the Figure \ref{fig:rdf-xml-example} shows the graphical representation in RDF/XML. As you can see, the “turtle” syntax uses namespace prefixes to provide a more concise and clear syntax. It can also be used to describe lists of predicates or objects. There are also various serialization syntaxes for representing RDF. However, due to its short structure and readability, the “turtle” syntax is used in this thesis for ontology development.\\
+                Listing \ref{lst:rdf-xml}, Listing \ref{lst:rdf-turtle} and Listing \ref{lst:rdf-json-ld} show the serializations of a single example in different formats (RDF/XML, Turtle, JSON-LD) and the Figure \ref{fig:rdf-xml-example} shows the graphical representation in RDF/XML. As you can see, the “turtle” syntax uses namespace prefixes to provide a more concise and clear syntax. It can also be used to describe lists of predicates or objects. There are also various serialization syntaxes for representing \acrshort{rdf}. However, due to its short structure and readability, the “turtle” syntax is used in this thesis for ontology development.\\
             
-                \begin{figure}[h]
+                \begin{figure}[H]
                     \centering
                     \includegraphics[scale=0.6]{images/Foundation-RDF XML.drawio.png}
                     \caption{\label{fig:rdf-xml-example}  Graph Example in RDF/XML}
@@ -523,8 +523,8 @@ OR (("Computer Aided" OR "Computer Assisted") AND "engineering")
                 
         
         
-            \paragraph{Model Building with RDFS}
-            RDFS presents the main techniques for creating a taxonomy and instantiating objects \cite{spelten2023simulation} : 
+            \paragraph{Model Building with \acrshort{rdfs}}
+            \acrfull{rdfs} presents the main techniques for creating a taxonomy and instantiating objects \cite{spelten2023simulation} : 
 
             \begin{itemize}
                 \item Subclass Statements : As in object-oriented programming, the rdfs:subClassOf statement allows an rdfs:Class to inherit the attributes and descriptions of its superclass while allowing further definition. rdfs:subPropertyOf works in the same way as rdf:Property. Unlike object-oriented programming, a class can be a subclass of more than one superclass. 
@@ -532,21 +532,21 @@ OR (("Computer Aided" OR "Computer Assisted") AND "engineering")
                 \item Instantiating an object: \textbf{rdf:type} creates an object as an instance of a \textbf{rdfs:Class}. This is often abbreviated to “$is\_a$” or “a” \cite{li2005ontology}.
             \end{itemize}
     
-            \paragraph{OWL}
-            The W3C group created the OWL language as a set of formal languages for semantic ontologies on the Web \cite{liu2010ontology}. OWL shares many properties with RDF; in fact, it is an extension of the RDF vocabulary \cite{mcguinness2004owl}. An OWL ontology is represented by an RDF graph. It can be serialized using one of the RDF syntaxes described above. \\
+            \paragraph{OWL \label{para:owl}}
+            The W3C group created the \acrshort{owl} language as a set of formal languages for semantic ontologies on the Web \cite{liu2010ontology}. \acrshort{owl} shares many properties with \acrshort{rdf}; in fact, it is an extension of the \acrshort{rdf} vocabulary \cite{mcguinness2004owl}. An \acrshort{owl} ontology is represented by an \acrshort{rdf} graph. It can be serialized using one of the \acrshort{rdf} syntaxes described above. \\
         
-            An OWL ontology includes an optional ontology header, class axioms, property axioms and information about individuals/instances. The OWL vocabulary is derived from the OWL namespace: "$https://www.w3.org/2002/07/owl\#$". 
+            An \acrshort{owl} ontology includes an optional ontology header, class axioms, property axioms and information about individuals/instances. The \acrshort{owl} vocabulary is derived from the \acrshort{owl} namespace: "$https://www.w3.org/2002/07/owl\#$". 
         
             \begin{itemize}
                 \item Instance: An instance is the equivalent of an object in object-oriented modelling. 
-                \item Class: A class is a collection of elements. A class can contain any number of instances. A class in an OWL ontology can be a subclass of another class, inheriting the characteristics of the parent class. All classes are considered subclasses of the owl:Thing class, which is the root class of an OWL ontology and represents the collection of all people. 
-                \item Object properties : The properties that link people (instances) of two OWL classes. All object properties are subclasses of owl:ObjectProperty. 
-                \item Data type attributes: These attributes link people (instances) of OWL classes to literal values. All datatype properties are subclasses of owl:DatatypeProperty.
+                \item Class: A class is a collection of elements. A class can contain any number of instances. A class in an \acrshort{owl} ontology can be a subclass of another class, inheriting the characteristics of the parent class. All classes are considered subclasses of the owl:Thing class, which is the root class of an \acrshort{owl} ontology and represents the collection of all people. 
+                \item Object properties : The properties that link people (instances) of two \acrshort{owl} classes. All object properties are subclasses of owl:ObjectProperty. 
+                \item Data type attributes: These attributes link people (instances) of \acrshort{owl} classes to literal values. All datatype properties are subclasses of owl:DatatypeProperty.
             \end{itemize}
         
-            OWL is made up of structures and terminology used to semantically represent a domain. It is a set of expressive operators used to describe concepts, including Boolean operators such as intersection, union, and complement. It also includes explicit quantifiers that allow attributes to specify their characteristics such as domain, extent, and cardinality.\\
+            \acrshort{owl} is made up of structures and terminology used to semantically represent a domain. It is a set of expressive operators used to describe concepts, including Boolean operators such as intersection, union, and complement. It also includes explicit quantifiers that allow attributes to specify their characteristics such as domain, extent, and cardinality.\\
         
-            OWL has three variants based on its use cases: OWL-Lite, OWL-DL and OWL-Full. 
+            \acrshort{owl} has three variants based on its use cases: OWL-Lite, OWL-DL and OWL-Full. 
         
             \begin{itemize}
                 \item Of the three options listed, OWL-Full is the most expressive. 
@@ -555,23 +555,23 @@ OR (("Computer Aided" OR "Computer Assisted") AND "engineering")
                 \item OWL-Full, on the other hand, is effective in cases where a high level of expressively outweighs the decidability and computational completeness of the language.
             \end{itemize}
 
-            \paragraph{Query and SPARQL\label{para:sparql}}
-            SPARQL is the equivalent of SQL for graphical databases. It is a declarative query language for extracting information from graphical databases. It is a recursive acronym for SPARQL Protocol and RDF Query Language. The World Wide Web Consortium's RDF Data Access Working Group (DAWG) has established it as the standard for accessing RDF data \cite{abad2021semankey}. A SPARQL query is made up of triple patterns, known as fundamental graphical patterns. Triple patterns are structured in the same way as RDF triples, except that in a SPARQL query, the subject, predicate, or object can be modified. When the fundamental graph pattern provided in a SPARQL query matches a subgraph of the RDF data graph, the variables in the pattern are replaced with values from the subgraph.\\
+            \paragraph{Query and \acrshort{sparql}\label{para:sparql}}
+            \acrfull{sparql} is the equivalent of \acrfull{sql} for graphical databases. It is a declarative query language for extracting information from graphical databases. It is a recursive acronym for \acrshort{sparql} Protocol and \acrshort{sparql} Query Language. The World Wide Web Consortium's \acrshort{sparql} Data Access Working Group (DAWG) has established it as the standard for accessing \acrshort{sparql} data \cite{abad2021semankey}. A \acrshort{sparql} query is made up of triple patterns, known as fundamental graphical patterns. Triple patterns are structured in the same way as \acrshort{sparql} triples, except that in a \acrshort{sparql} query, the subject, predicate, or object can be modified. When the fundamental graph pattern provided in a \acrshort{sparql} query matches a subgraph of the \acrshort{sparql} data graph, the variables in the pattern are replaced with values from the subgraph.\\
         
-            The main aspects of the SPARQL query language are as follows: 
+            The main aspects of the \acrshort{sparql} query language are as follows: 
         
             \begin{itemize}
-                \item SPARQL allows a collection of graphical databases to be queried in a single query 
-                \item SPARQL queries include triple patterns, conjunctions, disjunctions and optional patterns. 
-                \item SPARQL offers analytical operations such as join, sort, and aggregate. 
-                \item Unlike SQL, SPARQL queries can be directed to several data shops at the same time. 
-                \item SPARQL is more than just a query language; it also supports INSERT and DELETE to update the data in a dataset.
-                \item SPARQL uses pattern matching to navigate between relationships and attributes in RDF graph data. Simple patterns can be concatenated to create complex SPARQL queries, allowing indirect relationships to be explored and analyzed. 
-                \item SPARQL can extract data from non-uniform datasets stored in a variety of formats.
+                \item it allows a collection of graphical databases to be queried in a single query 
+                \item \acrshort{sparql} queries include triple patterns, conjunctions, disjunctions and optional patterns. 
+                \item it offers analytical operations such as join, sort, and aggregate. 
+                \item Unlike \acrshort{sql}, \acrshort{sparql} queries can be directed to several data shops at the same time. 
+                \item \acrshort{sparql} is more than just a query language; it also supports INSERT and DELETE to update the data in a dataset.
+                \item it uses pattern matching to navigate between relationships and attributes in \acrshort{rdf} graph data. Simple patterns can be concatenated to create complex \acrshort{sparql} queries, allowing indirect relationships to be explored and analyzed. 
+                \item it can extract data from non-uniform datasets stored in a variety of formats.
             \end{itemize}
 
 
-            \paragraph{Logical Inference and Reasoning}
+            \paragraph{Logical Inference and Reasoning \label{para:logInf}}
             Semantic reasoning is about drawing conclusions or inferences from facts. As semantic technology attempts to make data more useful and machine-readable, semantic reasoning can use these simplifications of data to reason and draw its own conclusions. It is used for both proof and logic. Proof can be used to verify and, if necessary, correct facts. This can be done using form constraint language (SHACL) statements \cite{spelten2023simulation}. Logic can be used to derive new 'triples' from an existing graph. For example, deduced transitive properties are obtained from strings of asserted properties, but subclass and type declarations can be derived from properties of an individual. There are several reasoning engines (reasoners), as well as a vocabulary and library of inference rules. Popular examples are the HermiT \cite{spelten2023simulation} and Pellet \cite{spelten2023simulation, chen2012recommendation} reasoners.\\
         
             More precisely, a reasoner is a type of software capable of deducing logical consequences from a collection of claimed facts or axioms. A semantic reasoner extends the concept of an inference engine by offering a wider range of mechanisms to work with. An ontology language, as well as a description logic language, are widely used to provide inference rules. Many reasoners use first-order predicate logic to perform the reasoning; inference is often performed by forward and backward chaining. Examples of probabilistic reasoners include non-axiomatic reasoning systems\cite{wang2000non} and probabilistic logic networks \cite{qu2019probabilistic}.\\
@@ -608,20 +608,20 @@ OR (("Computer Aided" OR "Computer Assisted") AND "engineering")
         Summarizing the information gathered, there are a number of tools available for integrating semantic technologies to assist engineers in their decision-making. In this section, the most frequently encountered tools are presented.
         
             \paragraph{JavaDON}
-            JavaDON is an open source shell for expert systems based on the OBOA framework and designed for the development of intelligent systems \cite{jovanovic2005achieving}. The main goal of the JavaDON project was to create a user-friendly and easily extensible tool for the development of practical expert systems. JavaDON is built on a solid theoretical foundation and is capable of handling complex expert system applications, whether they are stand-alone or web-based systems. Its knowledge representation schema supports the integration of multimedia elements alongside traditional techniques such as rules and frames. In particular, JavaDON provides the ability to store knowledge bases in XML format, which improves interoperability with other knowledge bases on the Internet. JavaDON has already been used to develop several practical expert systems, as well as a knowledge engineering tool that supports both introductory and advanced courses on expert systems \cite{tomic2006javadon}.
+            JavaDON is an open source shell used for developping expert systems. It is based on the OBOA framework and designed for the development of intelligent systems \cite{jovanovic2005achieving}. The main goal of the JavaDON project was to create a user-friendly and easily extensible tool for the development of practical expert systems. JavaDON is built on a solid theoretical foundation and is capable of handling complex expert system applications, whether they are stand-alone or web-based systems. Its knowledge representation schema supports the integration of multimedia elements alongside traditional techniques such as rules and frames. In particular, JavaDON provides the ability to store knowledge bases in \acrshort{xml} format, which improves interoperability with other knowledge bases on the Internet. JavaDON has already been used to develop several practical expert systems, as well as a knowledge engineering tool that supports both introductory and advanced courses on expert systems \cite{tomic2006javadon}.
         
             \paragraph{myCBR}
-            myCBR was developed with the primary goal of providing a compact and user-friendly tool that can be used to create prototype Case-Based Reasoning (CBR) applications in education, research, and small industrial projects with minimal effort \cite{sawalkar2019modeling}. The myCBR Workbench, the core of this tool, provides intuitive graphical user interfaces for modelling various attribute-specific similarity measures and evaluating the resulting retrieval quality. To further streamline the process, myCBR Workbench includes tools to automatically generate case representations from existing raw data, minimizing the effort required to define a suitable case representation.\\
-            A key feature of myCBR is the Software Development Kit (SDK) \cite{jaiswal2022f}, which facilitates integration with other applications and enables extensions to fulfil specific requirements, including additional similarity calculations. The foundation of myCBR stems from various European research projects, including INRECA, INRECA II and WEBSELL, all funded by the European Strategy Programme for Research in Information Technology (ESPRIT). The tool's lineage from these projects emphasizes its robust and research-based design and makes myCBR a valuable resource for anyone looking for an accessible and efficient CBR solution for education, research, and small industrial companies.
+            myCBR was developed with the primary goal of providing a compact and user-friendly tool that can be used to create prototype \acrfull{cbr} applications in education, research, and small industrial projects with minimal effort \cite{sawalkar2019modeling}. The myCBR Workbench, the core of this tool, provides intuitive graphical user interfaces for modelling various attribute-specific similarity measures and evaluating the resulting retrieval quality. To further streamline the process, myCBR Workbench includes tools to automatically generate case representations from existing raw data, minimizing the effort required to define a suitable case representation.\\
+            A key feature of myCBR is the Software Development Kit (SDK) \cite{jaiswal2022f}, which facilitates integration with other applications and enables extensions to fulfil specific requirements, including additional similarity calculations. The foundation of myCBR stems from various European research projects, including INRECA \cite{wilke1995fallbasiertes}, INRECA II and WEBSELL \cite{probSolCBR}, all funded by the European Strategy Programme for Research in Information Technology (ESPRIT). The tool's lineage from these projects emphasizes its robust and research-based design and makes myCBR a valuable resource for anyone looking for an accessible and efficient \acrshort{cbr} solution for education, research, and small industrial companies.
 
         
             \paragraph{jCOLIBRI}
-            jCOLIBRI is a comprehensive framework to support different types of Case-Based Reasoning (CBR) systems, ranging from simple nearest neighbour approaches with flat or simple structures to more complicated knowledge-intensive systems \cite{wiratunga2011case}. The framework includes extensions for text-based and conversational applications. JCOLIBRI provides a simplified development process and emphasizes the reuse of previous designs and implementations. It formalizes CBR knowledge through a domain-independent CBR ontology (CBROnto) and maps it into framework classes that provide a knowledge-level description of CBR tasks and a library of reusable problem-solving methods (PSMs). It is noteworthy that jCOLIBRI is characterized by reusability, flexibility, scope, and user-friendliness compared to other CBR tools. Developed as an object-oriented framework in Java, jCOLIBRI promotes software reuse by integrating proven software engineering techniques with a knowledge-level description that separates PSMs, which define reasoning processes, from the domain model, which describes domain knowledge. Overall, jCOLIBRI is characterized as a versatile and sophisticated tool for the development of CBR systems.
+            jCOLIBRI is a comprehensive framework to support different types of \acrshort{cbr} systems, ranging from simple nearest neighbour approaches with flat or simple structures to more complicated knowledge-intensive systems \cite{wiratunga2011case}. The framework includes extensions for text-based and conversational applications. JCOLIBRI provides a simplified development process and emphasizes the reuse of previous designs and implementations. It formalizes \acrshort{cbr} knowledge through a domain-independent \acrshort{cbr} ontology (CBROnto) and maps it into framework classes that provide a knowledge-level description of \acrshort{cbr} tasks and a library of reusable \acrfull{psm} \cite{diaz2007building}. It is noteworthy that jCOLIBRI is characterized by reusability, flexibility, scope, and user-friendliness compared to other \acrshort{cbr} tools. Developed as an object-oriented framework in Java, jCOLIBRI promotes software reuse by integrating proven software engineering techniques with a knowledge-level description that separates \acrshort{psm} \cite{diaz2007building}, which define reasoning processes, from the domain model, which describes domain knowledge. Overall, jCOLIBRI is characterized as a versatile and sophisticated tool for the development of \acrshort{cbr} systems.
 
         
             \paragraph{ProCAKE}
-            ProCAKE is a versatile framework for the development of Process-Oriented Case-Based Reasoning (POCBR) applications that enables the integration of workflow technology in business, scientific and private domains \cite{bergmann2019procake}. In response to the limited availability of frameworks specifically tailored to POCBR applications, ProCAKE represents a remarkable solution. ProCAKE was developed at the Chair of Information Systems II at Trier University and serves as the centerpiece of the CAKE framework, which forms the basis for various research activities within the research group. In contrast to existing frameworks such as myCBR or jColibri, which focus primarily on structural and textual CBR, ProCAKE is uniquely positioned to meet the development requirements of POCBR applications \cite{bergmann2019procake, bergmann2014collaborative}.
+            ProCAKE is a versatile framework for the development of Process-Oriented Case-Based Reasoning (POCBR) applications that enables the integration of workflow technology in business, scientific and private domains \cite{bergmann2019procake}. In response to the limited availability of frameworks specifically tailored to POCBR applications, ProCAKE represents a remarkable solution. ProCAKE was developed at the Chair of Information Systems II at Trier University and serves as the centerpiece of the CAKE framework, which forms the basis for various research activities within the research group. In contrast to existing frameworks such as myCBR or jColibri, which focus primarily on structural and textual \acrshort{cbr}, ProCAKE is uniquely positioned to meet the development requirements of POCBR applications \cite{bergmann2019procake, bergmann2014collaborative}.
 
 
             \paragraph{e:IAS}
-            On the enterprise side, Empolis' Information Access Suite (known as e:IAS) \cite{hanft2008realising} is perhaps the most widely used tool in Europe. The underlying approach of e:IAS is CBR, and includes a client-server based knowledge delivery component, the Knowledge Server, as well as a knowledge modeling component. It is mainly used for designing knowledge management systems for a wide range of business applications.
+            On the enterprise side, Empolis' Information Access Suite (known as e:IAS) \cite{hanft2008realising} is perhaps the most widely used tool in Europe. The underlying approach of e:IAS is \acrshort{cbr}, and includes a client-server based knowledge delivery component, the Knowledge Server, as well as a knowledge modeling component. It is mainly used for designing knowledge management systems for a wide range of business applications.
