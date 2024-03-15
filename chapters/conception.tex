@@ -21,7 +21,7 @@ Here are a few use cases that can be derived from the problem raised by this the
 
 
 \subsection{Simulation's Architecture}
-Figure\ref{fig:cea-proc} shows a general problem-solving diagram, illustrating how a problem might be handled using CAE methods. Above each phase is the sequence of different steps.\\
+Figure \ref{fig:cea-proc} shows a general problem-solving diagram, illustrating how a problem might be handled using CAE methods. Above each phase is the sequence of different steps.\\
 
 \begin{figure}[h]
     \centering
@@ -29,7 +29,7 @@ Figure\ref{fig:cea-proc} shows a general problem-solving diagram, illustrating h
     \caption{\label{fig:cea-proc}  The CAE core process, illustrated with the stages of a general problem-solving scheme. \cite{assistSim}}
 \end{figure}
 
-Based on the elements and steps involved in this process, a simulation ontology will be created. This will enable us to capture and formalize the elements involved in the configuration process, as well as the interdependencies between them. Particularly important in the context of this thesis are the elements involved in the “Definition” and “Composition” stages, as these lead to a "CAE-Model". Figure\ref{fig:uml-sim} shows a UML diagram representing the information extracted from Figure\ref{fig:cea-proc} and the relationships between them.\\
+Based on the elements and steps involved in this process, a simulation ontology will be created. This will enable us to capture and formalize the elements involved in the configuration process, as well as the interdependencies between them. Particularly important in the context of this thesis are the elements involved in the “Definition” and “Composition” stages, as these lead to a "CAE-Model". Figure \ref{fig:uml-sim} shows a UML diagram representing the information extracted from Figure \ref{fig:cea-proc} and the relationships between them.\\
 
 \begin{figure}[h]
     \centering
@@ -39,7 +39,7 @@ Based on the elements and steps involved in this process, a simulation ontology 
 
 
 \subsection{Simulation Modeling using Ontology}
-There is no single technique for modeling a domain; there are always valid options. The ideal method is almost always determined by the application and extensions you intend to implement. Ontology development is an iterative process. Ontology concepts need to be linked to object (physical or logical) and relationships in your field of interest. These objects are most likely to be nouns (things) or verbs (relations) in the sentences describing your domain. As presented in Section\ref{para:sms_analysis}, the researchers behind the “Protégé” software have put together a set of best practices, which will be followed in this work \cite{noy2001ontology}. The steps to follow are:
+There is no single technique for modeling a domain; there are always valid options. The ideal method is almost always determined by the application and extensions you intend to implement. Ontology development is an iterative process. Ontology concepts need to be linked to object (physical or logical) and relationships in your field of interest. These objects are most likely to be nouns (things) or verbs (relations) in the sentences describing your domain. As presented in Section \ref{para:sms_analysis}, the researchers behind the “Protégé” software have put together a set of best practices, which will be followed in this work \cite{noy2001ontology}. The steps to follow are:
 
 \begin{itemize}
     \item \textbf{Step1}: Scope Definition
@@ -61,17 +61,18 @@ There is no single technique for modeling a domain; there are always valid optio
         \item Who will utilize and maintain the ontology?
     \end{itemize}
     
-    The answers to these questions have already been partially addressed in our previous analysis. In this thesis, an ontology will be created to model simulations and their metadata used during configuration. The aim of the ontology is to provide a formalism for the elements involved in the configuration process, and to model the relationships and interdependencies between these elements. Different simulation templates will be stored in the ontology, and information about them can be accessed using SPARQL queries (explained in Section\ref{para:sparql}). This will enable a suitable algorithm to provide assistance to future users. The ontology will be used primarily by simulation engineers. It will be maintained by an expert in semantic technology and expert simulation engineers, who will enrich it with their knowledge.
+    The answers to these questions have already been partially addressed in our previous analysis. In this thesis, an ontology will be created to model simulations and their metadata used during configuration. The aim of the ontology is to provide a formalism for the elements involved in the configuration process, and to model the relationships and interdependencies between these elements. Different simulation templates will be stored in the ontology, and information about them can be accessed using SPARQL queries (explained in Section \ref{para:sparql}). This will enable a suitable algorithm to provide assistance to future users. The ontology will be used primarily by simulation engineers. It will be maintained by an expert in semantic technology and expert simulation engineers, who will enrich it with their knowledge.
 
     
     \subsubsection{Step2: Reuse Existing Vocabulary}
     Setting up an ontology from scratch can be a rather tedious and complex process, requiring a certain level of knowledge in the target domain. That's why it's worth investigating whether there's a similar ontology to the one you want to build, which can be extended and refined to meet your requirements 100\%. Numerous ontologies are available in electronic form on the Internet. Platforms such as \textbf{DBPedia}, \textbf{WikiData} or \textbf{Linked Open Vocabularies (LOV)} allow you to access free ontologies, download them and integrate them into other ontologies.\\
     
-    During the study in Chapter\ref{sec:relwork}, a number of simulation ontologies were identified. These include: OSMO \cite{horsch2021osmo}, I2Sim \cite{grolinger2012ontology}, OntologySim \cite{may2022ontology} and VIO \cite{spelten2023simulation}. Unfortunately, given that the elements we want to model (see Figure\ref{fig:cea-proc}) come from conventions defined as part of the EP4.0 project \cite{assistSim}, it was impossible to find a free ontology that could cover our needs. The ontology will therefore have to be built from scratch, using the structure described in Figure\ref{fig:uml-sim}.
+    During the study in Chapter \ref{sec:relwork}, a number of simulation ontologies were identified. These include: OSMO \cite{horsch2021osmo}, I2Sim \cite{grolinger2012ontology}, OntologySim \cite{may2022ontology} and VIO \cite{spelten2023simulation}. Unfortunately, given that the elements we want to model (see Figure \ref{fig:cea-proc}) come from conventions defined as part of the EP4.0 project \cite{assistSim}, it was impossible to find a free ontology that could cover our needs. The ontology will therefore have to be built from scratch, using the structure described in Figure \ref{fig:uml-sim}.
 
 
     \subsubsection{Step3: Identification of Important Terms}
-    All the important terms can be extracted from the diagram in Figure\ref{fig:uml-sim}. The most important are:
+    All the important terms can be extracted from the diagram in Figure \ref{fig:uml-sim}. The most important are:
+    
     \begin{itemize}
         \item LoadCase Template
         \item LoadCase
@@ -140,19 +141,19 @@ There is no single technique for modeling a domain; there are always valid optio
 
     
     \subsubsection{Step5: Define Attributes and Properties of Classes — Slots}
-    In order to achieve a complete, connected knowledge model, the properties of the various classes and the relationships between these classes still need to be explicitly defined. Here again, our UML diagram in Figure\ref{fig:uml-sim} comes into play. It contains the definition of each class and their properties.
+    In order to achieve a complete, connected knowledge model, the properties of the various classes and the relationships between these classes still need to be explicitly defined. Here again, our UML diagram in Figure \ref{fig:uml-sim} comes into play. It contains the definition of each class and their properties.
     
     
     \subsubsection{Step6: Define the Facets of the Slots}
-    Slots can have many facets that describe the type of value, the permitted values, the number of values (cardinality) and other characteristics of the values the slot can accept. A facet can be a string, a number, a Boolean literal or an instance of a class. The “range” represents the classes authorized for the value of a property. And the “domain” represents the classes that a property can describe. The diagram in Figure\ref{fig:uml-sim} also shows the relationships between the various classes, as well as their cardinalities.
+    Slots can have many facets that describe the type of value, the permitted values, the number of values (cardinality) and other characteristics of the values the slot can accept. A facet can be a string, a number, a Boolean literal or an instance of a class. The “range” represents the classes authorized for the value of a property. And the “domain” represents the classes that a property can describe. The diagram in Figure \ref{fig:uml-sim} also shows the relationships between the various classes, as well as their cardinalities.
     
     
     \subsubsection{Step7: Creation of Instances}
-    For our purposes, instances will be created using a migration system when our server is first launched (see Chapter\ref{sec:implementation}).
+    For our purposes, instances will be created using a migration system when our server is first launched (see Chapter  \ref{sec:implementation}).
     
 
 \subsection{\acrfull{cbr} \label{subsec:cbr}}
-\acrshort{cbr} is an approach to building intelligent systems that models the way humans think. Figure\ref{fig:simple-cbr} shows a simplified model of \acrshort{cbr}. This method involves recording past experiences in the form of cases. These cases are then retrieved and reused (partially, fully or modified) to solve new problems. The new experience acquired in this way will in turn be stored in the memory and will later help in the resolution of a new case. It's therefore a cycle following a number of stages. Figure\ref{fig:cbr-cycle} shows the \acrshort{cbr} cycle. And the stages making up this cycle are as follows.
+\acrshort{cbr} is an approach to building intelligent systems that models the way humans think. Figure \ref{fig:simple-cbr} shows a simplified model of \acrshort{cbr}. This method involves recording past experiences in the form of cases. These cases are then retrieved and reused (partially, fully or modified) to solve new problems. The new experience acquired in this way will in turn be stored in the memory and will later help in the resolution of a new case. It's therefore a cycle following a number of stages. Figure \ref{fig:cbr-cycle} shows the \acrshort{cbr} cycle. And the stages making up this cycle are as follows.
     
     \begin{enumerate}
         \item Retrieve
@@ -175,7 +176,7 @@ There is no single technique for modeling a domain; there are always valid optio
     
 
     \subsection{Retrieve}
-    The aim here is to find the case(s) in the database most similar to the query, taking into account certain similarity functions or criteria. The key question here is how to measure similarity between 2 entities. This will be studied in greater depth in Section\ref{subsec:similarity}. The problem that can quickly arise here is that, over time, as the database of cases increases, the efficiency of the search decreases. This is because numerous cases have to be examined to find the most similar ones. There is therefore a sub-field of \acrshort{cbr} research which focuses on methods to improve search efficiency. One example is the use of special index structures such as "kd-trees", case-finding networks or discrimination networks \cite{cbrIntroRecent}.
+    The aim here is to find the case(s) in the database most similar to the query, taking into account certain similarity functions or criteria. The key question here is how to measure similarity between 2 entities. This will be studied in greater depth in Section \ref{subsec:similarity}. The problem that can quickly arise here is that, over time, as the database of cases increases, the efficiency of the search decreases. This is because numerous cases have to be examined to find the most similar ones. There is therefore a sub-field of \acrshort{cbr} research which focuses on methods to improve search efficiency. One example is the use of special index structures such as "kd-trees", case-finding networks or discrimination networks \cite{cbrIntroRecent}.
     
     \subsection{Reuse}
     Once similar cases have been obtained, the answer (or any other information relating to the solution of the problem) from these cases is used to deal with the current problem. There are two types of reuse: simple reuse and reuse with adaptation. 
@@ -211,7 +212,7 @@ There is no single technique for modeling a domain; there are always valid optio
     As presented in the retrieve step, the main concept of \acrshort{cbr} is similarity. This is due to the fact that the cases chosen during the process are those most similar to the current situation (query). Similarity can be formalized by a function $sim: P \times P \rightarrow [0, 1]$, which compares two problem descriptions of type \textbf{P} and returns a score between 0 and 1. The higher this score, the more similar the two problems are considered to be \cite{cbrIntroRecent}.\\
     For a new problem \textbf{p}, a case $c_1 = (p_1, s_1)$ is more appropriate than a case $c_2 = (p_2, s_2)$ (represented by $c_1 \succ_p c_2$) \textbf{iff} $sim(p, p_2) < sim(p, p_3)$. Here, the exact value of the similarities is not the most important factor, but the fact that these values allow us to give an order of relevance between the different cases considered. This order of preference corresponds to the evaluation of the usefulness of these cases for the treatment of problem \textbf{p} during the reuse phase.\\
     
-    The local-global approach, first introduced by Richter \cite{richter2008similarity, richter2013basic}, is the most widely implemented. Figure\ref{fig:cbr-exam} shows an example of similarity calculation using this principle. Here, cases are represented by graphs, in which each \textbf{Node} has attributes $A_i$ of different types $T_i$. For each Node, a local calculation is first performed at the level of these attributes, using a similarity function $_i = sim_{A_i} : T_i \times T_i$ according to the type of attribute. The local similarities are then combined to calculate the global similarity using an appropriate combination. The combination adopted is called the \textbf{amalgamation function: F}, and also takes into account the different weights of the attributes. There are a number of different amalgamation functions:
+    The local-global approach, first introduced by Richter \cite{richter2008similarity, richter2013basic}, is the most widely implemented. Figure \ref{fig:cbr-exam} shows an example of similarity calculation using this principle. Here, cases are represented by graphs, in which each \textbf{Node} has attributes $A_i$ of different types $T_i$. For each Node, a local calculation is first performed at the level of these attributes, using a similarity function $_i = sim_{A_i} : T_i \times T_i$ according to the type of attribute. The local similarities are then combined to calculate the global similarity using an appropriate combination. The combination adopted is called the \textbf{amalgamation function: F}, and also takes into account the different weights of the attributes. There are a number of different amalgamation functions:
     \begin{itemize}
         \item \textbf{Weighted Average}: $F(s_1,...,s_n)= \sum_{1=1}^{n} w_i*s_i$
         \item \textbf{Maximum}: $F(s_1,...,s_n) = max\{s_1,...,s_n\}$
