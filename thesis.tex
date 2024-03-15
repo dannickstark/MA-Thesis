@@ -248,7 +248,10 @@
 
 % References list - because it schould be APA-style as in Word
 %\usepackage[style=apa,backend=biber]{biblatex}
-\usepackage[style=alphabetic,backend=biber]{biblatex}
+\usepackage[
+        style=ieee,
+        backend=biber
+    ]{biblatex}
 
 \addbibresource{biblio.bib}
 
@@ -259,6 +262,7 @@
 %\usepackage{titlesec}
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{3}
+
 
 % Distances between paragraphs
 \setlength{\parskip}{0.5em}
@@ -349,7 +353,9 @@
 \clearpage
 \input{chapters/implementation}
 \clearpage
-\input{chapters/evaluation}
+%\input{chapters/evaluation}
+%\clearpage
+\input{chapters/discussion}
 \clearpage
 \input{chapters/conclusion.tex}
 \clearpage

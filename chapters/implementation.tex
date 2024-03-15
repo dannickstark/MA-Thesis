@@ -1,5 +1,5 @@
 \section{Implementation\label{sec:implementation}}
-This chapter describes how the solution concept from Section \ref{subsec:cbr} was realized. It first explains why the \acrshort{cbr} tools presented in Section \ref{sec:exonto} were not used. Then, the overall architecture of the solution to be implemented will be presented. The tools used are then presented. To facilitate understanding of the implementation process, the development strategy is described, followed by the choice of programming languages. For each of these languages, an explanation of their choice is given, followed by a listing of the libraries or packages used. Then the framework's main functions (code snippets) are explained, to give further details on how similarity is calculated. Once the back-end has been explained, a brief presentation of the front-end is given to show how the framework can be used and integrated into applications.
+This chapter describes how the solution concept from \textbf{Section \ref{subsec:cbr}} was realized. It first explains why the \acrshort{cbr} tools presented in \textbf{Section \ref{sec:exonto}} were not used. Then, the overall architecture of the solution to be implemented will be presented. The tools used are then presented. To facilitate understanding of the implementation process, the development strategy is described, followed by the choice of programming languages. For each of these languages, an explanation of their choice is given, followed by a listing of the libraries or packages used. Then the framework's main functions (code snippets) are explained, to give further details on how similarity is calculated. Once the back-end has been explained, a brief presentation of the front-end is given to show how the framework can be used and integrated into applications.
 
 \subsection{Why not myCBR, JCollibri or ProCAKE?\label{sec:whyNot}}
 \begin{itemize}
@@ -12,7 +12,7 @@ Faced with these problems, it was decided that it would be much simpler to imple
 
 
 \subsection{Architecture of the Framework \label{subsec:archi-frame}}
-Figure \ref{fig:frame-archi} shows the overall structure to be implemented. The chosen architecture is the microservice architecture. Here we have four services:
+\textbf{Figure \ref{fig:frame-archi}} shows the overall structure to be implemented. The chosen architecture is the microservice architecture. Here we have four services:
 \begin{itemize}
     \item \textbf{Client}: provides the \acrfull{ui}, which will be used directly by the user
     \item \textbf{Server}: exposes the Reasoning Framework. It exposes an API, which can be consumed to access the functions defined in it. It also features:
@@ -32,7 +32,7 @@ Figure \ref{fig:frame-archi} shows the overall structure to be implemented. The 
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.6]{images/SemanticAssistant-Detailled Architecture.drawio.png}
-\caption{\label{fig:frame-archi}  Framework architecture}
+\caption{\label{fig:frame-archi}  Framework Architecture}
 \end{figure}
 
 
@@ -62,9 +62,9 @@ Figure \ref{fig:frame-archi} shows the overall structure to be implemented. The 
 
     
 \subsection{Development Strategy}
-Development begins with the creation of the ontology. Once the ontology had been created, all the architecture elements presented in Section \ref{subsec:archi-frame} were parameterized. These are the Front-end, the Back-end, MongoDB and Apache Fuseki. DockerFiles for setting up the containers were then created. Then a Docker-Compose file was defined for orchestration and communication between containers.\\
+Development begins with the creation of the ontology. Once the ontology had been created, all the architecture elements presented in \textbf{Section \ref{subsec:archi-frame}} were parameterized. These are the Front-end, the Back-end, MongoDB and Apache Fuseki. DockerFiles for setting up the containers were then created. Then a Docker-Compose file was defined for orchestration and communication between containers.\\
 
-Once the setup had been done, a set of functions (CRUD) for manipulating the databases were defined in the back-end. The \acrshort{cbr} principles presented in Section \ref{subsec:cbr} were then implemented. This enabled us to:
+Once the setup had been done, a set of functions (CRUD) for manipulating the databases were defined in the back-end. The \acrshort{cbr} principles presented in \textbf{Section \ref{subsec:cbr}} were then implemented. This enabled us to:
 \begin{itemize}
     \item retrieve cases from the TDB2 database
     \item generate questions for users based on the elements present in the ontology
@@ -117,14 +117,14 @@ Two options were considered for ontology development. The first was OntoUML, and
     \end{itemize}
     
 
-    \subsubsection{Why Protégé was chosen over OntoUML}
+    \subsubsection{Why Protégé was chosen Over OntoUML}
     Protégé was chosen because of its user-friendly interface and widespread use in the ontology development community. The flexibility of the platform and the support of the community were considered essential for the efficient creation and maintenance of the ontology for our feasibility research. In addition, Protégé's interoperability with OWL is consistent with conventional ontology representation standards. The fact that Protégé supports different ontology languages increases the potential for future integration of the ontology developed with other systems.
     
-    The graph in Figure \ref{fig:viz-ontology} shows a representation of the ontology developed. It shows the different classes and the relationships between them.
+    The graph in \textbf{Figure \ref{fig:viz-ontology}} shows a representation of the ontology developed. It shows the different classes and the relationships between them.
     
     \begin{figure}[p]
         \input{chapters/Simulation.ttl}
-         \caption{\label{fig:viz-ontology}  Visualization of a Systematic Map as a Bubble Plot (each color represent different years of publication)}
+         \caption{\label{fig:viz-ontology}  Visualization of the Ontology as a Graph}
     \end{figure}
 
     
@@ -139,7 +139,7 @@ Two options were considered for ontology development. The first was OntoUML, and
         \end{itemize}
         
         \paragraph{Used Libraries / Package}
-        Table \ref{tab:python-libs} below shows all the Python libraries used in the development of the Framework.
+        \textbf{Table \ref{tab:python-libs}} below shows all the Python libraries used in the development of the Framework.
         
         \begin{table}[h]
             \centering
@@ -177,7 +177,7 @@ Two options were considered for ontology development. The first was OntoUML, and
                 
                 \hline
             \end{tabular}}
-            \caption{\label{tab:python-libs} Used Python libraries}
+            \caption{\label{tab:python-libs} Used Python Libraries}
         \end{table}
     
     \subsubsection{JavaScript / TypeScript}
@@ -191,7 +191,7 @@ Two options were considered for ontology development. The first was OntoUML, and
         \end{itemize}
         
         \paragraph{Used Libraries / Package}
-        Table \ref{tab:js-libs} below shows all the JavaScript libraries used in the development of the Framework.
+        \textbf{Table \ref{tab:js-libs}} below shows all the JavaScript libraries used in the development of the Framework.
         
         \begin{table}[h]
             \centering
@@ -214,19 +214,19 @@ Two options were considered for ontology development. The first was OntoUML, and
 
                 \hline
             \end{tabular}}
-            \caption{\label{tab:js-libs} Used JavaScript libraries}
+            \caption{\label{tab:js-libs} Used JavaScript Libraries}
         \end{table}
         
 \subsection{Framework's main Functions and Classes}
 All the codes presented in this section are simplified versions. Full versions can be found in the Appendix.\\
 
-\subsubsection{Extract the schema of a graph}
- When the backend server is launched, one of the first functions to be executed is to extract the ontology schema. To do this, the graph is traversed from an input class considered to be the root. The \textbf{create\_schema\_from\_class} function shown in Listing \ref{lst:create-schema} (see \textbf{Appendix \ref{annex:create-schema-full}} for a full version) is used recursively. It extracts the attributes (\textbf{Data Properties}) of the class and is then used on each of the classes linked by a relationship to the one being studied (\textbf{Object Properties}).\\
+\subsubsection{Extract the Schema of a Graph}
+ When the backend server is launched, one of the first functions to be executed is to extract the ontology schema. To do this, the graph is traversed from an input class considered to be the root. The \textbf{create\_schema\_from\_class} function shown in \textbf{Listing \ref{lst:create-schema}} (see \textbf{Appendix \ref{annex:create-schema-full}} for a full version) is used recursively. It extracts the attributes (\textbf{Data Properties}) of the class and is then used on each of the classes linked by a relationship to the one being studied (\textbf{Object Properties}).\\
 
 An important point to note is that in an ontology, classes can be subclasses of another (\textbf{rdfs:subClassOf}). When creating the schema for a class, it is therefore important to check whether it has a parent class. If it does, the properties (Data Properties, Object Properties) of its parent should be added to its schema.
 The user can also exclude certain classes from the analysis. This is made possible by the \textbf{EXCLUDED\_CLASSES} global variable, which is a list of classes to be ignored.\\
 
-\begin{lstlisting}[language=Python, caption=Function to create the schema of the ontology, label={lst:create-schema}]
+\begin{lstlisting}[language=Python, caption=Function to Create the Schema of the Ontology, label={lst:create-schema}]
 def create_schema_from_class(
         self, class_uri: str, depth: int, visited: dict[str, bool]
     ) -> Node:
@@ -263,14 +263,14 @@ def create_schema_from_class(
 \end{lstlisting}
 
 
-\subsubsection{Generate the list of questions}
+\subsubsection{Generate the List of Questions}
 Once the ontology schema has been extracted, it is searched (Depth search) using the recursive function \textbf{collectQuestionsFromClass}. For each attribute of a class, the \textbf{generateQuestion} function is used, and a question is generated based on the type of the attribute.
 
-\subsubsection{Get the similar cases}
-Listing \ref{lst:comp-sim} shows the main function of our framework. This function takes as its parameters the problem (target: Node), the list of attributes that must work, and the list of answers already given. To do this, for each graph in our ontology, the mandatory attributes are checked. If the graph respects these attributes, the function presented in Listing \ref{lst:comp-sim-node} (see \textbf{Appendix \ref{annex:comp-sim-full}} for a full version) is used to calculate the similarity between the target graph and that of the current iteration.\\
+\subsubsection{Get the Similar Cases}
+\textbf{Listing \ref{lst:comp-sim}} shows the main function of our framework. This function takes as its parameters the problem (target: Node), the list of attributes that must work, and the list of answers already given. To do this, for each graph in our ontology, the mandatory attributes are checked. If the graph respects these attributes, the function presented in \textbf{Listing \ref{lst:comp-sim-node}} (see \textbf{Appendix \ref{annex:comp-sim-full}} for a full version) is used to calculate the similarity between the target graph and that of the current iteration.\\
 
 
-\begin{lstlisting}[language=Python, caption=Function to find the similarity between one case and all the cases in the data-base, label={lst:comp-sim}]
+\begin{lstlisting}[language=Python, caption=Function to Find the Similarity Between One Case and All the Cases in the Data-Base, label={lst:comp-sim}]
 def computeSimilarity(
         self, target: Node, mandatories: list[str], responsesStack: dict[str, Any]
     ) -> list[Similarity]:
@@ -296,11 +296,11 @@ def computeSimilarity(
     
     
     
-\subsubsection{Get the similar cases} 
-Here the principle of local-to-global calculation presented in Section \ref{subsec:similarity} is implemented. First we iterate over the set of Node target attributes and for each pair of values, the function presented in Listing \ref{lst:comp-sim-node} (see \textbf{Appendix \ref{annex:comp-sim-node-full}} for a full version) is called. This calculates the similarity value between two attributes according to their type. Then, for each Edge in our graph, the function is used iteratively.
+\subsubsection{Find the Similarity Value Between two Graphs} 
+Here the principle of local-to-global calculation presented in \textbf{Section \ref{subsec:similarity}} is implemented. First we iterate over the set of Node target attributes and for each pair of values, the function presented in \textbf{Listing \ref{lst:comp-sim-node}} (see \textbf{Appendix \ref{annex:comp-sim-node-full}} for a full version) is called. This calculates the similarity value between two attributes according to their type. Then, for each Edge in our graph, the function is used iteratively.
 After iterating over all the attributes and edges (child nodes), the similarity value between the two nodes is calculated by applying the same weight to each attribute and child.\\
 
-\begin{lstlisting}[language=Python, caption=Function to find the similarity between one case and all the cases in the data-base, label={lst:comp-sim-node}]
+\begin{lstlisting}[language=Python, caption=Function to Find the Similarity Between Two Cases (Full), label={lst:comp-sim-node}]
 def computeSimilarityForNode(self, node: Node, target: Node) -> float:
         # Local computation
         attributSimilarity = 0
@@ -350,10 +350,10 @@ def computeSimilarityForNode(self, node: Node, target: Node) -> float:
 
 
 
-\subsubsection{Find the similarity value between two attributes} 
-Calculating the similarity between two attributes depends largely on their type. In the function presented in Listing \ref{lst:comp-sim-att} (see \textbf{Appendix \ref{annex:comp-sim-att-full}} for a full version), a distinction is made between cases based on the type of attributes. Depending on the type, a specific utility function is used.\\
+\subsubsection{Find the Similarity Value Between two Attributes} 
+Calculating the similarity between two attributes depends largely on their type. In the function presented in \textbf{Listing \ref{lst:comp-sim-att}} (see \textbf{Appendix \ref{annex:comp-sim-att-full}} for a full version), a distinction is made between cases based on the type of attributes. Depending on the type, a specific utility function is used.\\
 
-\begin{lstlisting}[language=Python, caption=Function to compute the similarity value between two attributes, label={lst:comp-sim-att}]
+\begin{lstlisting}[language=Python, caption=Function to Compute the Similarity Value Between Two Attributes, label={lst:comp-sim-att}]
 def computeSimilarityForAttribute(
         self, nodeAttribute: DataObject, targetAttribute: DataObject
     ) -> float:
@@ -387,18 +387,18 @@ def computeSimilarityForAttribute(
 For the same type, there are numerous functions for calculating similarity. The choice of one depends on the case and the purpose. In this section, various functions for \textbf{String} and \textbf{Numeric} will be presented, along with the cases in which each of them is appropriate.
     
     \subsubsection{String}
-    The function in Listing \ref{lst:leven-string} uses Levenshtein's algorithm to calculate how different two Strings are from each other. It is suitable for long texts or when you want to make a comparison while allowing a certain degree of error.\\
+    The function in \textbf{Listing \ref{lst:leven-string}} uses Levenshtein's algorithm to calculate how different two Strings are from each other. It is suitable for long texts or when you want to make a comparison while allowing a certain degree of error.\\
     
-\begin{lstlisting}[language=Python, caption=Levenstein distance between two strings, label={lst:leven-string}]
+\begin{lstlisting}[language=Python, caption=Levenstein Distance Between Two Strings, label={lst:leven-string}]
 # Compute the Levenstein distance between the two strings
 def computeStringLevensteinSimilarity(nodeValue: str, targetValue: str) -> float:
     return fuzz.partial_ratio(nodeValue, targetValue)
 \end{lstlisting}
     
     
-    The function in Listing \ref{lst:leven-string-ratio} works like the previous function, but ignores special characters such as full stops or commas.\\
+    The function in \textbf{Listing \ref{lst:leven-string-ratio}} works like the previous function, but ignores special characters such as full stops or commas.\\
     
-\begin{lstlisting}[language=Python, caption=Levenstein distance between two strings without considering special characters, label={lst:leven-string-ratio}]
+\begin{lstlisting}[language=Python, caption=Levenstein Distance Between Two Strings Without Considering Special Characters, label={lst:leven-string-ratio}]
 def computeStringSortRatio(nodeValue: str, targetValue: str) -> float:
     return fuzz.token_sort_ratio(nodeValue, targetValue)
 \end{lstlisting}
@@ -409,9 +409,9 @@ def computeStringSortRatio(nodeValue: str, targetValue: str) -> float:
 
     \subsubsection{Numeric}
     
-    \textbf{Exponential similarity} in Listing \ref{lst:expo-sim-num} is useful when you want to emphasize the sensitivity to proximity. It is suitable for cases where small differences between numeric values should result in significantly higher similarity scores.\\
+    \textbf{Exponential similarity} in \textbf{Listing \ref{lst:expo-sim-num}} is useful when you want to emphasize the sensitivity to proximity. It is suitable for cases where small differences between numeric values should result in significantly higher similarity scores.\\
     
-\begin{lstlisting}[language=Python, caption=Function to compute the similarity value between two attributes, label={lst:expo-sim-num}]
+\begin{lstlisting}[language=Python, caption=Function to Compute the Similarity Value Between Two Numerics using the Exponential Function, label={lst:expo-sim-num}]
 # Compute the Exponential similarity between two numeric values
 def computeNumericExponentialSimilarity(value1, value2):
     num1 = int(value1)
@@ -420,8 +420,8 @@ def computeNumericExponentialSimilarity(value1, value2):
 \end{lstlisting}
     
     
-    \textbf{Fuzzy similarity} in Listing \ref{lst:fuzzy-sim-num} is beneficial when dealing with uncertain or imprecise numeric data. It can handle situations where the exact values may not be known, and there is a need to capture the degree of similarity despite the fuzziness in the data.\\
-\begin{lstlisting}[language=Python, caption=Function to compute the similarity value between two attributes, label={lst:fuzzy-sim-num}]
+    \textbf{Fuzzy similarity} in \textbf{Listing \ref{lst:fuzzy-sim-num}} is beneficial when dealing with uncertain or imprecise numeric data. It can handle situations where the exact values may not be known, and there is a need to capture the degree of similarity despite the fuzziness in the data.\\
+\begin{lstlisting}[language=Python, caption=Function to Compute the Similarity Value Between Two Numerics using the Fuzzy Computation, label={lst:fuzzy-sim-num}]
 # Compute the Fuzzy similarity between two numeric values
 def computeNumericFuzzySimilarity(value1, value2):
     num1 = int(value1)
@@ -430,9 +430,9 @@ def computeNumericFuzzySimilarity(value1, value2):
 \end{lstlisting}
 
     
-    \textbf{Sigmoid similarity} in Listing \ref{lst:sigmo-sim-num} is appropriate when you expect the similarity to saturate at a certain point, indicating that beyond a specific difference threshold, additional proximity has a diminishing impact.\\
+    \textbf{Sigmoid similarity} in \textbf{Listing \ref{lst:sigmo-sim-num}} is appropriate when you expect the similarity to saturate at a certain point, indicating that beyond a specific difference threshold, additional proximity has a diminishing impact.\\
 
-\begin{lstlisting}[language=Python, caption=Function to compute the similarity value between two attributes, label={lst:sigmo-sim-num}]
+\begin{lstlisting}[language=Python, caption=Function to Compute the Similarity Value Between Two Numerics using the Sigmoid Function, label={lst:sigmo-sim-num}]
 # Compute the sigmoid similarity between two numeric values
 def computeNumericSigmoidSimilarity(value1, value2):
     num1 = int(value1)
@@ -445,22 +445,22 @@ In summary, the choice of similarity computation method depends on the nature of
 \subsection{Web Application}
 As already explained in the previous chapters, a prototype \acrshort{ui} has been set up in order to demonstrate the use of the \acrshort{cbr} mechanism in practical cases. In this section, the different views and elements of this \acrshort{ui} will be presented, along with their usefulness.
 
-    \subsubsection{The home page}
-    Figure \ref{fig:proto-home} shows the home view of the \acrshort{ui}. Here the user can create a new account in which to work or choose an existing account. Each account has a list of configuration processes.
+    \subsubsection{The Home Page}
+    \textbf{Figure \ref{fig:proto-home}} shows the home view of the \acrshort{ui}. Here the user can create a new account in which to work or choose an existing account. Each account has a list of configuration processes.
     
     \begin{figure}[h]
     \centering
     \frame{\includegraphics[width=\textwidth]{images/proto-home.png}}
-    \caption{\label{fig:proto-home}  Home view of the \acrshort{ui} prototype}
+    \caption{\label{fig:proto-home}  Home View of the \acrshort{ui} Prototype}
     \end{figure}
     
     
-    \subsubsection{The working page}
-    Figure \ref{fig:proto-demo} shows the working view. This is where all operations are performed. 
+    \subsubsection{The Working Page}
+    \textbf{Figure \ref{fig:proto-demo}} shows the working view. This is where all operations are performed. 
     
     \begin{itemize}
         \item The sidebar \textbf{(1)} lists all the processes associated with the current user. It can also be used to create and delete a process.
-        \item The box at the bottom left \textbf{(2)} shows the name of the current user and provides a button for logging out and going to the home page (see Figure \ref{fig:proto-home}).
+        \item The box at the bottom left \textbf{(2)} shows the name of the current user and provides a button for logging out and going to the home page (see \textbf{Figure \ref{fig:proto-home}}).
         \item The title bar \textbf{(3)} shows the name of the selected configuration and allows you to modify or delete it.
         \item The buttons at the bottom right \textbf{(4)} are used to manage the zoom percentage of the decision tree shown in the center of the work area.
     \end{itemize}
@@ -468,16 +468,16 @@ As already explained in the previous chapters, a prototype \acrshort{ui} has bee
     \begin{figure}[h]
     \centering
     \frame{\includegraphics[width=\textwidth]{images/proto-demo.png}}
-    \caption{\label{fig:proto-demo}  Main view of the \acrshort{ui} prototype}
+    \caption{\label{fig:proto-demo}  Main View of the \acrshort{ui} Prototype}
     \end{figure}
     
     
-    \subsubsection{Answering to question}
-    To add an answer to the tree, simply click on the “+” button below a Node. Figure \ref{fig:proto-demo-add-answer} shows the dialogue box that appears once you have clicked on this button. This dialogue box contains:
+    \subsubsection{Answering to Question}
+    To add an answer to the tree, simply click on the “+” button below a Node. \textbf{Figure \ref{fig:proto-demo-add-answer}} shows the dialogue box that appears once you have clicked on this button. This dialogue box contains:
     
     \begin{itemize}
         \item \textbf{(1)} an entry for selecting the element for which you would like to give a value
-        \item \textbf{(2)} an entry for giving the value of this element. As shown in Figure \ref{fig:proto-demo-add-answer-proba} a suggestion of possible values is automatically made. And for each of the suggested values, a probability of use is provided, allowing you to find out how many similar simulations have used this value.
+        \item \textbf{(2)} an entry for giving the value of this element. As shown in \textbf{Figure \ref{fig:proto-demo-add-answer-proba}} a suggestion of possible values is automatically made. And for each of the suggested values, a probability of use is provided, allowing you to find out how many similar simulations have used this value.
         \item a “mandatory” switch \textbf{(3)} to define whether only graphs with exactly the value selected for the element selected should be taken into account
         \item In \textbf{(4)} we have the question asked for this element. This is generated automatically by the backend.
     \end{itemize}
@@ -495,11 +495,12 @@ As already explained in the previous chapters, a prototype \acrshort{ui} has bee
             \frame{\includegraphics[width=\textwidth]{images/proto-demo-add-answer-proba.png}}
             \caption{\label{fig:proto-demo-add-answer-proba} Probability of usage}
         \end{subfigure}
+        \caption{\label{fig:add-node}  Add New Nodes}
     \end{figure}
     
     
-    \subsubsection{Edit / Delete an answer}
-    It is also possible to edit or delete an answer given previously. Figure \ref{fig:proto-demo-edit-delete-answer} shows the elements of our interface which allow this to be done. 
+    \subsubsection{Edit / Delete an Answer}
+    It is also possible to edit or delete an answer given previously. \textbf{Figure \ref{fig:proto-demo-edit-delete-answer}} shows the elements of our interface which allow this to be done. 
     
     \begin{itemize}
         \item when a Node (response) in the graph is edited, this automatically deletes all the child Nodes it had, since these may no longer be relevant for the new values of the modified Node
@@ -509,12 +510,12 @@ As already explained in the previous chapters, a prototype \acrshort{ui} has bee
     \begin{figure}[h]
     \centering
     \frame{\includegraphics[scale=0.5]{images/proto-demo-edit-delete-answer.png}}
-    \caption{\label{fig:proto-demo-edit-delete-answer}  Edit / Delete an answer (a Node)}
+    \caption{\label{fig:proto-demo-edit-delete-answer}  Edit / Delete an Answer (a Node)}
     \end{figure}
 
     
-    \subsubsection{Inspecting results}
-    After each response, the reasoner recalculates the similar simulations and returns them. You can see the number of simulations found in the top right-hand corner of each Node. For more details, simply click on the Node you wish to inspect. Figure \ref{fig:proto-demo-detail} shows the details of one of these Nodes.
+    \subsubsection{Inspecting Results}
+    After each response, the reasoner recalculates the similar simulations and returns them. You can see the number of simulations found in the top right-hand corner of each Node. For more details, simply click on the Node you wish to inspect. \textbf{Figure \ref{fig:proto-demo-detail}} shows the details of one of these Nodes.
     
     \begin{itemize}
         \item In \textbf{(1)} we have information about the number of simulations found.
@@ -526,7 +527,7 @@ As already explained in the previous chapters, a prototype \acrshort{ui} has bee
     \begin{figure}[h]
     \centering
     \frame{\includegraphics[width=\textwidth]{images/proto-demo-detail.png}}
-    \caption{\label{fig:proto-demo-detail}  Inspect the details of a node}
+    \caption{\label{fig:proto-demo-detail}  Inspect the Details of a Node}
     \end{figure}
 
 

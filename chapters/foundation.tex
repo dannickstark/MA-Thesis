@@ -6,17 +6,17 @@ In this chapter, the basic concepts fundamental to understanding the subject of 
 \subsection{\acrlong{cae} and Simulation}
 \acrfull{cae}, also known as digital engineering or computer-aided engineering, brings together all the digital and software resources usually used by engineers to design, simulate and validate new products and industrial processes using sophisticated algorithms. \acrshort{cae} tools enable the physical properties of a product to be tested and simulated, so that it can be optimized on the basis of the results of a numerical analysis.
 
-    \subsubsection{Simulation-driven design}
+    \subsubsection{Simulation-driven Design}
     Typically, \acrshort{cae} involves pre-processing, solving and post-processing stages \cite{karlberg2013state}. During the pre-processing phase, engineers model the system, the physical properties of the design, and the operational environment in the form of applied constraints or loads. In order to correctly configure the resulting simulations, it is crucial that this modelling incorporates all parts of the environment to which the product will be exposed (including forces, temperatures, etc.).  The quality of the simulation is largely determined by the accuracy of the conditions to which the product will be exposed. The model is then solved using simulations before the results are presented for review during post-processing. \\
 
     Whereas physical prototyping takes days or even weeks, simulations take just a few hours at most. Although physical prototyping is unavoidable, simulations can help reduce the number of prototypes needed before production \cite{sellgren1999simulation}.\\
     
-    Figure \ref{fig:v-model-sim} shows the different types of simulations and tests throughout the “V” model presented above. Initial design and simulation of \acrfull{cad} geometry under appropriate conditions is the \acrshort{cae}'s standard workflow. Based on the results of the simulation, the design is improved. This process may need to be repeated until the product requirements are met and virtually confirmed. If there are differences in behavior between the digital prototype and expectations, the \acrshort{cad} model or input data can be adjusted \cite{sellgren1999simulation, jeon2016automatic}. This process speeds up product development because there is no need to create physical prototypes in the early stages of development.
+    \textbf{Figure \ref{fig:v-model-sim}} shows the different types of simulations and tests throughout the “V” model presented above. Initial design and simulation of \acrfull{cad} geometry under appropriate conditions is the \acrshort{cae}'s standard workflow. Based on the results of the simulation, the design is improved. This process may need to be repeated until the product requirements are met and virtually confirmed. If there are differences in behavior between the digital prototype and expectations, the \acrshort{cad} model or input data can be adjusted \cite{sellgren1999simulation, jeon2016automatic}. This process speeds up product development because there is no need to create physical prototypes in the early stages of development.
 
     \begin{figure}[h]
         \centering
         \includegraphics[scale=0.6]{images/Foundation-V-Model-Sim.drawio.png}
-        \caption{\label{fig:v-model-sim} V-Model with simulations \cite{validVerifSys} }
+        \caption{\label{fig:v-model-sim} V-Model with Simulations \cite{validVerifSys} }
     \end{figure}
 
 
@@ -50,7 +50,7 @@ In this chapter, the basic concepts fundamental to understanding the subject of 
 \subsection{Expert System\label{subsec:exp-sys}}
 An expert system in artificial intelligence is a computer program that simulates the decision-making process of a human expert \cite{liao2005expert, waterman1985guide}. It possesses knowledge in a given domain, extracted from the knowledge of experts in that domain.  Rather than using traditional procedural code, expert systems are designed to deal with complex questions posed by the user by reasoning from bodies of knowledge. The 1970s saw the development of the first expert systems, which came into widespread use in the 1980s \cite{buchanan1988fundamentals}. They were one of the first applications of \acrfull{ai} software to achieve real success \cite{buckley1986fuzzy, buchanan1988fundamentals, waterman1985guide}. \\
 
-Figure \ref{fig:es-archi} shows the architecture of an expert system. An expert system consists of two subsystems: the knowledge base and the inference engine \cite{tripathi2011review}. Rules and information are represented in the knowledge base. To deduce new facts, the inference engine applies the rules to the known facts. In addition, inference engines can be capable of debugging and explanation.\\
+\textbf{Figure \ref{fig:es-archi}} shows the architecture of an expert system. An expert system consists of two subsystems: the knowledge base and the inference engine \cite{tripathi2011review}. Rules and information are represented in the knowledge base. To deduce new facts, the inference engine applies the rules to the known facts. In addition, inference engines can be capable of debugging and explanation.\\
 
 A non-expert user uses this software to gather information, while people who are experts in a given field enter data into the knowledge base. It is widely used in a number of fields, including coding, games, accounting and medical diagnostics \cite{liao2005expert}. They can guide users and explain how they arrived at a specific recommendation or conclusion.\\
 
@@ -77,7 +77,7 @@ The Semantic Web is an expansion of the World Wide Web that intends to enable ro
 
 In 2001, Tim Berners-Lee coined the term “Semantic Web” to describe the use of semantic technologies in data connectivity \cite{berners2023semantic}. The World Wide Web Consortium (W3C), founded by Berners-Lee, disseminates and supports a number of technical guidelines for the Semantic Web.\\
 
-Improving the way computers understand data makes it easier to share data and enables it to be processed automatically. As Figure \ref{fig:sem-web-stack} shows, the \acrfull{owl}, \acrfull{sparql} and \acrfull{rdf} are the main standards on which semantic technology is developing. In contrast, in conventional information technology, meanings are hard-coded into application code and data at the design stage. \\
+Improving the way computers understand data makes it easier to share data and enables it to be processed automatically. As \textbf{Figure \ref{fig:sem-web-stack}} shows, the \acrfull{owl}, \acrfull{sparql} and \acrfull{rdf} are the main standards on which semantic technology is developing. In contrast, in conventional information technology, meanings are hard-coded into application code and data at the design stage. \\
 
 \begin{figure}[ht]
     \centering
@@ -90,12 +90,12 @@ Improving the way computers understand data makes it easier to share data and en
         \paragraph{\acrfull{uri}}
         A \acrshort{uri} is a short string of characters that clearly identifies an abstract or physical resource on the Semantic Web \cite{de2016names}. The use of \acrshort{uri}s makes resources available through a number of naming systems and access mechanisms. A \acrshort{uri} can be used for location, identification, or both. There are two types of \acrshort{uri}: URLs and URNs. A \acrfull{url} is a subset of a \acrshort{uri} that indicates the location of a resource and how to retrieve it. A \acrfull{urn}, on the other hand, is used to identify an online resource without specifying how it will be retrieved.\\
 
-        Semantic Web resource identifiers can be divided into a base \acrshort{uri} and a local name. In serialization, the base \acrshort{uri} is often shortened by a prefix defined at the beginning. Figure  \ref{fig:uri-example} shows an example of a \acrshort{uri} and its decomposition with a prefix.\\
+        Semantic Web resource identifiers can be divided into a base \acrshort{uri} and a local name. In serialization, the base \acrshort{uri} is often shortened by a prefix defined at the beginning. \textbf{Figure  \ref{fig:uri-example}} shows an example of a \acrshort{uri} and its decomposition with a prefix.\\
 
         \begin{figure}[h]
             \centering
             \includegraphics[scale=0.6]{images/Foundation-URI Decomposition.drawio.png}
-            \caption{\label{fig:uri-example} Example of \acrshort{uri} and decomposition with prefix}
+            \caption{\label{fig:uri-example} Example of \acrshort{uri} and Decomposition with Prefix}
         \end{figure}
 
         
@@ -118,7 +118,7 @@ Improving the way computers understand data makes it easier to share data and en
 
     \acrshort{rdf} is a model based on \textbf{Triples}. Triples are built around \textbf{subject-predicate-object} relationships, and are the most common type of axiom. The predicate is a property or a relation; the subject is a “thing”. When the object is a thing, the property is called an \textbf{object property}. If the object is a literal, such as a character, integer or string, the property is called a \textbf{data property}. Once a triplet has been defined, it is referred to as a \textbf{statement} \cite{noy2001ontology}.\\
 
-    Take, for example, this basic English sentence: “Germany is in Europe”. Table \ref{tab:rdf-example} shows how the sentence can be divided syntactically. If this statement were to be expressed visually, this could be done using the following directed graph, shown in Figure \ref{fig:rdf-example}.\\
+    Take, for example, this basic English sentence: “Germany is in Europe”. \textbf{Table \ref{tab:rdf-example}} shows how the sentence can be divided syntactically. If this statement were to be expressed visually, this could be done using the following directed graph, shown in \textbf{Figure \ref{fig:rdf-example}}.\\
     
     \begin{table}[h]
         \centering
@@ -132,16 +132,16 @@ Improving the way computers understand data makes it easier to share data and en
             
             \hline
         \end{tabular}
-        \caption{\label{tab:rdf-example} RDF Syntactic division}
+        \caption{\label{tab:rdf-example} RDF Syntactic Division}
         \end{table}
         
     \begin{figure}[h]
         \centering
         \includegraphics[scale=0.6]{images/Foundation-RDF Example.drawio.png}
-        \caption{\label{fig:rdf-example}  RDF Graphical representation}
+        \caption{\label{fig:rdf-example}  RDF Graphical Representation}
     \end{figure}
 
-    \acrshort{rdf} uses the same techniques to demonstrate the links between subjects and objects. However, as explained earlier, to represent resources and features accurately on the web, they need to be assigned a unique \acrshort{uri}. To demonstrate the representation of the above example sentence as a triple, the \acrshort{uri}s of the resources and attributes are assumed to be those shown in Table \ref{tab:rdf-example-uri}.
+    \acrshort{rdf} uses the same techniques to demonstrate the links between subjects and objects. However, as explained earlier, to represent resources and features accurately on the web, they need to be assigned a unique \acrshort{uri}. To demonstrate the representation of the above example sentence as a triple, the \acrshort{uri}s of the resources and attributes are assumed to be those shown in \textbf{Table \ref{tab:rdf-example-uri}}.
     
     \begin{table}[h]
         \centering
@@ -179,8 +179,8 @@ Improving the way computers understand data makes it easier to share data and en
 
     \subsubsection{Ontology \label{subsubsec:ontology}}
     In the field of philosophy, ontology is a discipline that studies existence, the way in which knowledge, language, and perception are related to the nature of reality \cite{smith2012ontology}. It is concerned with the question of what entities exist and how they can be classified, ordered hierarchically and discriminated against. \\
-    Since the mid-1970s, \acrshort{ai} researchers have realized that knowledge engineering is essential for developing large and powerful \acrshort{ai} systems \textbf{fensel2001ontologies}. \acrshort{ai} researchers suggested that they could develop new ontologies as computational models to enable certain types of automated reasoning, but their efforts were only moderately successful. In the 1980s, the \acrshort{ai} community began using the term ontology to describe both a theory of a modelled world and a component of knowledge-based systems \textbf{guarino1995formal}.\\
-    An ontology captures the structure of a domain, i.e. the model and its constraints. In other words, an ontology is a structure for systematically storing and formalizing domain knowledge. Ontology schemas are created using two modelling languages, \acrfull{rdfs} and \acrfull{owl} \textbf{fensel2001ontologies}.\\
+    Since the mid-1970s, \acrshort{ai} researchers have realized that knowledge engineering is essential for developing large and powerful \acrshort{ai} systems \cite{fensel2001ontologies}. \acrshort{ai} researchers suggested that they could develop new ontologies as computational models to enable certain types of automated reasoning, but their efforts were only moderately successful. In the 1980s, the \acrshort{ai} community began using the term ontology to describe both a theory of a modelled world and a component of knowledge-based systems \cite{guarino1995formal}.\\
+    An ontology captures the structure of a domain, i.e. the model and its constraints. In other words, an ontology is a structure for systematically storing and formalizing domain knowledge. Ontology schemas are created using two modelling languages, \acrfull{rdfs} and \acrfull{owl} \cite{fensel2001ontologies}.\\
 
     Tim Berners-Lee \cite{kuck2004tim} defines an ontology as having the following properties: 
     \begin{enumerate}

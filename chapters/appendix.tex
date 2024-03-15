@@ -7,9 +7,29 @@
 
 \label{annex:framework}
 
-\subsection{Function to create the schema of the ontology (Full)\label{annex:create-schema-full}}
+\subsection{Inter-dependencies for the "Physical Basic Structure" \label{annex:phy-bas-struc}}
 
-\begin{lstlisting}[language=Python, caption=Function to create the schema of the ontology (Full), label={lst:create-schema-full}]
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{images/Concept-PhysicalInterdependencies.drawio.png}
+    \caption{\label{fig:phy-bas-struc}  Inter-Dependencies for the "Physical Basic Structure" \cite{assistSim}}
+\end{figure}
+
+
+\subsection{Screenshot of Excel File Used to Import Examples into the Knowledge graph\label{annex:screen-excel}}
+
+\begin{figure}[h]
+    \centering
+    \frame{\includegraphics[width=\textwidth]{images/loadcase-excell.png}}
+    \caption{\label{fig:screen-excel} Screenshot of Excel File Used to Import Examples into the Knowledge Graph}
+\end{figure}
+
+
+
+\clearpage
+\subsection{Function to Create the Schema of the Ontology (Full)\label{annex:create-schema-full}}
+
+\begin{lstlisting}[language=Python, caption=Function to Create the Schema of the Ontology (Full), label={lst:create-schema-full}]
 def create_schema_from_class(
         self, class_uri: str, depth: int, visited: dict[str, bool]
     ) -> Node:
@@ -56,10 +76,10 @@ def create_schema_from_class(
 
 
 
-
 \clearpage
-\subsection{Function to find the similarity between one case and all the cases in the data-base (Full)\label{annex:comp-sim-full}}
-\begin{lstlisting}[language=Python, caption=Function to find the similarity between one case and all the cases in the data-base (Full), label={lst:comp-sim-full}]
+\subsection{Function to Find the Similarity Between one Case and all the Cases in the Data-Base (Full)\label{annex:comp-sim-full}}
+
+\begin{lstlisting}[language=Python, caption=Function to Find the Similarity Between One Case and All the Cases in the Data-Base (Full), label={lst:comp-sim-full}]
 def computeSimilarity(
         self, target: Node, mandatories: list[str], responsesStack: dict[str, Any]
     ) -> list[Similarity]:
@@ -85,8 +105,9 @@ def computeSimilarity(
 
 
 \clearpage
-\subsection{Function to find the similarity between one case and all the cases in the data-base (Full)\label{annex:comp-sim-node-full}}
-\begin{lstlisting}[language=Python, caption=Function to find the similarity between one case and all the cases in the data-base (Full), label={lst:comp-sim-node-all}]
+\subsection{Function to Find the Similarity Between two Cases (Full)\label{annex:comp-sim-node-full}}
+
+\begin{lstlisting}[language=Python, caption=Function to Find the Similarity Between Two Cases (Full), label={lst:comp-sim-node-all}]
 # compute similarity between two graph using local to global traversal
     def computeSimilarityForNode(self, node: Node, target: Node) -> float:
         # Local computation
@@ -139,8 +160,8 @@ def computeSimilarity(
 
 
 \clearpage
-\subsection{Function to compute the similarity value between two attributes (Full)\label{annex:comp-sim-att-full}}
-\begin{lstlisting}[language=Python, caption=Function to compute the similarity value between two attributes, label={lst:comp-sim-att}]
+\subsection{Function to Compute the Similarity Value Between two Attributes (Full)\label{annex:comp-sim-att-full}}
+\begin{lstlisting}[language=Python, caption=Function to Compute the Similarity Value Between Two Attributes, label={lst:comp-sim-att}]
 def computeSimilarityForAttribute(
         self, nodeAttribute: DataObject, targetAttribute: DataObject
     ) -> float:
