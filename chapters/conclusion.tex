@@ -1,10 +1,10 @@
 \section{Conclusion and Future Work\label{sec:conclusion}}
 
-This chapter summarizes and examines the strategy presented in this thesis. Additionally, the chapter provides a view on future work.
+This chapter summarizes and examines the strategy presented in this thesis. Additionally, the chapter provides a view of future work.
 
 \subsection{Conclusion}
 
-In conclusion, this thesis has addressed a critical challenge in simulation engineering by exploring the feasibility of using semantic technologies to improve simulation configuration processes. Firstly, the fundamentals of simulation engineering and semantic technologies were clarified. This provided a better overview of the factors involved in the main problem. In order to gain an overview of the various studies carried out on the subject, an \acrshort{sms} was produced. This also enabled us to discover the principle of \acrshort{cbr} and how it can be used with ontologies. It was then a question of identifying the various tools applying \acrshort{cbr} and determining whether these could be directly used to solve the problem of this thesis. But due to a number of factors, such as the fact that these tools are aging, it was concluded that a customized framework would have to be implemented. Before moving on to implementation, the ontology architecture and prototype were defined. The next step was to select the tools needed for implementation, with open-source as the main criterion. Once the implementation was complete, an evaluation was carried out by testing the prototype with different users and receiving their feedback. This provided valuable information on the efficiency, ease of use and compatibility of the platform with the automotive industry. The results show that integrating semantic technologies into simulation configuration processes is a promising approach to the challenges faced by both experienced and novice simulation engineers.\\
+In conclusion, this thesis has addressed a critical challenge in simulation engineering by exploring the feasibility of using semantic technologies to improve simulation configuration processes. Firstly, the fundamentals of simulation engineering and semantic technologies were clarified. This provided a better overview of the factors involved in the main problem. To gain an overview of the various studies carried out on the subject, a \acrshort{sms} was produced. This also enabled us to discover the principle of \acrshort{cbr} and how it can be used with ontologies. It was then a question of identifying the various tools applying \acrshort{cbr} and determining whether these could be directly used to solve the problem of this thesis. However, due to many factors, such as the fact that these tools are aging, it was concluded that a customized framework would have to be implemented. Before moving on to implementation, the ontology architecture and prototype were defined. The next step was to select the tools needed for implementation, with open-source as the main criterion. Once the implementation was complete, an evaluation was carried out by testing the prototype with different users and receiving their feedback. This provided valuable information on the efficiency, ease of use, and compatibility of the platform with the automotive industry. The results show that integrating semantic technologies into simulation configuration processes is a promising approach to the challenges faced by both experienced and novice simulation engineers.\\
 
 With regard to the research goals from \textbf{Chapter \ref{sec:introduction}} the following activities
 were carried out:
@@ -12,27 +12,26 @@ were carried out:
 \begin{itemize}
     \item Objective \hyperref[G1]{\textbf{G1}}:  
     
-    has been achieved, as an ontology has been set up in \textbf{Section \ref{subsec:ontologyDev}}. It includes all the elements identified as important for the configuration of a simulation, and models well the relationships and interdependencies between them.
+    has been achieved, as an ontology has been set up in \textbf{Section \ref{subsec:ontologyDev}}. It includes all the elements identified as important for the configuration of a simulation, and models the relationships and interdependencies between them.\\
     
     
     \item Objective \hyperref[G2]{\textbf{G2}}:
     
-    has also been achieved. In the conception chapter (\textbf{Chapter \ref{sec:conception}}), the theory behind the framework is explained. Then in \textbf{Chapter \ref{sec:implementation}} the framework is implemented in python. The latter can be used by external applications via its API.
+    has also been achieved. In the conception chapter (\textbf{Chapter \ref{sec:conception}}), the theory behind the framework is explained. Then in \textbf{Chapter \ref{sec:implementation}} the framework is implemented in Python. The latter can be used by external applications via its API.\\
     
     
-    \item The final \hyperref[G3]{\textbf{G3}}: objective has also been achieved. In the implementation chapter (\textbf{Chapter \ref{sec:implementation}}) a \acrshort{ui} prototype was developed. It was then tested and analyzed by experts and potentials users in \textbf{Chapter \ref{sec:discussion}} to see whether or not it was effective.
+    \item Objective \hyperref[G3]{\textbf{G3}}: 
+    
+    has also been reached. In the implementation chapter (\textbf{Chapter \ref{sec:implementation}}) a \acrshort{ui} prototype was developed. It was then tested and analyzed by experts and potential users in \textbf{Chapter \ref{sec:discussion}} to see whether it was effective.\\
 \end{itemize}
     
-\clearpage
 
-
-
-Most of the research questions found beginnings of answers at the end of the  \acrfull{sms}. The research questions introduced in \textbf{Section \ref{sec:introduction}} could be answered as follows:\\
+Most of the research questions found beginnings of answers at the end of the  \acrfull{sms}. The research questions introduced in \textbf{Section \ref{sec:introduction}} could be answered as follows:
 
 \begin{itemize}
     \item \hyperref[Q1]{\textbf{Q1}}: What are the main challenges and limitations of current configuration processes for simulations in the automotive industry?
     \begin{quote}
-        As answered in \textbf{Section \ref{para:sms_analysis}}, simulation configuration is mainly exposed to complexity concerns, a lack of standardization, the long time needed for configuration and limited durability.\\
+        As answered in \textbf{Section \ref{para:sms_analysis}}, simulation configuration is mainly exposed to complexity concerns, a lack of standardization, the long time needed for configuration, and limited durability.\\
     \end{quote}
 
     \item \hyperref[Q2]{\textbf{Q2}}: How can semantic technology be used to support simulation configuration processes?
@@ -42,25 +41,30 @@ Most of the research questions found beginnings of answers at the end of the  \a
     
     \item \hyperref[Q3]{\textbf{Q3}}: What are the requirements for a semantics-based configuration tool for simulations in the automotive industry?
     \begin{quote}
-        As requirements we can have:
+        As requirements, we can have:
+        
         \begin{itemize}
-            \item \textbf{Semantic matching algorithm}: The tool must implement advanced semantic matching algorithms capable of comparing and identifying similarities between attributes in new simulations and data in the existing knowledge graph. This enables the tool to suggest relevant previous simulations as references.
-            \item \textbf{Parameter value deduction}: The configuration tool must be able to deduce plausible values for the parameters of new simulations based on the similarities identified. This requires advanced reasoning capabilities to propose values that align with historical data.
-            \item \textbf{User interface and interaction}: A user-friendly interface is essential to enable simulation engineers to interact easily with the tool. The interface must allow the input of key attributes for new simulations and provide clear suggestions for parameter values.
+            \item \textbf{Semantic matching algorithm}: The tool must implement advanced semantic matching algorithms capable of comparing and identifying similarities between attributes in new simulations and data in the existing knowledge graph. This enables the tool to suggest relevant previous simulations as references.\\
+            
+            \item \textbf{Parameter value deduction}: The configuration tool must be able to deduce plausible values for the parameters of new simulations based on the similarities identified. This requires advanced reasoning capabilities to propose values that align with historical data.\\
+            
+            \item \textbf{User interface and interaction}: A user-friendly interface is essential to enable simulation engineers to interact easily with the tool. The interface must allow the input of key attributes for new simulations and provide clear suggestions for parameter values.\\
+            
             \item \textbf{Accuracy and reliability}: The configuration tool should prioritize accuracy by suggesting relevant previous simulations and plausible parameter values. Reliable results are essential to guarantee the quality of configured simulations.\\
         \end{itemize}
     \end{quote}
     
-    \item \hyperref[Q4]{\textbf{Q4}}: What existing semantic technologies and standards are applicable to the field of systems engineering and simulation configuration, and how can they be adapted to support simulation configuration processes?
+    \item \hyperref[Q4]{\textbf{Q4}}: What existing semantic technologies and standards apply to the field of systems engineering and simulation configuration, and how can they be adapted to support simulation configuration processes?
+    
     \begin{quote}
         In the field of systems engineering and simulation configuration, several existing semantic technologies and standards can be applied to improve processes. Adapting these technologies involves integrating them into a coherent framework tailored to the needs of simulation configuration. Here are a few relevant technologies and standards:
          \begin{itemize}
              \item RDF (\textbf{Section \ref{subsubsec:rdf}})
              \item OWL (\textbf{Section \ref{para:owl}})
-             \item SPARQL (Section\ ref{para:sparql})
+             \item SPARQL (\textbf{Section \ref{para:sparql}})
              \item Ontology Development Tools: as protégé (\textbf{Section \ref{subsubsec:protege}})
              \item Semantic Reasoning Engines: like Pellet or HermiT (\textbf{Section \ref{para:logInf}})
-             \item Knowledge Graphs or ontologies (\textbf{Section \ref{subsubsec:ontology}})
+             \item Knowledge Graphs or ontologies (\textbf{Section \ref{subsubsec:ontology}})\\
          \end{itemize}
         
         Adapting these technologies involves designing a complete architecture that seamlessly integrates them into the simulation configuration workflow. This adaptation must take into account the specific needs and characteristics of the automotive industry.

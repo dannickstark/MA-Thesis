@@ -1,57 +1,59 @@
 \section{Discussion \label{sec:discussion}}
-This chapter looks in detail at the development process, the strengths and weaknesses of the developed platform and its potential for further development. We will analyze the successes encountered during development, the difficulties encountered and the overall effectiveness of the proposed solution.  Next, we will explore the perceived advantages and limitations of the platform based on user feedback, and the limitations identified on the basis of testing and evaluation. Finally, we will discuss suggestions for possible improvements.
+This chapter looks in detail at the development process, the strengths, and weaknesses of the developed platform, and its potential for further development. We will analyze the successes encountered during development, the difficulties encountered, and the overall effectiveness of the proposed solution.  Next, we will explore the perceived advantages and limitations of the platform based on user feedback and the limitations identified based on testing and evaluation. Finally, we will discuss suggestions for possible improvements.\\
+
+
 
 \subsection{Development Phase}
-    \subsubsection{Positive Aspects}
-    During development, several aspects have proven to be beneficial. The use of semantic technologies offered a structured and flexible approach to representing knowledge about simulations. Numerous meetings were held with other participants in the EP4.0 project to agree on the structure and standardization of the artifacts and metadata to be taken into account. This led to the construction of the diagram presented in \textbf{Section \ref{subsec:sim-archi}}. So the development of a complete and detailed ontology for automotive simulations was an iterative process. The definition of appropriate classes, properties and relationships required continuous refinement based on feedback from domain experts.\\
+    \subsubsection*{Positive Aspects}
+    During development, several aspects have proven to be beneficial. The use of semantic technologies offered a structured and flexible approach to representing knowledge about simulations. Numerous meetings were held with other participants in the EP4.0 project to agree on the structure and standardization of the artifacts and metadata to be taken into account. This led to the construction of the diagram presented in \textbf{Section \ref{subsec:sim-archi}}. So, the development of a complete and detailed ontology for automotive simulations was an iterative process. The definition of appropriate classes, properties, and relationships required continuous refinement based on feedback from domain experts.\\
     
     The use of ontologies facilitated the definition of clear relationships between entities and domain properties. In addition, the use of SPARQL to query the knowledge graph enabled efficient retrieval and reasoning about the encoded information.\\
 
     The development of a user-friendly \acrshort{ui} proved crucial to user adoption. The interface enabled users to easily enter simulation attributes and receive configuration suggestions, streamlining the configuration process.\\
 
     
-    \subsubsection{Problems Encountered}
-    A number of problems were encountered during development. Feeding the knowledge graph with complete and accurate data proved to be a major challenge. Unfortunately, until the end, it was impossible to obtain a significant amount of data to use as examples. The solution opted for here was to define a few random examples respecting the interdependence rules presented in \textbf{Appendix \ref{annex:phy-bas-struc}}. To make the integration of these examples independent, an import system from an Excel file has been developed (see \textbf{Appendix \ref{annex:screen-excel}}). This allows anyone to add elements to the knowledge graph without having to understand how the code works.\\
+    \subsubsection*{Problems Encountered}
+    Several problems were encountered during development. Feeding the knowledge graph with complete and accurate data proved to be a major challenge. Unfortunately, until the end, it was impossible to obtain a significant amount of data to use as examples. The solution opted for here was to define a few random examples respecting the interdependence rules presented in \textbf{Appendix \ref{annex:phy-bas-struc}}. To make the integration of these examples independent, an import system from an Excel file has been developed (see \textbf{Appendix \ref{annex:screen-excel}}). This allows anyone to add elements to the knowledge graph without having to understand how the code works.\\
 
-    The development of the similarity matching algorithm turned out to be complex. It was essential to strike a balance between precision and recall. While a highly accurate algorithm might identify only near-identical configurations, a less accurate approach might suggest irrelevant simulations. Although the platform suggests plausible parameter values, it is difficult to achieve perfect precision.\\
+    The development of the similarity-matching algorithm turned out to be complex. It was essential to strike a balance between precision and recall. While a highly accurate algorithm might identify only near-identical configurations, a less accurate approach might suggest irrelevant simulations. Although the platform suggests plausible parameter values, it is difficult to achieve perfect precision.\\
 
 
 \subsection{Advantages of the Developed Solution}
-    \subsubsection{Positive Points Identified}
-    The developed solution has a number of positive points. The first of these is knowledge reuse. The program facilitates knowledge reuse by capturing, storing and using data from past successful simulations. This enables valuable lessons learned from previous projects to be incorporated into new configurations.\\
+    \subsubsection*{Positive Points Identified}
+    The developed solution has several positive points. The first of these is knowledge reuse. The program facilitates knowledge reuse by capturing, storing, and using data from past successful simulations. This enables valuable lessons learned from previous projects to be incorporated into new configurations.\\
 
-    Another positive aspect is the reduction in configuration time. The program can streamline the configuration process by identifying similar simulations and suggesting parameter values. By suggesting similar configurations and parameter values, it can significantly reduce the time needed to configure new simulations.\\
+    Another positive aspect is the reduction in configuration time. The program can streamline the configuration process by identifying similar simulations and suggesting parameter values. Suggesting similar configurations and parameter values can significantly reduce the time needed to configure new simulations.\\
     
     The program also improves consistency. By relying on a centralized knowledge base, it promotes consistent configuration practices across different teams and projects. This reduces the risk of errors and inconsistencies in simulation configurations. Users can benefit from established best practices reflected in the data, facilitating knowledge transfer from experienced engineers to new users.\\
 
     
-    \subsubsection{Positive Feedback from other Participants and Potential Users}
-    Once a stable version of the program had been obtained, it was presented to other project participants and potential users. They were very satisfied with the platform's user interface. What's more, they found navigation on the platform intuitive, confirming its clarity and ease of use. The platform's efficiency and speed in identifying similar simulations on the basis of key attributes was also deemed effective. The majority of people reported that the platform's suggestions for parameter values were relevant to their simulation configuration needs. This suggests a promising capability for knowledge graph-based identification. To sum up, users generally agreed that the platform effectively performed the tasks assigned to it. 
+    \subsubsection*{Positive Feedback from other Participants and Potential Users}
+    Once a stable version of the program had been obtained, it was presented to other project participants and potential users. They were very satisfied with the platform's user interface. What's more, they found navigation on the platform intuitive, confirming its clarity and ease of use. The platform's efficiency and speed in identifying similar simulations based on key attributes were also deemed effective. The majority of people reported that the platform's suggestions for parameter values were relevant to their simulation configuration needs. This suggests a promising capability for knowledge graph-based identification. To sum up, users generally agreed that the platform effectively performed the tasks assigned to it. 
 
 
 \subsection{Limits of the Solution}
-    \subsubsection{Identified Limits}
+    \subsubsection*{Identified Limits}
     Although the platform is showing promising results, several limitations remain:
     
     \begin{itemize}
-        \item \textbf{Dependence on data quality}:  The accuracy and effectiveness of the platform is highly dependent on the quality and completeness of the data contained in the knowledge graph.  Inconsistent or inaccurate data can lead to misleading suggestions.
+        \item \textbf{Dependence on data quality}:  The accuracy and effectiveness of the platform are highly dependent on the quality and completeness of the data contained in the knowledge graph.  Inconsistent or inaccurate data can lead to misleading suggestions.
 
         \item \textbf{Limited scope}: The current prototype focuses on specific types of automotive simulations. Extending the platform to a wider range of simulation configurations may require further development and refinement of the ontology.
 
-        \item \textbf{Explicability of suggestions}:  Although the platform suggests parameters, it may not currently explain the reasoning behind the suggestions. Implementing functions to explain the reasoning process can boost user confidence and understanding.
+        \item \textbf{Explainability of suggestions}:  Although the platform suggests parameters, it may not currently explain the reasoning behind the suggestions. Implementing functions to explain the reasoning process can boost user confidence and understanding.
     \end{itemize}
 
     
-    \subsubsection{Suggested Improvements}
-    Participants made a number of valuable suggestions for improvement. The most important and frequent were as follows: 
+    \subsubsection*{Suggested Improvements}
+    Participants made several valuable suggestions for improvement. The most important and frequent were as follows: 
     
     \begin{itemize}
         \item While the majority of users felt that the suggested parameter values were relevant, some expressed concerns about their accuracy. Further study of specific cases of inaccuracy will be essential to fine-tune the system.
     
-        \item Despite the fact that a large proportion of participants did not experience any delays or performance problems during their interaction with the platform. However, a few of them did report occasional delays, necessitating a closer examination of potential performance bottlenecks.
+        \item Although a large proportion of participants did not experience any delays or performance problems during their interaction with the platform. However, a few of them did report occasional delays, necessitating a closer examination of potential performance bottlenecks.
     
         \item Open-ended responses during brainstorming sessions provided valuable insights into user expectations and specific areas for improvement, such as improved visualization tools and additional customization options.
     \end{itemize}
 
 \subsection{Outlook}
-This study successfully demonstrates the feasibility of using semantic technologies to support the configuration of automotive simulations. The platform developed offers promising advantages in terms of efficiency, knowledge reuse and consistency. Future efforts will focus on resolving the identified limitations, including integration with existing systems, incorporation of machine learning and continuous enrichment of the knowledge graph. Further research could extend the platform's capabilities to support advanced simulation tasks such as parameter optimization and uncertainty analysis. By continually evolving and improving, the program has the potential to have a significant impact on the way simulations are configured, leading to faster development cycles and more robust design decisions.
+This study successfully demonstrates the feasibility of using semantic technologies to support the configuration of automotive simulations. The platform developed offers promising advantages in terms of efficiency, knowledge reuse, and consistency. Future efforts will focus on resolving the identified limitations, including integration with existing systems, incorporation of machine learning, and continuous enrichment of the knowledge graph. Further research could extend the platform's capabilities to support advanced simulation tasks such as parameter optimization and uncertainty analysis. By continually evolving and improving, the program has the potential to have a significant impact on the way simulations are configured, leading to faster development cycles and more robust design decisions.

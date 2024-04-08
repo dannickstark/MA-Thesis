@@ -1,20 +1,22 @@
 \section{Related work\label{sec:relwork}}
 This chapter presents the techniques and conclusions of the literature review. Firstly, an analysis will be made of the research already carried out on our subject. The methodology and reasoning behind the literature review will be presented, together with a summary of the results. Next, a comparison of current tools that are close to the objective of this thesis will be carried out.\\
 
+
+
     \subsection{State of the Art}
-        \subsubsection{\acrfull{sms}}
-        Systematic mapping is a strategy for creating a categorization system and organizing a specific topic of interest \cite{petersen2008systematic}. It is a research approach that involves examining current published research reports, evaluating them in depth and summarizing their methodology and conclusions. It is carried out in several stages, as shown in the \textbf{Figure \ref{fig:SysMapProcess}}, and results in a classification (mapping) of the articles studied.\\
+        \subsubsection{\acrlong{sms}}
+        \acrfull{sms} is a strategy for creating a categorization system and organizing a specific topic of interest \cite{petersen2008systematic}. It is a research approach that involves examining current published research reports, evaluating them in-depth, and summarizing their methodology and conclusions. It is carried out in several stages, as shown in \textbf{Figure \ref{fig:SysMapProcess}}, and results in a classification (mapping) of the articles studied.\\
 
         \begin{figure}[h]
             \centering
             \includegraphics[scale=0.6]{images/RelatedWork-SysMapProcess.drawio.png}
-            \caption{\label{fig:SysMapProcess}  The Systematic Mapping Process (\cite{petersen2008systematic})}
+            \caption[The Systematic Mapping Process]{\label{fig:SysMapProcess}  The Systematic Mapping Process (\cite{petersen2008systematic})}
         \end{figure}
 
-        First, the \textbf{\acrshort{sms}} research questions had to be identified, which enabled a preliminary search for relevant articles to be carried out. These research questions should be considered as sub-questions of those defined in \textbf{Section \ref{subsec:reseques}}. The information extracted from these articles was used to develop a set of keywords and a categorization system. Before examining the articles to determine their relevance to this work, the inclusion, and exclusion criteria must be established. On the basis of the results, the context, and aspect of the research were defined. The final stage is the data extraction and mapping procedure, which results in a systematic map \cite{petersen2008systematic, petersen2015guidelines}.\\
+        First, the \textbf{\acrshort{sms}} research questions had to be identified, which enabled a preliminary search for relevant articles to be carried out. These research questions should be considered as sub-questions of those defined in \textbf{Section \ref{subsec:reseques}}. The information extracted from these articles was used to develop a set of keywords and a categorization system. Before examining the articles to determine their relevance to this work, the inclusion, and exclusion criteria must be established. Based on the results, the context, and aspect of the research were defined. The final stage is the data extraction and mapping procedure, which results in a systematic map \cite{petersen2008systematic, petersen2015guidelines}.\\
 
             \paragraph{Research questions\label{para:res-ques}}
-            The research questions defined in \textbf{Section \ref{subsec:reseques}} provide a more concise definition of the issues raised by the subject of this thesis. However, in order to learn from existing methodologies and possibly adapt elements of their tool chain, we need to ask more specific questions in the context of our \acrshort{sms}. To demonstrate the relationship with our main research questions, these are repeated and for each one a corresponding structured mapping study question (\textbf{SMS\_Q}) is presented.
+            The research questions defined in \textbf{Section \ref{subsec:reseques}} provide a more concise definition of the issues raised by the subject of this thesis. However, to learn from existing methodologies and possibly adapt elements of their toolchain, we need to ask more specific questions in the context of our \acrshort{sms}. To demonstrate the relationship with our main research questions, these are repeated and for each one a corresponding structured mapping study question (\textbf{SMS\_Q}) is presented.
 
             \begin{itemize}
                 \item Q1: What are the main challenges and limitations of current configuration processes for simulations in the automotive industry?
@@ -40,7 +42,7 @@ This chapter presents the techniques and conclusions of the literature review. F
                     \begin{itemize}
                         \item \textbf{SMS\_Q5}: What are the prominent semantic technologies and standards that are relevant to systems engineering and simulation configuration?
 
-                        \item \textbf{SMS\_Q6}: In what ways can these exist semantic technologies and standards be adapted or integrated to effectively support simulation configuration processes in the automotive industry?
+                        \item \textbf{SMS\_Q6}: In which ways can these existing semantic technologies and standards be adapted or integrated to effectively support simulation configuration processes in the automotive industry?
                     \end{itemize}
 
             \end{itemize}
@@ -79,7 +81,7 @@ This chapter presents the techniques and conclusions of the literature review. F
                 \caption{\label{tab:keyw-syno} Keywords and their Synonyms}
             \end{table}
 
-            The keywords found were then searched for synonyms, related phrases and alternative spellings \cite{budgen2006performing}. As usual, Boolean logic was used to define a search string, combining alternative phrases with \textbf{“OR”} and linking terms with \textbf{“AND”}. The final search string is as follows:\\
+            The keywords found were then searched for synonyms, related phrases, and alternative spellings \cite{budgen2006performing}. As usual, Boolean logic was used to define a search string, combining alternative phrases with \textbf{“OR”} and linking terms with \textbf{“AND”}. The final search string is as follows:\\
 
             \begin{lstlisting}[language=XML, caption=Generated Query, label={lst:gen-query}]
 "semantic technologies" 
@@ -95,7 +97,7 @@ OR (("Computer Aided" OR "Computer Assisted") AND "engineering")
 
 
             \paragraph{Inclusion and Exclusion Criteria}
-            In this section, the inclusion, and exclusion criteria will be defined. They allow certain restrictions to be imposed in order to obtain only useful and relevant results.
+            In this section, the inclusion, and exclusion criteria will be defined. They allow certain restrictions to be imposed to obtain only useful and relevant results.
 
             \begin{itemize}
                 \item Inclusion criteria:
@@ -105,7 +107,7 @@ OR (("Computer Aided" OR "Computer Assisted") AND "engineering")
 
                 \item Exclusion criteria:
                     \begin{itemize}
-                        \item \textbf{EC1\label{EC1}} : Papers whose abstract content does not focus on one of the following themes:
+                        \item \textbf{EC1\label{EC1}}: Papers whose abstract content does not focus on one of the following themes:
                             \begin{itemize}
                                 \item semantic technologies,
                                 \item expertise systems
@@ -119,7 +121,7 @@ OR (("Computer Aided" OR "Computer Assisted") AND "engineering")
                     \end{itemize}
             \end{itemize}
 
-            One point to emphasize is that in most mapping studies, an exclusion criterion is also defined in relation to the date of publication. This makes it possible to limit the period of publication of the results (e.g., 2002 — now). But this thesis revolves very much around case-based and rule-based reasoning, which are very old artificial intelligence techniques compared with modern methods.
+            One point to emphasize is that in most mapping studies, an exclusion criterion is also defined concerning the date of publication. This makes it possible to limit the period of publication of the results (e.g., 2002 — now). But this thesis revolves very much around case-based and rule-based reasoning, which are very old artificial intelligence techniques compared to modern methods.
 
             
             \paragraph{Classification Scheme}
@@ -128,12 +130,13 @@ OR (("Computer Aided" OR "Computer Assisted") AND "engineering")
 
             \begin{figure}[h]
                 \centering
-                \includegraphics[scale=0.6]{images/RelatedWork-Build-Class-Schem.drawio.png}  \caption{\label{fig:BuildClassSchem}  Building the Classification Scheme \cite{petersen2008systematic}}
+                \includegraphics[scale=0.6]{images/RelatedWork-Build-Class-Schem.drawio.png}  
+                \caption[Building the Classification Scheme]{\label{fig:BuildClassSchem}  Building the Classification Scheme \cite{petersen2008systematic}}
             \end{figure}
 
            In the context of this research, three facets have been identified. The first facet summarizes the subject of our thesis (i.e., Semantic Technologies usage). \textbf{Table \ref{tab:sem-tec-usage}} shows the possible values of this facet. The other two facets are more commonly used to group research contributions and can therefore be integrated \cite{petersen2008systematic, wieringa2006requirements}: research type and contribution.\\
             The research facet represents the research technique used in the study; these approaches are domain-neutral and can be used without change (\textbf{Table \ref{tab:contri-ty-face}}).\\
-            The third facet, the contribution facet, documents the contribution made in terms of, for example, process, method or tool, etc. (\textbf{Table \ref{tab:research-ty-face}}).\\
+            The third facet, the contribution facet, documents the contribution made in the field, for example, process, method or tool, etc. (\textbf{Table \ref{tab:research-ty-face}}).\\
             The results of the \acrshort{sms} are presented below. The appendix contains the full results.
 
         
@@ -178,7 +181,7 @@ OR (("Computer Aided" OR "Computer Assisted") AND "engineering")
                     Model  & Papers in the Model contribution category contribute to the creation or enhancement of conceptual or computational models in a given topic.\\
                     
                     \hline
-                    Method  & Method contributions concentrate on the development, improvement, or assessment of new research methodology or approaches.\\
+                    Method  & Method contributions concentrate on the development, improvement, or assessment of new research methodologies or approaches.\\
                     
                     \hline
                     Process  & Papers in the Process contribution category focus on the design, assessment, or improvement of specific processes or workflows.\\
@@ -199,7 +202,7 @@ OR (("Computer Aided" OR "Computer Assisted") AND "engineering")
                     Validation Research  & The techniques explored are innovative and have not yet been used in practice. Experiments, or laboratory work, are one example of a technique employed.\\
                     
                     \hline
-                    Evaluation Research & Techniques are put into practice, and their effectiveness is evaluated. That is, it is demonstrated how the approach is applied in practice (solution implementation) and what the implications are in terms of advantages and downsides (implementation assessment). This involves identifying difficulties in the industry.\\
+                    Evaluation Research & Techniques are put into practice, and their effectiveness is evaluated. It demonstrates how the approach is applied in practice (solution implementation) and what the implications are in terms of advantages and downsides (implementation assessment). This involves identifying difficulties in the industry.\\
                     
                     \hline
                     Solution Proposal  & A solution to a problem is given; the solution may be unique or a major expansion of an existing approach. A tiny example or a strong line of reasoning demonstrates the solution's potential benefits and application.\\
@@ -208,10 +211,10 @@ OR (("Computer Aided" OR "Computer Assisted") AND "engineering")
                     Philosophical Papers  & These publications provide a new way of looking at existing objects by arranging the area in the form of a taxonomy or conceptual framework.\\
                     
                     \hline
-                    Opinion Papers  & These articles offer the author's own view on whether a particular approach is excellent or terrible, or how things should have been done. They do not rely on previous work or research methods.\\
+                    Opinion Papers  & These articles offer the author's view on whether a particular approach is excellent or terrible, or how things should have been done. They do not rely on previous work or research methods.\\
                     
                     \hline
-                    Experience Papers  & Experience papers describe what and how something was done in practice. It must be based on the author's real experiences.\\
+                    Experience Papers  & Experience Papers describe what and how something was done in practice. It must be based on the author's real experiences.\\
                     
                     \hline
                 \end{tabular}}
@@ -223,8 +226,8 @@ OR (("Computer Aided" OR "Computer Assisted") AND "engineering")
         This section presents the results of the mapping study. \textbf{Paragraph \ref{para:sms_analysis}} provides an analysis of the results obtained, followed by in-depth answers to the research questions defined in \textbf{Paragraph \ref{para:sms_ans_rq}}.
 
             \paragraph{Results of Database Search}
-            The predefined keywords and the \hyperref[EC2]{\textbf{EC2}} criterion were used to obtain a total of \textbf{26270} research publications. These are classified as, \textbf{25175} for IEEE, \textbf{203} for ACM and \textbf{892} for ScienceDirect. Due to the \hyperref[EC3]{\textbf{EC3}} exclusion criterion, the number of articles obtained fell to \textbf{389} for IEEE, \textbf{203} for ACM and \textbf{125} for ScienceDirect. For a total of \textbf{717} articles. The \hyperref[EC1]{\textbf{EC1}} exclusion criterion was then used to reduce the number of relevant articles even further. This resulted in a total of \textbf{24 articles}.\\
-            This was followed by a manual keyword-by-keyword search, which produced better quality results. Manual target searching has been shown to produce high quality search results when combined with searches of digital libraries \cite{petersen2008systematic}. We integrated manual target searches from other platforms, such as Google Scholar. This resulted in 27 additional articles. \textbf{Table \ref{tab:rel-papers}} shows the list of articles selected, classified by publication date. This list was filtered on the basis of inclusion and exclusion criteria, and duplicate articles from different platforms were removed.\\
+            The predefined keywords and the \hyperref[EC2]{\textbf{EC2}} criterion were used to obtain a total of \textbf{26270} research publications. These are classified as, \textbf{25175} for IEEE, \textbf{203} for ACM, and \textbf{892} for ScienceDirect. Due to the \hyperref[EC3]{\textbf{EC3}} exclusion criterion, the number of articles obtained fell to \textbf{389} for IEEE, \textbf{203} for ACM, and \textbf{125} for ScienceDirect. For a total of \textbf{717} articles. The \hyperref[EC1]{\textbf{EC1}} exclusion criterion was then used to reduce the number of relevant articles even further. This resulted in a total of \textbf{24 articles}.\\
+            This was followed by a manual keyword-by-keyword search, which produced better-quality results. Manual target searching has been shown to produce high-quality search results when combined with searches of digital libraries \cite{petersen2008systematic}. We integrated manual target searches from other platforms, such as Google Scholar. This resulted in 27 additional articles. \textbf{Table \ref{tab:rel-papers}} shows the list of articles selected, classified by publication date. This list was filtered based on inclusion and exclusion criteria, and duplicate articles from different platforms were removed.\\
 
             
         	    {\rowcolors{2}{teal!10}{white}
@@ -366,7 +369,7 @@ OR (("Computer Aided" OR "Computer Assisted") AND "engineering")
                 x right label="Research Type Facet",
                 x right label shift=0cm,
             ]{assets/MappingStud.csv}{1992, 1995, 2001, 2002, 2003, 2006, 2007, 2008, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023}
-            \caption{\label{fig:viz-smb}  Visualization of a Systematic Map as a Bubble Plot (Each Color Represent Different Years of Publication)}
+            \caption{\label{fig:viz-smb}  Visualization of a Systematic Map as a Bubble Plot (Each Color Represents Different Years of Publication)}
             \end{figure}
 
             \begin{figure}[h]
@@ -387,21 +390,21 @@ OR (("Computer Aided" OR "Computer Assisted") AND "engineering")
             \end{figure}
             
             \paragraph{Analysis\label{para:sms_analysis}}
-            The mapping study shows that the use of semantic technologies in engineering goes back many years. In particular, these technologies are used to represent concepts and knowledge, and to set up expertise systems. These systems can be based on rule-based or case-based reasoning.\\
+            The mapping study shows that the use of semantic technologies in engineering goes back many years. In particular, these technologies are used to represent concepts and knowledge and to set up expert systems. These systems can be based on rule-based or case-based reasoning.\\
             
-            In terms of type of contribution, the vast majority of articles found (41.5\%) were models. This shows that the use of semantic technologies in systems engineering remains largely experimental. Numerous authors propose ideas for integrations that could more or less work \cite{benjamin2007using, tofani2010using, benjamin2006using, bouza2008semtree}. 25.5\% and 17.6\% represent the percentage of articles on Methods and Processes, respectively. In the them, authors describe and evaluate solutions to specific problems. Only 15.7\% of articles are dedicated to tools. This shows that very little software exists for the creation and integration of semantic technologies in engineering.\\
-            As far as the type of research is concerned, 33.3\% of the articles focus on solution proposals and 29.4\% on research evaluations. In other words, each paper was prepared as part of a project addressing a specific problem. A remedy was then proposed, and usually a small case study was studied. This demonstrates the popularity of these technologies with researchers. But from the other statistics it can be concluded that their use is still in the testing phase and their adoption is still timid.\\
+            In terms of the type of contribution, the vast majority of articles found (41.5\%) were models. This shows that the use of semantic technologies in systems engineering remains largely experimental. Numerous authors propose ideas for integrations that could more or less work \cite{benjamin2007using, tofani2010using, benjamin2006using, bouza2008semtree}. 25.5\% and 17.6\% represent the percentage of articles on Methods and Processes, respectively. In them, the authors describe and evaluate solutions to specific problems. Only 15.7\% of articles are dedicated to tools. This shows that very little software exists for the creation and integration of semantic technologies in engineering.\\
+            As far as the type of research is concerned, 33.3\% of the articles focus on solution proposals and 29.4\% on research evaluations. In other words, each paper was prepared as part of a project addressing a specific problem. A remedy was then proposed, and usually, a small case study was studied. This demonstrates the popularity of these technologies with researchers. But from the other statistics, it can be concluded that their use is still in the testing phase and their adoption is still timid.\\
 
             The next step in our analysis is to interpret the figures according to how semantic technologies are used.\\
-            Starting with knowledge representation, there are few tools in use. As presented in \cite{chen2012recommendation, abadi2018improving, liu2010ontology}, the tool generally used to create or maintain ontologies is “Protégé” and there is no regular procedure for setting up ontologies \cite{noy2001ontology}. This is why very few articles are based on a step-by-step presentation of the process. The team behind “Protégé” has nevertheless put together a set of best practices to follow \cite{noy2001ontology} in order to work as optimally as possible with their software. There are, however, articles that show how to create an ontology and the steps to follow \cite{sure2002methodology, li2018ontology}, but these are mostly domain-specific. \\
+            Starting with knowledge representation, there are few tools in use. As presented in \cite{chen2012recommendation, abadi2018improving, liu2010ontology}, the tool generally used to create or maintain ontologies is “Protégé” and there is no regular procedure for setting up ontologies \cite{noy2001ontology}. This is why very few articles are based on a step-by-step presentation of the process. The team behind “Protégé” has nevertheless put together a set of best practices to follow \cite{noy2001ontology} to work as optimally as possible with their software. There are, however, articles that show how to create an ontology and the steps to follow \cite{sure2002methodology, li2018ontology}, but these are mostly domain-specific. \\
 
-            When creating an ontology, it is possible to define constraints and rules that will be used by reasoners to perform inferences \cite{noy2001ontology}. These rules can be further defined using \acrfull{swrl} \cite{liu2010ontology, abadi2018improving}. This ontological language is based on \acrshort{owl} and, thanks to the principle of \acrfull{fol}, allows conditions to be defined, as well as the result if they are verified or not. A number of tools, such as JavaDON \cite{jovanovic2005achieving} or the "SWRLTab" plugin for “Protégé” \cite{liu2010ontology}, make it easy to define these rules. As demonstrated in \cite{li2018ontology, jeon2016automatic, na2016development}, the process of creating these rules is fairly standard and requires only a deep understanding of the relationships and interdependencies between the various elements of the ontology.\\
+            When creating an ontology, it is possible to define constraints and rules that will be used by reasoners to perform inferences \cite{noy2001ontology}. These rules can be further defined using \acrfull{swrl} \cite{liu2010ontology, abadi2018improving}. This ontological language is based on \acrshort{owl} and, thanks to the principle of \acrfull{fol}, allows conditions to be defined, as well as the result if they are verified or not. Several tools, such as \textbf{JavaDON} \cite{jovanovic2005achieving} or the \textbf{SWRLTab} plugin for “Protégé” \cite{liu2010ontology}, make it easy to define these rules. As demonstrated in \cite{li2018ontology, jeon2016automatic, na2016development}, the process of creating these rules is fairly standard and requires only a deep understanding of the relationships and interdependencies between the various elements of the ontology.\\
 
-            Alongside rule-based reasoning, there is also case-based reasoning. The latter is used in the field of artificial intelligence \cite{wilke1995fallbasiertes, althoff1992fallbasiertes}, but is becoming less and less popular, being replaced by deep learning and neural networks \cite{wiratunga2011case}. In the field of engineering, there are numerous model proposals and experimental procedures, which show how this reasoning could be used to solve specific problems. Nevertheless, it remains very popular with companies for assisting employees in making decisions based on previous decisions present in archives \cite{eshach2003case}. Compared with other \acrshort{ai} techniques, \acrshort{cbr} considerably reduces the work involved in gathering and representing knowledge, which is undoubtedly one of the main reasons for the commercial success of \acrshort{cbr} applications \cite{benjamin2006using, wiratunga2011case}. Tools for performing case-based reasoning are few and \textbf{fairly old}. They include ProCake, myCBR, jCOLIBRI and others.\\
+            Alongside rule-based reasoning, there is also case-based reasoning. The latter is used in the field of artificial intelligence \cite{wilke1995fallbasiertes, althoff1992fallbasiertes}, but is becoming less and less popular, being replaced by deep learning and neural networks \cite{wiratunga2011case}. In the field of engineering, there are numerous model proposals and experimental procedures, which show how this reasoning could be used to solve specific problems. Nevertheless, it remains very popular with companies for assisting employees in making decisions based on previous decisions present in archives \cite{eshach2003case}. Compared with other \acrshort{ai} techniques, \acrshort{cbr} it considerably reduces the work involved in gathering and representing knowledge, which is undoubtedly one of the main reasons for the commercial success of \acrshort{cbr} applications \cite{benjamin2006using, wiratunga2011case}. Tools for performing case-based reasoning are few and \textbf{fairly old}. They include ProCake, myCBR, jCOLIBRI and others.\\
 
             When it comes to case-based reasoning, much of the research focuses on how similarity values between elements can be calculated. As shown in the articles \cite{shaheen2020novel, chen2012recommendation, wang2020similarity, malburg2021improving, racharak2021approximation, adel2022interval} there are numerous algorithms for calculating similarity between values depending on their type.\\
 
-            Both rules- and case-based reasoning are integrated into expertise systems \cite{lin2021multivariable}. As presented in \textbf{Section \ref{subsec:exp-sys}}, these systems support users in carrying out specific tasks based on the knowledge provided by experts. The basic architecture of how these systems are structured is straightforward, but their implementation is generally company-specific. Tools such as JavaDON or Jess propose procedures to follow in order to set up such systems. Unfortunately, these studies were carried out many years ago, and the tools presented are no longer really maintained and updated.\\
+            Both rules- and case-based reasoning are integrated into expertise systems \cite{lin2021multivariable}. As presented in \textbf{Section \ref{subsec:exp-sys}}, these systems support users in carrying out specific tasks based on the knowledge provided by experts. The basic architecture of how these systems are structured is straightforward, but their implementation is generally company-specific. Tools such as JavaDON or Jess propose procedures to follow to set up such systems. Unfortunately, these studies were carried out many years ago, and the tools presented are no longer maintained and updated.\\
 
             To sum up, semantic technologies are used in a variety of fields, including engineering. The ontologies they define enable the creation of data graphs that can be understood by machines (reasoning). They can also be used to define rules about the relationships and properties of elements present in the graph. These rules can be used for inference and reasoning. Another use for ontologies is case-based reasoning. Information from previous cases (data on the configurations of simulations carried out in the past) can be represented in an ontology, and thanks to the particularities of ontologies, a similarity calculation can be carried out to propose possible solutions to users. Both of these approaches have been successful in the professional world, but are unfortunately increasingly being replaced by artificial intelligence and modern methods such as deep learning and decision trees.\\
 
@@ -454,20 +457,23 @@ OR (("Computer Aided" OR "Computer Assisted") AND "engineering")
 
             \textbf{SMS\_Q6}: In what ways can these existing semantic technologies and standards be adapted or integrated to effectively support simulation configuration processes in the automotive industry?
             \begin{quote}
-                The integration of these technologies could be achieved by setting up an expert-system \cite{happel2006applications}. This system could use knowledge from experts stored in an ontology. Then, thanks to rules defined in the ontology and case reasoning, the expertise system will be able to assist the user by means of an inference unit (reasoner).  \textbf{Figure \ref{fig:es-archi}} shows the architecture of an expertise system.\\
+                The integration of these technologies could be achieved by setting up an expert system \cite{happel2006applications}. This system could use knowledge from experts stored in an ontology. Then, thanks to rules defined in ontology and case reasoning, the expertise system will be able to assist the user through an inference unit (reasoner).  \textbf{Figure \ref{fig:es-archi}} shows the architecture of an expertise system.\\
             \end{quote}
         
     \subsection{State of Practice}
         \subsubsection{Semantic Web Technologies\label{sec:semtec}}
         Semantic technology is a set of approaches, tools, and strategies that offer sophisticated mechanisms for enhancing data in a domain with explicit meanings, making it understandable to computers. By creating data models known as ontologies, semantic web technologies represent an area of interest with a high degree of abstraction.\\ 
         
-            \paragraph{RDF's Serializations}
-                Unlike other data models, \acrshort{rdf} data models do not rely on a single serialization syntax. Triples in an \acrshort{rdf} dataset can be serialized in a number of ways \cite{martinez2012exchange}, and some of the most common serialization methods are : 
+            \paragraph{RDF Serialization Methods}
+                Unlike other data models, \acrshort{rdf} data models do not rely on a single serialization syntax. Triples in a \acrshort{rdf} dataset can be serialized in several ways \cite{martinez2012exchange}, and some of the most common serialization methods are : 
 
                 \begin{itemize}
-                    \item \textbf{RDF/XML}: RDF/XML is the most widely used serialization format for RDF in the W3C recommendations. RDF/XML is an XML-style tree document with a graph based on triples, which makes it theoretically difficult and verbose. 
+                    \item \textbf{RDF/XML}: RDF/XML is the most widely used serialization format for RDF in the W3C recommendations. It is an XML-style tree document with a graph based on triples, which makes it theoretically difficult and verbose. 
+                    
                     \item \textbf{Notation3 (.n3)}: Unlike R/XML, N3 syntax is more concise and easier to understand because it is closer to the subject-predicate-object paradigm of \acrshort{rdf}. 
+                    
                     \item \acrfull{json} for Linking Data (JSON-LD) is a relatively new, user-friendly format. It combines web syntax (\acrshort{json}) with \acrshort{rdf} principles \cite{grlicky2005overview}. 
+                    
                     \item \textbf{Turtle}: The Turtle syntax is the successor to the N3 syntax, allowing more concise encoding of \acrshort{rdf} data.
                 \end{itemize}
 
@@ -533,12 +539,12 @@ OR (("Computer Aided" OR "Computer Assisted") AND "engineering")
             \end{itemize}
     
             \paragraph{OWL \label{para:owl}}
-            The W3C group created the \acrshort{owl} language as a set of formal languages for semantic ontologies on the Web \cite{liu2010ontology}. \acrshort{owl} shares many properties with \acrshort{rdf}; in fact, it is an extension of the \acrshort{rdf} vocabulary \cite{mcguinness2004owl}. An \acrshort{owl} ontology is represented by an \acrshort{rdf} graph. It can be serialized using one of the \acrshort{rdf} syntaxes described above. \\
+            The W3C group created the \acrshort{owl} language as a set of formal languages for semantic ontologies on the Web \cite{liu2010ontology}. \acrshort{owl} shares many properties with \acrshort{rdf}; in fact, it is an extension of the \acrshort{rdf} vocabulary \cite{mcguinness2004owl}. An \acrshort{owl} ontology is represented by a \acrshort{rdf} graph. It can be serialized using one of the \acrshort{rdf} syntaxes described above. \\
         
-            An \acrshort{owl} ontology includes an optional ontology header, class axioms, property axioms and information about individuals/instances. The \acrshort{owl} vocabulary is derived from the \acrshort{owl} namespace: "$https://www.w3.org/2002/07/owl\#$". 
+            An \acrshort{owl} ontology includes an optional ontology header, class axioms, property axioms, and information about individuals/instances. The \acrshort{owl} vocabulary is derived from the \acrshort{owl} namespace: "$https://www.w3.org/2002/07/owl\#$". 
         
             \begin{itemize}
-                \item \textbf{Instance}: An instance is the equivalent of an object in object-oriented modelling. 
+                \item \textbf{Instance}: An instance is the equivalent of an object in object-oriented modeling. 
                 \item \textbf{Class}: A class is a collection of elements. A class can contain any number of instances. A class in an \acrshort{owl} ontology can be a subclass of another class, inheriting the characteristics of the parent class. All classes are considered subclasses of the owl:Thing class, which is the root class of an \acrshort{owl} ontology and represents the collection of all people. 
                 \item \textbf{Object properties}: The properties that link people (instances) of two \acrshort{owl} classes. All object properties are subclasses of owl:ObjectProperty. 
                 \item \textbf{Data type attributes}: These attributes link people (instances) of \acrshort{owl} classes to literal values. All datatype properties are subclasses of owl:DatatypeProperty.
@@ -546,13 +552,13 @@ OR (("Computer Aided" OR "Computer Assisted") AND "engineering")
         
             \acrshort{owl} is made up of structures and terminology used to semantically represent a domain. It is a set of expressive operators used to describe concepts, including Boolean operators such as intersection, union, and complement. It also includes explicit quantifiers that allow attributes to specify their characteristics such as domain, extent, and cardinality.\\
         
-            \acrshort{owl} has three variants based on its use cases: OWL-Lite, OWL-DL and OWL-Full. 
+            \acrshort{owl} has three variants based on its use cases: OWL-Lite, OWL-DL, and OWL-Full. 
         
             \begin{itemize}
                 \item Of the three options listed, OWL-Full is the most expressive. 
                 \item OWL-Lite supports taxonomy and basic restrictions, such as 0 and 1 cardinality. 
                 \item OWL-DL is more expressive and is based on description logic. Description logic, which is a subset of first-order logic, facilitates automated reasoning. 
-                \item OWL-Full, on the other hand, is effective in cases where a high level of expressively outweighs the decidability and computational completeness of the language.
+                \item OWL-Full, on the other hand, is effective in cases where a high level of expressiveness outweighs the decidability and computational completeness of the language.
             \end{itemize}
 
             \paragraph{Query and \acrshort{sparql}\label{para:sparql}}
@@ -562,7 +568,7 @@ OR (("Computer Aided" OR "Computer Assisted") AND "engineering")
         
             \begin{itemize}
                 \item it allows a collection of graphical databases to be queried in a single query 
-                \item \acrshort{sparql} queries include triple patterns, conjunctions, disjunctions and optional patterns. 
+                \item \acrshort{sparql} queries include triple patterns, conjunctions, disjunctions, and optional patterns. 
                 \item it offers analytical operations such as join, sort, and aggregate. 
                 \item Unlike \acrshort{sql}, \acrshort{sparql} queries can be directed to several data shops at the same time. 
                 \item \acrshort{sparql} is more than just a query language; it also supports INSERT and DELETE to update the data in a dataset.
@@ -572,19 +578,19 @@ OR (("Computer Aided" OR "Computer Assisted") AND "engineering")
 
 
             \paragraph{Logical Inference and Reasoning \label{para:logInf}}
-            Semantic reasoning is about drawing conclusions or inferences from facts. As semantic technology attempts to make data more useful and machine-readable, semantic reasoning can use these simplifications of data to reason and draw its own conclusions. It is used for both proof and logic. Proof can be used to verify and, if necessary, correct facts. This can be done using form constraint language (SHACL) statements \cite{spelten2023simulation}. Logic can be used to derive new 'triples' from an existing graph. For example, deduced transitive properties are obtained from strings of asserted properties, but subclass and type declarations can be derived from properties of an individual. There are several reasoning engines (reasoners), as well as a vocabulary and library of inference rules. Popular examples are the HermiT \cite{spelten2023simulation} and Pellet \cite{spelten2023simulation, chen2012recommendation} reasoners.\\
+            Semantic reasoning is about drawing conclusions or inferences from facts. As semantic technology attempts to make data more useful and machine-readable, semantic reasoning can use these simplifications of data to reason and draw its conclusions. It is used for both proof and logic. Proof can be used to verify and, if necessary, correct facts. This can be done using form constraint language (SHACL) statements \cite{spelten2023simulation}. Logic can be used to derive new 'triples' from an existing graph. For example, deduced transitive properties are obtained from strings of asserted properties, but subclass and type declarations can be derived from the properties of an individual. There are several reasoning engines (reasoners), as well as a vocabulary and library of inference rules. Popular examples are the HermiT \cite{spelten2023simulation} and Pellet \cite{spelten2023simulation, chen2012recommendation} reasoners.\\
         
             More precisely, a reasoner is a type of software capable of deducing logical consequences from a collection of claimed facts or axioms. A semantic reasoner extends the concept of an inference engine by offering a wider range of mechanisms to work with. An ontology language, as well as a description logic language, are widely used to provide inference rules. Many reasoners use first-order predicate logic to perform the reasoning; inference is often performed by forward and backward chaining. Examples of probabilistic reasoners include non-axiomatic reasoning systems\cite{wang2000non} and probabilistic logic networks \cite{qu2019probabilistic}.\\
         
-            For example, if we have the following information, we could use rule-based reasoning to deduce other truths from our data. If Appel is a Microsoft partner, the situation would be expressed as follows:\\
+            For example, if we have the following information, we could use rule-based reasoning to deduce other truths from our data. If Apple is a Microsoft partner, the situation would be expressed as follows:\\
         
             \textbf{:Appel :partnerOf :Microsoft}
             
-            However, since partnership is a relationship between two companies, it makes sense to express it in both directions. Therefore, we can use rule-based reasoning to create a two-way link by applying the following rule:\\
+            However, since a partnership is a relationship between two companies, it makes sense to express it in both directions. Therefore, we can use rule-based reasoning to create a two-way link by applying the following rule:\\
         
             \textbf{[?companyB :partnerOf ?companyA] :- [?companyA :partnerOf ?companyB]}\\
         
-            In simple terms, this rule implies that if “company A” is a partner of “company B”, we must also include a link in which “company B” is a partner of “company A”. The text after “:-” is the body of the rule, and the text before it is the head, which is applied if the body is found to be true.
+            In simple terms, this rule implies that if \textbf{company A} is a partner of \textbf{company B}, we must also include a link in which \textbf{company B} is a partner of \textbf{company A}. The text after “:-” is the body of the rule, and the text before it is the head, which is applied if the body is found to be true.
 
 
             \paragraph{Advantages of semantic technologies}
@@ -595,33 +601,37 @@ OR (("Computer Aided" OR "Computer Assisted") AND "engineering")
                 \item The constraints and syntax of ontologies can facilitate the detection and resolution of contradictions in the conceptual representation of a domain \cite{chen2012recommendation}. 
                 \item Ontologies make it possible to use a wide range of reasoning capabilities to obtain more information about a concept \cite{chen2012recommendation}. 
                 \item By using existing ontologies, it is possible to produce ontologies for broader domains without having to start from scratch \cite{bizer2008linked}. 
-                \item Ontologies provide a formal semantics for the data in a domain, making it easier to identify data quality problems \cite{spelten2023simulation, li2018ontology}.
+                \item Ontologies provide formal semantics for the data in a domain, making it easier to identify data quality problems \cite{spelten2023simulation, li2018ontology}.
             \end{itemize}
         
-            Semantic reasoning alone is also a very relevant asset. The partnership example above is simple, but the use of rules-based reasoning can help to reduce the time and effort spent on the project. Rules can simplify data, enabling more efficient data analysis and product creation. Instead of having someone going through the data and generate insights and conclusions, we can use semantic technology and reasoning to do it for us, increasing efficiency and saving money.\\
+            Semantic reasoning alone is also a very relevant asset. The partnership example above is simple, but the use of rules-based reasoning can help to reduce the time and effort spent on the project. Rules can simplify data, enabling more efficient data analysis and product creation. Instead of having someone go through the data and generate insights and conclusions, we can use semantic technology and reasoning to do it for us, increasing efficiency and saving money.\\
         
             Semantic reasoning can be combined with machine learning to improve the overall data management process \cite{pan2024unifying}. Machine learning uses models to automate tasks, while semantic reasoning relies on rules and ontologies. The process of creating an ontology or collecting data can be extremely time-consuming. Combining machine learning and semantic technologies can therefore make data collection less onerous and improve the overall user experience. \acrfull{llms} (generative AI) have recently demonstrated their language understanding capabilities, which could facilitate the process of integrating unstructured data into knowledge graphs.\\
         
-            Semantic technologies are often associated with graphical databases, which are used by businesses for a variety of purposes \cite{eshach2003case}. Graph databases are renowned for their flexibility and ability to speed up and simplify data retrieval, enabling businesses to be more cost-effective and efficient. They are used across a range of sectors, including media, healthcare and finance, and the ability of semantic reasoning and technology to understand relationships in the same way as humans can greatly benefit organizations in any field.\\
+            Semantic technologies are often associated with graphical databases, which are used by businesses for a variety of purposes \cite{eshach2003case}. Graph databases are renowned for their flexibility and ability to speed up and simplify data retrieval, enabling businesses to be more cost-effective and efficient. They are used across a range of sectors, including media, healthcare, and finance, and the ability of semantic reasoning and technology to understand relationships in the same way as humans can greatly benefit organizations in any field.\\
         
         \subsubsection{Existing Solution\label{sec:exonto}}
-        Summarizing the information gathered, there are a number of tools available for integrating semantic technologies to assist engineers in their decision-making. In this section, the most frequently encountered tools are presented.
+        Summarizing the information gathered, there are some tools available for integrating semantic technologies to assist engineers in their decision-making. In this section, the most frequently encountered tools are presented.
         
             \paragraph{JavaDON}
-            JavaDON is an open source shell used for developping expert systems. It is based on the OBOA framework and designed for the development of intelligent systems \cite{jovanovic2005achieving}. The main goal of the JavaDON project was to create a user-friendly and easily extensible tool for the development of practical expert systems. JavaDON is built on a solid theoretical foundation and is capable of handling complex expert system applications, whether they are stand-alone or web-based systems. Its knowledge representation schema supports the integration of multimedia elements alongside traditional techniques such as rules and frames. In particular, JavaDON provides the ability to store knowledge bases in \acrshort{xml} format, which improves interoperability with other knowledge bases on the Internet. JavaDON has already been used to develop several practical expert systems, as well as a knowledge engineering tool that supports both introductory and advanced courses on expert systems \cite{tomic2006javadon}.
+            JavaDON is an open-source shell used for developing expert systems. It is based on the OBOA framework and designed for the development of intelligent systems \cite{jovanovic2005achieving}. The main goal of the JavaDON project was to create a user-friendly and easily extensible tool for the development of practical expert systems. JavaDON is built on a solid theoretical foundation and is capable of handling complex expert system applications, whether they are stand-alone or web-based systems. Its knowledge representation schema supports the integration of multimedia elements alongside traditional techniques such as rules and frames. In particular, JavaDON provides the ability to store knowledge bases in \acrshort{xml} format, which improves interoperability with other knowledge bases on the Internet. JavaDON has already been used to develop several practical expert systems, as well as a knowledge engineering tool that supports both introductory and advanced courses on expert systems \cite{tomic2006javadon}.
         
             \paragraph{myCBR}
-            myCBR was developed with the primary goal of providing a compact and user-friendly tool that can be used to create prototype \acrfull{cbr} applications in education, research, and small industrial projects with minimal effort \cite{sawalkar2019modeling}. The myCBR Workbench, the core of this tool, provides intuitive graphical user interfaces for modelling various attribute-specific similarity measures and evaluating the resulting retrieval quality. To further streamline the process, myCBR Workbench includes tools to automatically generate case representations from existing raw data, minimizing the effort required to define a suitable case representation.\\
-            A key feature of myCBR is the Software Development Kit (SDK) \cite{jaiswal2022f}, which facilitates integration with other applications and enables extensions to fulfil specific requirements, including additional similarity calculations. The foundation of myCBR stems from various European research projects, including INRECA \cite{wilke1995fallbasiertes}, INRECA II and WEBSELL \cite{probSolCBR}, all funded by the European Strategy Programme for Research in Information Technology (ESPRIT). The tool's lineage from these projects emphasizes its robust and research-based design and makes myCBR a valuable resource for anyone looking for an accessible and efficient \acrshort{cbr} solution for education, research, and small industrial companies.
+            myCBR was developed with the primary goal of providing a compact and user-friendly tool that can be used to create prototype \acrfull{cbr} applications in education, research, and small industrial projects with minimal effort \cite{sawalkar2019modeling}. The myCBR Workbench, the core of this tool, provides intuitive graphical user interfaces for modeling various attribute-specific similarity measures and evaluating the resulting retrieval quality. To further streamline the process, myCBR Workbench includes tools to automatically generate case representations from existing raw data, minimizing the effort required to define a suitable case representation.\\
+            A key feature of myCBR is the Software Development Kit (SDK) \cite{jaiswal2022f}, which facilitates integration with other applications and enables extensions to fulfill specific requirements, including additional similarity calculations. The foundation of myCBR stems from various European research projects, including INRECA \cite{wilke1995fallbasiertes}, INRECA II and WEBSELL \cite{probSolCBR}, all funded by the European Strategy Programme for Research in Information Technology (ESPRIT). The tool's lineage from these projects emphasizes its robust and research-based design and makes myCBR a valuable resource for anyone looking for an accessible and efficient \acrshort{cbr} solution for education, research, and small industrial companies.
 
         
             \paragraph{jCOLIBRI}
-            jCOLIBRI is a comprehensive framework to support different types of \acrshort{cbr} systems, ranging from simple nearest neighbour approaches with flat or simple structures to more complicated knowledge-intensive systems \cite{wiratunga2011case}. The framework includes extensions for text-based and conversational applications. JCOLIBRI provides a simplified development process and emphasizes the reuse of previous designs and implementations. It formalizes \acrshort{cbr} knowledge through a domain-independent \acrshort{cbr} ontology (CBROnto) and maps it into framework classes that provide a knowledge-level description of \acrshort{cbr} tasks and a library of reusable \acrfull{psm} \cite{diaz2007building}. It is noteworthy that jCOLIBRI is characterized by reusability, flexibility, scope, and user-friendliness compared to other \acrshort{cbr} tools. Developed as an object-oriented framework in Java, jCOLIBRI promotes software reuse by integrating proven software engineering techniques with a knowledge-level description that separates \acrshort{psm} \cite{diaz2007building}, which define reasoning processes, from the domain model, which describes domain knowledge. Overall, jCOLIBRI is characterized as a versatile and sophisticated tool for the development of \acrshort{cbr} systems.
+            jCOLIBRI is a comprehensive framework to support different types of \acrshort{cbr} systems, ranging from simple nearest neighbor approaches with flat or simple structures to more complicated knowledge-intensive systems \cite{wiratunga2011case}. The framework includes extensions for text-based and conversational applications. JCOLIBRI provides a simplified development process and emphasizes the reuse of previous designs and implementations. It formalizes \acrshort{cbr} knowledge through a domain-independent \acrshort{cbr} ontology (CBROnto) and maps it into framework classes that provide a knowledge-level description of \acrshort{cbr} tasks and a library of reusable \acrfull{psm} \cite{diaz2007building}. It is noteworthy that jCOLIBRI is characterized by reusability, flexibility, scope, and user-friendliness compared to other \acrshort{cbr} tools. Developed as an object-oriented framework in Java, jCOLIBRI promotes software reuse by integrating proven software engineering techniques with a knowledge-level description that separates \acrshort{psm} \cite{diaz2007building}, which defines reasoning processes, from the domain model, which describes domain knowledge. Overall, jCOLIBRI is characterized as a versatile and sophisticated tool for the development of \acrshort{cbr} systems.
 
         
             \paragraph{ProCAKE}
-            ProCAKE is a versatile framework for the development of Process-Oriented Case-Based Reasoning (POCBR) applications that enables the integration of workflow technology in business, scientific and private domains \cite{bergmann2019procake}. In response to the limited availability of frameworks specifically tailored to POCBR applications, ProCAKE represents a remarkable solution. ProCAKE was developed at the Chair of Information Systems II at Trier University and serves as the centerpiece of the CAKE framework, which forms the basis for various research activities within the research group. In contrast to existing frameworks such as myCBR or jColibri, which focus primarily on structural and textual \acrshort{cbr}, ProCAKE is uniquely positioned to meet the development requirements of POCBR applications \cite{bergmann2019procake, bergmann2014collaborative}.
+            ProCAKE is a versatile framework for the development of Process-Oriented Case-Based Reasoning (POCBR) applications that enables the integration of workflow technology in business, scientific, and private domains \cite{bergmann2019procake}. In response to the limited availability of frameworks specifically tailored to POCBR applications, it represents a remarkable solution. It was developed by the Chair of Information Systems II at Trier University and serves as the centerpiece of the CAKE framework, which forms the basis for various research activities within the research group. In contrast to existing frameworks such as myCBR or jColibri, which focus primarily on structural and textual \acrshort{cbr}, ProCAKE is uniquely positioned to meet the development requirements of POCBR applications \cite{bergmann2019procake, bergmann2014collaborative}.
 
 
             \paragraph{e:IAS}
-            On the enterprise side, Empolis' Information Access Suite (known as e:IAS) \cite{hanft2008realising} is perhaps the most widely used tool in Europe. The underlying approach of e:IAS is \acrshort{cbr}, and includes a client-server based knowledge delivery component, the Knowledge Server, as well as a knowledge modeling component. It is mainly used for designing knowledge management systems for a wide range of business applications.
+            On the enterprise side, Empolis' Information Access Suite (known as e:IAS) \cite{hanft2008realising} is perhaps the most widely used tool in Europe. The underlying approach of e:IAS is \acrshort{cbr}, and includes a client-server-based knowledge delivery component, the Knowledge Server, as well as a knowledge modeling component. It is mainly used for designing knowledge management systems for a wide range of business applications.\\
+            
+            
+            
+The information presented in this chapter provides an overview of the evolution of concepts, technologies, and tools in the field of semantic technologies. This information will serve as a basis for designing a solution to the problem presented in the introduction.

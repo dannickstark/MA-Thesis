@@ -1,5 +1,7 @@
 \section{Implementation\label{sec:implementation}}
-This chapter describes how the solution concept from \textbf{Section \ref{subsec:cbr}} was realized. It first explains why the \acrshort{cbr} tools presented in \textbf{Section \ref{sec:exonto}} were not used. Then, the overall architecture of the solution to be implemented will be presented. The tools used are then presented. To facilitate understanding of the implementation process, the development strategy is described, followed by the choice of programming languages. For each of these languages, an explanation of their choice is given, followed by a listing of the libraries or packages used. Then the framework's main functions (code snippets) are explained, to give further details on how similarity is calculated. Once the back-end has been explained, a brief presentation of the front-end is given to show how the framework can be used and integrated into applications.
+This chapter describes how the solution concept from \textbf{Section \ref{subsec:cbr}} was realized. It first explains why the \acrshort{cbr} tools presented in \textbf{Section \ref{sec:exonto}} were not used. Then, the overall architecture of the solution to be implemented will be presented. The tools used are then presented. To facilitate understanding of the implementation process, the development strategy is described, followed by the choice of programming languages. For each of these languages, an explanation of their choice is given, followed by a listing of the libraries or packages used. Then the framework's main functions (code snippets) are explained, to give further details on how similarity is calculated. Once the back-end has been explained, a brief presentation of the front-end is given to show how the framework can be used and integrated into applications.\\
+
+
 
 \subsection{Why not myCBR, JCollibri or ProCAKE?\label{sec:whyNot}}
 \begin{itemize}
@@ -24,7 +26,7 @@ Faced with these problems, it was decided that it would be much simpler to imple
     \item two \textbf{storage services}: 
         \begin{itemize}
             \item for \textbf{non-graphical data}
-            \item for \textbf{graphical / ontological data}
+            \item for \textbf{graphical / ontological data}\\
         \end{itemize}
 \end{itemize}
 
@@ -38,10 +40,10 @@ Faced with these problems, it was decided that it would be much simpler to imple
 
 \subsection{Used Tools}
     \subsubsection{Protégé \label{subsubsec:protege}}
-    Protégé is an ontology development and knowledge management tool that plays a central role in our feasibility study on the use of semantic technologies to support configuration processes in systems engineering. In particular, Protégé facilitates the creation, modification and visualization of ontologies and enables us to define and organize the key attributes relevant for simulations in the automotive industry.
+    Protégé is an ontology development and knowledge management tool that plays a central role in our feasibility study on the use of semantic technologies to support configuration processes in systems engineering. In particular, Protégé facilitates the creation, modification, and visualization of ontologies and enables us to define and organize the key attributes relevant to simulations in the automotive industry.
     
     \subsubsection{Apache Jana}
-    Apache Jena is a semantic web framework that proves to be very helpful in implementing semantic technologies in our platform. As part of our solution, Apache Jena supports processing RDF data, performing semantic reasoning and executing SPARQL queries to improve the identification of similarities between new and existing simulations in our knowledge graph.
+    Apache Jena is a semantic web framework that proves to be very helpful in implementing semantic technologies in our platform. As part of our solution, Apache Jena supports processing RDF data, performing semantic reasoning, and executing SPARQL queries to improve the identification of similarities between new and existing simulations in our knowledge graph.
     
     \subsubsection{Apache Fuseki}
     Apache Fuseki is an important component for managing and exposing RDF data as linked data resources. In our study, Apache Fuseki is used to provide an endpoint for querying and retrieving information from the knowledge graph and to ensure seamless integration with other tools and components of our platform.
@@ -62,12 +64,12 @@ Faced with these problems, it was decided that it would be much simpler to imple
 
     
 \subsection{Development Strategy}
-Development begins with the creation of the ontology. Once the ontology had been created, all the architecture elements presented in \textbf{Section \ref{subsec:archi-frame}} were parameterized. These are the Front-end, the Back-end, MongoDB and Apache Fuseki. DockerFiles for setting up the containers were then created. Then a Docker-Compose file was defined for orchestration and communication between containers.\\
+Development begins with the creation of the ontology. Once the ontology had been created, all the architecture elements presented in \textbf{Section \ref{subsec:archi-frame}} were parameterized. These are the Front-end, the Back-end, MongoDB, and Apache Fuseki. DockerFiles for setting up the containers were then created. Then a Docker-Compose file was defined for orchestration and communication between containers.\\
 
-Once the setup had been done, a set of functions (CRUD) for manipulating the databases were defined in the back-end. The \acrshort{cbr} principles presented in \textbf{Section \ref{subsec:cbr}} were then implemented. This enabled us to:
+Once the setup had been done, a set of functions (CRUD) for manipulating the databases was defined in the back-end. The \acrshort{cbr} principles presented in \textbf{Section \ref{subsec:cbr}} were then implemented. This enabled us to:
 \begin{itemize}
     \item retrieve cases from the TDB2 database
-    \item generate questions for users based on the elements present in the ontology
+    \item generates questions for users based on the elements present in the ontology
     \item calculate the similarity between two cases
     \item find the set of cases similar to a problem
 \end{itemize}
@@ -98,7 +100,7 @@ Two options were considered for ontology development. The first was OntoUML, and
         \end{itemize}
     
     \subsubsection{Usage of Protégé}
-    Protégé is an open-source ontology authoring tool that makes it easy to create, modify and manage ontologies. It supports a variety of ontology languages, including OWL.
+    Protégé is an open-source ontology authoring tool that makes it easy to create, modify, and manage ontologies. It supports a variety of ontology languages, including OWL.
     
     \paragraph{Advantages}
     \begin{itemize}
@@ -124,7 +126,7 @@ Two options were considered for ontology development. The first was OntoUML, and
     
     \begin{figure}[p]
         \input{chapters/Simulation.ttl}
-         \caption{\label{fig:viz-ontology}  Visualization of the Ontology as a Graph}
+         \caption{\label{fig:viz-ontology}  Visualization of the Ontology as a Graph (to showcase the relationship between elements)}
     \end{figure}
 
     
@@ -297,7 +299,7 @@ def computeSimilarity(
     
     
 \subsubsection{Find the Similarity Value Between two Graphs} 
-Here the principle of local-to-global calculation presented in \textbf{Section \ref{subsec:similarity}} is implemented. First we iterate over the set of Node target attributes and for each pair of values, the function presented in \textbf{Listing \ref{lst:comp-sim-node}} (see \textbf{Appendix \ref{annex:comp-sim-node-full}} for a full version) is called. This calculates the similarity value between two attributes according to their type. Then, for each Edge in our graph, the function is used iteratively.
+Here, the principle of local-to-global calculation presented in \textbf{Section \ref{subsec:similarity}} is implemented. First, we iterate over the set of Node target attributes, and for each pair of values, the function presented in \textbf{Listing \ref{lst:comp-sim-node}} (see \textbf{Appendix \ref{annex:comp-sim-node-full}} for a full version) is called. This calculates the similarity value between two attributes according to their type. Then, for each Edge in our graph, the function is used iteratively.
 After iterating over all the attributes and edges (child nodes), the similarity value between the two nodes is calculated by applying the same weight to each attribute and child.\\
 
 \begin{lstlisting}[language=Python, caption=Function to Find the Similarity Between Two Cases (Full), label={lst:comp-sim-node}]
@@ -421,6 +423,7 @@ def computeNumericExponentialSimilarity(value1, value2):
     
     
     \textbf{Fuzzy similarity} in \textbf{Listing \ref{lst:fuzzy-sim-num}} is beneficial when dealing with uncertain or imprecise numeric data. It can handle situations where the exact values may not be known, and there is a need to capture the degree of similarity despite the fuzziness in the data.\\
+    
 \begin{lstlisting}[language=Python, caption=Function to Compute the Similarity Value Between Two Numerics using the Fuzzy Computation, label={lst:fuzzy-sim-num}]
 # Compute the Fuzzy similarity between two numeric values
 def computeNumericFuzzySimilarity(value1, value2):
@@ -443,7 +446,7 @@ def computeNumericSigmoidSimilarity(value1, value2):
 In summary, the choice of similarity computation method depends on the nature of the data and the desired characteristics of the similarity measure. Exponential similarity emphasizes proximity sensitivity, fuzzy similarity accommodates uncertainty, and sigmoid similarity is suitable for situations where similarity saturates with increasing proximity.
 
 \subsection{Web Application}
-As already explained in the previous chapters, a prototype \acrshort{ui} has been set up in order to demonstrate the use of the \acrshort{cbr} mechanism in practical cases. In this section, the different views and elements of this \acrshort{ui} will be presented, along with their usefulness.
+As already explained in the previous chapters, a prototype \acrshort{ui} has been set up to demonstrate the use of the \acrshort{cbr} mechanism in practical cases. In this section, the different views and elements of this \acrshort{ui} will be presented, along with their usefulness.
 
     \subsubsection{The Home Page}
     \textbf{Figure \ref{fig:proto-home}} shows the home view of the \acrshort{ui}. Here the user can create a new account in which to work or choose an existing account. Each account has a list of configuration processes.
@@ -477,7 +480,7 @@ As already explained in the previous chapters, a prototype \acrshort{ui} has bee
     
     \begin{itemize}
         \item \textbf{(1)} an entry for selecting the element for which you would like to give a value
-        \item \textbf{(2)} an entry for giving the value of this element. As shown in \textbf{Figure \ref{fig:proto-demo-add-answer-proba}} a suggestion of possible values is automatically made. And for each of the suggested values, a probability of use is provided, allowing you to find out how many similar simulations have used this value.
+        \item \textbf{(2)} an entry for giving the value of this element. As shown in \textbf{Figure \ref{fig:proto-demo-add-answer-proba}} a suggestion of possible values is automatically made. For each of the suggested values, a probability of use is provided, allowing you to find out how many similar simulations have used this value.
         \item a “mandatory” switch \textbf{(3)} to define whether only graphs with exactly the value selected for the element selected should be taken into account
         \item In \textbf{(4)} we have the question asked for this element. This is generated automatically by the backend.
     \end{itemize}
@@ -500,28 +503,29 @@ As already explained in the previous chapters, a prototype \acrshort{ui} has bee
     
     
     \subsubsection{Edit / Delete an Answer}
-    It is also possible to edit or delete an answer given previously. \textbf{Figure \ref{fig:proto-demo-edit-delete-answer}} shows the elements of our interface which allow this to be done. 
+    It is also possible to edit or delete an answer given previously. \textbf{Figure \ref{fig:proto-demo-edit-delete-answer}} shows the elements of our interface that allow this to be done. 
     
     \begin{itemize}
         \item when a Node (response) in the graph is edited, this automatically deletes all the child Nodes it had, since these may no longer be relevant for the new values of the modified Node
-        \item when a Node is deleted, its child Nodes are also deleted
+        \item when a Node is deleted, its child Nodes are also deleted\\
     \end{itemize}
+    
 
     \begin{figure}[h]
     \centering
-    \frame{\includegraphics[scale=0.5]{images/proto-demo-edit-delete-answer.png}}
+    \frame{\includegraphics[scale=0.8]{images/proto-demo-edit-delete-answer.png}}
     \caption{\label{fig:proto-demo-edit-delete-answer}  Edit / Delete an Answer (a Node)}
     \end{figure}
 
     
     \subsubsection{Inspecting Results}
-    After each response, the reasoner recalculates the similar simulations and returns them. You can see the number of simulations found in the top right-hand corner of each Node. For more details, simply click on the Node you wish to inspect. \textbf{Figure \ref{fig:proto-demo-detail}} shows the details of one of these Nodes.
+    After each response, the reasoner recalculates similar simulations and returns them. You can see the number of simulations found in the top right-hand corner of each Node. For more details, simply click on the Node you wish to inspect. \textbf{Figure \ref{fig:proto-demo-detail}} shows the details of one of these Nodes.
     
     \begin{itemize}
         \item In \textbf{(1)} we have information about the number of simulations found.
-        \item The selection list \textbf{(2)} allows you to choose one of the simulations found in order to inspect it.
+        \item The selection list \textbf{(2)} allows you to choose one of the simulations found to inspect it.
         \item Once one of the simulations has been chosen, we can see the percentage of similarity \textbf{(3)} of this simulation with the one currently being configured.
-        \item The table in \textbf{(4)} shows all the attributes of this simulation and their values.
+        \item The table in \textbf{(4)} shows all the attributes of this simulation and their values.\\
     \end{itemize}
     
     \begin{figure}[h]
@@ -531,6 +535,5 @@ As already explained in the previous chapters, a prototype \acrshort{ui} has bee
     \end{figure}
 
 
-
-
+Once the implementation is complete, the next step is to analyze the developed solution. To this end, the next chapter will focus on an analysis of the development process and feedback from other \acrshort{ep} 4.0 project members.
     
